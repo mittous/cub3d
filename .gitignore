@@ -1,0 +1,7 @@
+.vscode
+build
+parsing_tuts
+minishell
+.out
+notes
+*/*.o
