@@ -2,6 +2,6 @@
 cub3D
 .out
 notes
-libft
-*/*.o
-.o
+/libft/*.o
+*.o
+*.out
