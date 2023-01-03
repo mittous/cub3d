@@ -22,5 +22,3 @@ int	ft_checkber(char *s, int ac)
 		printf("map extention is not '.cub'");
 	exit(0);
 }
-
-
