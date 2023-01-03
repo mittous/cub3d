@@ -8,6 +8,8 @@ INC =	cub3d.h
 
 SRC =	main.c \
 		check_map_name.c \
+		errors.c \
+		read_from_map.c \
 
 # BNC_SRC =
 
@@ -24,7 +26,7 @@ CFLAGS = -Wall  -Wextra -g -fsanitize=address #-Werror
 all : $(NAME)
 
 $(NAME) : $(INC) $(OBJ)
-	make -C libft/
+	make bonus -C libft/
 	$(CC) $(CFLAGS) $(SRC) libft/libft.a $(MLX) -o $(NAME)
 
 # bonus : $(NAME_BNS)

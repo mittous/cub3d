@@ -23,6 +23,25 @@
 # define RAD 0.01745329251
 
 
-int	ft_checkber(char *s, int ac);
+
+typedef struct s_cube
+{
+	char	**map;
+	int		fd;
+}				t_cube;
+
+typedef struct s_char_map
+{
+	int		one;
+	int		zero;
+	int		player;
+	int		n;
+	int 	read_ret;
+}				t_char_map;
+
+int		mini_check(char map);
+int		ft_checkber(char *s, int ac);
+char	*get_next_line(int fd, t_char_map char_map);
+void	ft_caracter_error(char bufer);
 
 #endif
