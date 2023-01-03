@@ -1,7 +1,5 @@
 .vscode
-build
-parsing_tuts
-minishell
+cub3D
 .out
 notes
 libft
