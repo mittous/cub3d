@@ -12,18 +12,12 @@ int	mini_check(char map)
 t_char_map	ft_count_char(char c, t_char_map char_map)
 {
 								// fix that logic //
-	// if (c == 'N')
-	// 	char_map.n++;
-	// if (c == 'S')
-	// 	char_map.s++;
-	// if (c == 'E')
-	// 	char_map.e++;
-	// if (c == 'W')
-	// 	char_map.w++;
-	// if (c == '1')
-	// 	char_map.one++;
-	// if (c == '0')
-	// 	char_map.zero++;
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		char_map.player++;
+	if (c == '1')
+		char_map.one++;
+	if (c == '0')
+		char_map.zero++;
 	// printf ("*-*-*-*n = %d s =  %d e = %d w = %d one = %d zero = %d\n", char_map.n, char_map.s, char_map.e, char_map.w, char_map.one, char_map.zero);
 	
 	return (char_map);
@@ -41,17 +35,18 @@ char	*get_next_line(int fd, t_char_map char_map)
 	{
 		char_map.read_ret = read(fd, bufer, 1);
 		if (char_map.read_ret == -1 || !mini_check(bufer[0]))
-			ft_caracter_error(bufer[0]);
+			ft_wrong_character(bufer[0]);
 		char_map = ft_count_char(bufer[0], char_map);
-		printf ("n = %d s =  %d e = %d w = %d one = %d zero = %d\n", char_map.n, char_map.s, char_map.e, char_map.w, char_map.one, char_map.zero);
+		// printf ("n = %d s =  %d e = %d w = %d one = %d zero = %d\n", char_map.n, char_map.s, char_map.e, char_map.w, char_map.one, char_map.zero);
 		bufer[char_map.read_ret] = '\0';
 		lines = ft_strjoin(lines, bufer);
 	}
-	if (char_map.n != 1 || char_map.s != 1 || char_map.e != 1 || char_map.w != 1
-		|| char_map.one < 1 || char_map.zero < 1)
-	{
-		ft_caracter_error(bufer[0]);
-	}
+	if (char_map.player != 1)
+		ft_messing_character("You'r messing one of the following chars (N,E,W,S)");
+	if (char_map.one < 1)
+		ft_messing_character("Ther is no wall (1)");
+	if (char_map.zero < 1)
+		ft_messing_character("Ther is no free space (0)");
 	free (bufer);
 	return (lines);
 }

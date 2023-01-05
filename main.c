@@ -5,11 +5,9 @@ void	ft_init(t_cube *cube, t_char_map *char_map)
 {	
 	char_map->read_ret = 1;
 	char_map->n = 0;
-	char_map->s = 0;
-	char_map->e = 0;
-	char_map->w = 0;
 	char_map->one = 0;
 	char_map->zero = 0;
+	char_map->player = 0;
 	cube->fd = 0;
 	cube->map = NULL;
 }
