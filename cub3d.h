@@ -23,24 +23,27 @@
 # define RAD 0.01745329251
 
 
-
 typedef struct s_cube
 {
 	char	**map;
+	char	**texture;
 	int		fd;
-}				t_cube;
-
-typedef struct s_char_map
-{
 	int		one;
 	int		zero;
 	int		player;
+	char	player_char;
 	int		n;
-}				t_char_map;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*floor;
+	char	*ceiling;
+}				t_cube;
 
 int		mini_check(char map);
 int		ft_checkber(char *s, int ac);
-char	*get_next_line(int fd, t_char_map *char_map);
+char	*get_next_line(int fd, t_cube *cube);
 void	ft_wrong_character_err(char bufer);
 void	ft_messing_character_err(char *message);
 
