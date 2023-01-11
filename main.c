@@ -91,16 +91,16 @@ void	ft_check_texture(t_cube *cub)
 				exit(0);
 			}
 		}
-		if (cub->texture[i][0] == 'N' && cub->texture[i][1] == 'O')
+		if (path[0][0] == 'N' && path[0][1] == 'O')
 		{
 			// puts("dkhlna hna");
 			cub->no = path[1];
 		}
-		else if (cub->texture[i][0] == 'S' && cub->texture[i][1] == 'O')
+		else if (path[0][0] == 'S' && path[0][1] == 'O')
 			cub->so = path[1];
-		else if (cub->texture[i][0] == 'W' && cub->texture[i][1] == 'E')
+		else if (path[0][0] == 'W' && path[0][1] == 'E')
 			cub->we = path[1];
-		else if (cub->texture[i][0] == 'E' && cub->texture[i][1] == 'A')
+		else if (path[0][0] == 'E' && path[0][1] == 'A')
 			cub->ea = path[1];
 		else if (path[0][0] == 'C' && path[0][1] == '\0')
 		{
