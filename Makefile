@@ -17,7 +17,7 @@ OBJ = $(SRC:.c=.o)
 
 OBJ_BNC = $(BNC_SRC:.c=.o)
 
-MLX = -lmlx -framework OpenGL -framework AppKit
+MLX = #-lmlx -framework OpenGL -framework AppKit
 
 CC = cc
 

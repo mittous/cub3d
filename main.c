@@ -92,17 +92,28 @@ void	ft_check_texture(t_cube *cub)
 			}
 		}
 		if (cub->texture[i][0] == 'N' && cub->texture[i][1] == 'O')
+		{
+			// puts("dkhlna hna");
 			cub->no = path[1];
-		if (cub->texture[i][0] == 'S' && cub->texture[i][1] == 'O')
+		}
+		else if (cub->texture[i][0] == 'S' && cub->texture[i][1] == 'O')
 			cub->so = path[1];
-		if (cub->texture[i][0] == 'W' && cub->texture[i][1] == 'E')
+		else if (cub->texture[i][0] == 'W' && cub->texture[i][1] == 'E')
 			cub->we = path[1];
-		if (cub->texture[i][0] == 'E' && cub->texture[i][1] == 'A')
+		else if (cub->texture[i][0] == 'E' && cub->texture[i][1] == 'A')
 			cub->ea = path[1];
-		if (cub->texture[i][0] == 'C' && cub->texture[i][1] == '\0')
+		else if (path[0][0] == 'C' && path[0][1] == '\0')
+		{
+			puts ("dkhlna hna");
 			cub->ceiling = path[1];
-		if (cub->texture[i][0] == 'F' && cub->texture[i][1] == '\0')
+		}
+		else if (path[0][0] == 'F' && path[0][1] == '\0')
 			cub->floor = path[1];
+		else
+		{
+			ft_putendl_fd("Invalide identefire", 2);
+			exit (0);
+		}
 		// free path here/
 		i++;
 	}
@@ -117,7 +128,9 @@ int	main(int ac, char **av)
 		ft_init(&cube);
 		cube.fd = open(av[1], O_RDONLY);
 		if (cube.fd == -1)
+		{
 			printf("file is not valid");
+		}
 			// printf ("%s", get_next_line(cube.fd, &cube));
 			// printf ("%s", get_next_line(cube.fd, &cube));
 			// cube.map = ft_split(get_next_line(cube.fd, &cube) , '\n');
