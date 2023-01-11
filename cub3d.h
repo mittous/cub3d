@@ -43,7 +43,7 @@ typedef struct s_cube
 
 int		mini_check(char map);
 int		ft_checkber(char *s, int ac);
-char	*get_next_line(int fd, t_cube *cube);
+char	*get_next_line(int fd, t_cube *cube, int check);
 void	ft_wrong_character_err(char bufer);
 void	ft_messing_character_err(char *message);
 

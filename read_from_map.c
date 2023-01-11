@@ -22,24 +22,43 @@ void	ft_count_char(char c, t_cube *cube)
 		cube->zero++;
 }
 
-char	*get_next_line(int fd, t_cube *cube)
+char	*get_next_line(int fd, t_cube *cube, int check_digit)
 {
 	static char	*lines;
 	char		*bufer;
 	int			read_ret;
+	int			check_nl;
+	int			count_id;
 
 	read_ret = 1;
+	count_id = 0;
 	bufer = malloc(2);
 	lines = malloc(1);
+	check_nl = 0;
 	if (!bufer || !lines)
 		return (NULL);
 	while (read_ret)
 	{
 		read_ret = read(fd, bufer, 1);
-		if (read_ret == -1 /* || !mini_check(bufer[0]) */)
+		if (read_ret == -1) 
+		{
+			ft_putendl_fd("Error wille reading file", 2);
+			exit (0);
+		}
+		if (check_nl == 1 && bufer[0] != '\n')
+		{
+			count_id++;
+			check_nl = 0;
+		}
+		if (check_digit == 1 && !mini_check(bufer[0])) //had lblasa fach kaysali i9ra ident kaylga \n okayzidha flmap
+		{
+			printf ("-*%c*-\n", lines[0]);
 			ft_wrong_character_err(bufer[0]);
-		if (!read_ret || (bufer[0] == '\n' && bufer[0] == lines[ft_strlen(lines) - 1]))
+		}
+		if (!read_ret || count_id == 6 || (check_digit == 1 && bufer[0] == '\n' && bufer[0] == lines[ft_strlen(lines) - 1]))
 			break ;
+		if (bufer[0] == '\n')
+			check_nl = 1;
 		ft_count_char(bufer[0], cube);
 		bufer[1] = '\0';
 		lines = ft_strjoin(lines, bufer);
