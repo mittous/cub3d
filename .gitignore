@@ -1,7 +1,8 @@
+/Users/imittous/Desktop/cude-3D/cub3D.dSYM
 .vscode
 cub3D
 .out
 notes
 /libft/*.o
-*.o
+**/*.o
 *.out
