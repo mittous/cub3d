@@ -1,7 +1,8 @@
+/Users/imittous/Desktop/cude-3D/cub3D.dSYM
 .vscode
-build
-parsing_tuts
-minishell
+cub3D
 .out
 notes
-*/*.o
+/libft/*.o
+**/*.o
+*.out
