@@ -55,7 +55,7 @@ char	*get_next_line(int fd, t_cube *cube, int check_digit)
 			printf ("-*%c*-\n", lines[0]);
 			ft_wrong_character_err(bufer[0]);
 		}
-		if (!read_ret || count_id == 6 || (check_digit == 1 && bufer[0] == '\n' && bufer[0] == lines[ft_strlen(lines) - 1]))
+		if (!read_ret || (count_id == 6 && check_digit == 0)|| (check_digit == 1 && bufer[0] == '\n' && bufer[0] == lines[ft_strlen(lines) - 1]))
 			break ;
 		if (bufer[0] == '\n')
 			check_nl = 1;

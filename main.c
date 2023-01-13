@@ -61,6 +61,13 @@ void	ft_check_map_close(char **map, t_cube *cube)
 					if ((!map[j - 1][i] || map[j - 1][i] == ' ') || (!map[j + 1][i] || map[j + 1][i] == ' ') ||
 						(!map[j][i + 1] || map[j][i + 1] == ' ') || (!map[j][i - 1] || map[j][i - 1] == ' '))
 					{
+						printf ("[%d][%d] = %c\n",j, i, map[j][i]);
+
+						printf ("[j][i + 1] = %c\n", map[j][i + 1]);
+						printf ("[j][i - 1] = %c\n", map[j][i - 1]);
+
+						printf ("[j - 1][i] = %c\n", map[j - 1][i]);
+						printf ("[j + 1][i] = %c\n", map[j + 1][i]);
 						printf ("map is not suround by one");
 						exit(0);
 					}
@@ -77,6 +84,7 @@ void	ft_check_texture(t_cube *cub)
 {
 	int		i;
 	char	**path;
+	int		fd;
 
 	i = 0;
 	while (cub->texture[i])
@@ -84,8 +92,8 @@ void	ft_check_texture(t_cube *cub)
 		path = ft_split (cub->texture[i], ' ');
 		if (!ft_isdigit(path[1][0]))
 		{
-			cub->fd = open(path[1], O_RDONLY);
-			if (cub->fd == -1)
+			fd = open(path[1], O_RDONLY);
+			if (fd == -1)
 			{
 				printf ("%s\n", path[0]);
 				printf("texture file is not valid");
@@ -138,15 +146,16 @@ int	main(int ac, char **av)
 				printf ("%s\n", cube.texture[j]);
 				j++;
 			}
-			cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
-			ft_check_map_close (cube.map, &cube);
-			// 	printf ("--*-%s\n", cube.map[0]);
-			j = 0;
-			while (cube.map[j])
-			{
-				printf ("%s\n", cube.map[j]);
-				j++;
-			}
+			printf ("%s", get_next_line(cube.fd, &cube, 1));
+			// cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
+			// ft_check_map_close (cube.map, &cube);
+			// // 	printf ("--*-%s\n", cube.map[0]);
+			// j = 0;
+			// while (cube.map[j])
+			// {
+			// 	printf ("%s\n", cube.map[j]);
+			// 	j++;
+			// }
 	}
 }
 
