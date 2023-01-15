@@ -71,7 +71,8 @@ void	ft_check_map_close(char **map, t_cube *cube)
 						printf ("map is not suround by one");
 						exit(0);
 					}
-				}
+				} 
+
 				i++;
 			}
 			j++;
@@ -136,19 +137,19 @@ int	main(int ac, char **av)
 		{
 			printf("file is not valid");
 		}
-			// printf ("%s", get_next_line(cube.fd, &cube));
 			cube.texture = ft_split(get_next_line(cube.fd, &cube, 0) , '\n');
 			ft_check_texture(&cube);
+			
+			cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
+			ft_check_map_close (cube.map, &cube);
 
-			int j = 0;
-			while (cube.texture[j])
-			{
-				printf ("%s\n", cube.texture[j]);
-				j++;
-			}
-			printf ("%s", get_next_line(cube.fd, &cube, 1));
-			// cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
-			// ft_check_map_close (cube.map, &cube);
+			// printf ("%s", get_next_line(cube.fd, &cube, 1));
+			// int j = 0;
+			// while (cube.texture[j])
+			// {
+			// 	printf ("%s\n", cube.texture[j]);
+			// 	j++;
+			// }
 			// // 	printf ("--*-%s\n", cube.map[0]);
 			// j = 0;
 			// while (cube.map[j])
