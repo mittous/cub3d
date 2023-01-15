@@ -35,7 +35,7 @@ char	*get_next_line(int fd, t_cube *cube, int check_digit)
 	bufer = malloc(2);
 	lines = malloc(1);
 	check_nl = 0;
-	if (!bufer || !lines)
+	if (!bufer)
 		return (NULL);
 	while (read_ret)
 	{
@@ -45,6 +45,7 @@ char	*get_next_line(int fd, t_cube *cube, int check_digit)
 			ft_putendl_fd("Error wille reading file", 2);
 			exit (0);
 		}
+		bufer[1] = '\0';
 		if (check_nl == 1 && bufer[0] != '\n')
 		{
 			count_id++;
@@ -60,7 +61,6 @@ char	*get_next_line(int fd, t_cube *cube, int check_digit)
 		if (bufer[0] == '\n')
 			check_nl = 1;
 		ft_count_char(bufer[0], cube);
-		bufer[1] = '\0';
 		lines = ft_strjoin(lines, bufer);
 	}
 	// if (cube->player != 1)
