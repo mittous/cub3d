@@ -33,7 +33,8 @@ SRCS =				ft_atoi.c\
 					ft_strlcat.c\
 					ft_strncmp.c\
 					ft_substr.c\
-					ft_itoa.c
+					ft_itoa.c\
+					ft_strcmp.c
 
 					
 BONUS_SRCS =	ft_lstadd_front.c\

@@ -38,7 +38,7 @@ int	ft_check_up_down_map(char **map)
 		if (i == ft_strlen(map[j]))
 			return (1);
 	}
-	ft_putendl_fd("map is not valid", 2);
+	ft_putendl_fd("map **is not valid", 2);
 	exit (0);
 }
 
@@ -61,50 +61,56 @@ void	ft_check_map_close(char **map, t_cube *cube)
 					if ((!map[j - 1][i] || map[j - 1][i] == ' ') || (!map[j + 1][i] || map[j + 1][i] == ' ') ||
 						(!map[j][i + 1] || map[j][i + 1] == ' ') || (!map[j][i - 1] || map[j][i - 1] == ' '))
 					{
+						printf ("[%d][%d] = %c\n",j, i, map[j][i]);
+
+						printf ("[j][i + 1] = %c\n", map[j][i + 1]);
+						printf ("[j][i - 1] = %c\n", map[j][i - 1]);
+
+						printf ("[j - 1][i] = %c\n", map[j - 1][i]);
+						printf ("[j + 1][i] = %c\n", map[j + 1][i]);
 						printf ("map is not suround by one");
 						exit(0);
 					}
-				}
+				} 
+
 				i++;
 			}
 			j++;
 		}
 	}
-	printf ("map is valid");
+	printf ("map is-- valid");
 }
 
 void	ft_check_texture(t_cube *cub)
 {
 	int		i;
 	char	**path;
+	int		fd;
 
 	i = 0;
 	while (cub->texture[i])
 	{
 		path = ft_split (cub->texture[i], ' ');
-		if (ft_isalpha(path[1][0]))
+		if (!ft_isdigit(path[1][0]))
 		{
-			cub->fd = open(path[1], O_RDONLY);
-			if (cub->fd == -1)
+			fd = open(path[1], O_RDONLY);
+			if (fd == -1)
 			{
+				printf ("%s\n", path[0]);
 				printf("texture file is not valid");
 				exit(0);
 			}
 		}
-		if (path[0][0] == 'N' && path[0][1] == 'O')
-		{
-			// puts("dkhlna hna");
+		if (!ft_strcmp(path[0], "NO"))
 			cub->no = path[1];
-		}
-		else if (path[0][0] == 'S' && path[0][1] == 'O')
+		else if (!ft_strcmp(path[0], "SO"))
 			cub->so = path[1];
-		else if (path[0][0] == 'W' && path[0][1] == 'E')
+		else if (!ft_strcmp(path[0], "WE"))
 			cub->we = path[1];
-		else if (path[0][0] == 'E' && path[0][1] == 'A')
+		else if (!ft_strcmp(path[0], "EA"))
 			cub->ea = path[1];
 		else if (path[0][0] == 'C' && path[0][1] == '\0')
 		{
-			puts ("dkhlna hna");
 			cub->ceiling = path[1];
 		}
 		else if (path[0][0] == 'F' && path[0][1] == '\0')
@@ -131,19 +137,26 @@ int	main(int ac, char **av)
 		{
 			printf("file is not valid");
 		}
-			// printf ("%s", get_next_line(cube.fd, &cube));
-			// printf ("%s", get_next_line(cube.fd, &cube));
-			// cube.map = ft_split(get_next_line(cube.fd, &cube) , '\n');
-			cube.texture = ft_split(get_next_line(cube.fd, &cube) , '\n');
-			// 	printf ("--*-%s\n", cube.map[0]);
-			// int i = 0, j = 0;
+			cube.texture = ft_split(get_next_line(cube.fd, &cube, 0) , '\n');
+			ft_check_texture(&cube);
+			
+			cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
+			ft_check_map_close (cube.map, &cube);
+
+			// printf ("%s", get_next_line(cube.fd, &cube, 1));
+			// int j = 0;
+			// while (cube.texture[j])
+			// {
+			// 	printf ("%s\n", cube.texture[j]);
+			// 	j++;
+			// }
+			// // 	printf ("--*-%s\n", cube.map[0]);
+			// j = 0;
 			// while (cube.map[j])
 			// {
 			// 	printf ("%s\n", cube.map[j]);
 			// 	j++;
 			// }
-			ft_check_texture(&cube);
-		// ft_check_map_close (cube.map, &cube);
 	}
 }
 
