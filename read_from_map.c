@@ -72,4 +72,3 @@ char	*get_next_line(int fd, t_cube *cube, int check_digit)
 	free (bufer);
 	return (lines);
 }
-
