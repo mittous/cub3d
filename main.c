@@ -72,6 +72,7 @@ void	ft_check_map_close(char **map, t_cube *cube)
 						exit(0);
 					}
 				}
+
 				i++;
 			}
 			j++;
