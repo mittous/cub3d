@@ -21,9 +21,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	i = 0;
 	base = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '\n'
-			|| str[i] == '\t' || str[i] == '\v'
-			|| str[i] == '\r' || str[i] == '\f'))
+	while (str[i] && str[i] == ' ')
 		i++;
 	if (str[i] && (str[i] == '-' || str[i] == '+'))
 	{
@@ -38,5 +36,8 @@ int	ft_atoi(const char *str)
 		base = (base * 10) + (str[i] - 48);
 		i++;
 	}
-	return (base * sign);
+	if (!str[i])
+		return (base * sign);
+	ft_putendl_fd("color is not valid", 2);
+	exit (0);
 }
