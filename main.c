@@ -114,13 +114,11 @@ char *ft_count_coma(char	*color /* t_cube *cub */)
 
 	i = 0;
 	count = 0;
-	printf ("%s\n", color);
+	printf ("color =%s\n", color);
 	while (color[i])
 	{
 		if (ft_isdigit(color[i]))
 		{
-			puts ("dkhal hna");
-			printf ("%c\n", color[i]);
 			if (color[i] == ',')
 				count++;
 		}
@@ -147,6 +145,7 @@ char *ft_count_coma(char	*color /* t_cube *cub */)
 				ft_putendl_fd("color is not valid", 2);
 				exit (0);
 			}
+			printf ("rgb[%d] = %s\n", i, rgb[i]);
 			rgb[i] = ft_strjoin(rgb[i], ",");
 			i++;
 		}
@@ -154,9 +153,10 @@ char *ft_count_coma(char	*color /* t_cube *cub */)
 		{
 			color = ft_strjoin(rgb[0], rgb[1]);
 			color = ft_strjoin(color, rgb[2]);
+			return (color);
 		}
-		return (color);
 	}
+	ft_putendl_fd("color is not valid", 2);
 	exit (0);
 }
 
@@ -172,6 +172,13 @@ void	ft_check_texture(t_cube *cub)
 		path = ft_split (cub->texture[i], ' ');
 		if (path[1])
 		{
+			int j = 2;
+			while (path[j])
+			{
+				path[1] = ft_strjoin(path[1], path[j]);
+				j++;
+			}
+			
 			if (!ft_isdigit(path[1][0]))
 			{
 				fd = open(path[1], O_RDWR);
@@ -192,12 +199,7 @@ void	ft_check_texture(t_cube *cub)
 				cub->ea = path[1];
 			else if (!ft_strcmp(path[0], "C"))
 			{
-				int j = 1;
-				while (path[j])
-				{
-					path[1] = ft_strjoin(path[1], path[j]);
-					j++;
-				}
+				
 				cub->ceiling = ft_count_coma(path[1]);
 			}
 			else if (!ft_strcmp(path[0], "F"))
