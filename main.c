@@ -137,20 +137,50 @@ int	main(int ac, char **av)
 		{
 			printf("file is not valid");
 		}
-			cube.texture = ft_split(get_next_line(cube.fd, &cube, 0) , '\n');
-			ft_check_texture(&cube);
+			// cube.texture = ft_split(get_next_line(cube.fd/* , &cube, 0 */) , '\n');
+			// ft_check_texture(&cube);
+			get_next_line(cube.fd, &cube);
 			
+			// cube.texture = get_next_line(cube.fd);
+
+			// printf ("*-%s\n", cube.texture[0]);
+			// printf ("*-%s\n", cube.texture[1]);
+			// printf ("*-%s\n", cube.texture[2]);
+			// printf ("*-%s\n", cube.texture[3]);
+			// printf ("*-%s\n", cube.texture[4]);
+			// printf ("*-%s\n", cube.texture[5]);
+			int j = 0;
+			while (cube.texture[j])
+			{
+				printf ("*-%s\n", cube.texture[j]);
+				j++;
+			}
+			// printf ("*-%s\n", cube.texture[9]);
+
+			// // cube.map = get_next_line(cube.fd);
+			
+			// printf ("%s\n", cube.map[0]);
+			// printf ("%s\n", cube.map[1]);
+			// printf ("%s\n", cube.map[2]);
+			// printf ("%s\n", cube.map[3]);
+			// printf ("%s\n", cube.map[4]);
+			// printf ("%s\n", cube.map[5]);
+			// printf ("%s\n", cube.map[6]);
 			// cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
 			// ft_check_map_close (cube.map, &cube);
 
 			// printf ("%s", get_next_line(cube.fd, &cube, 1));
 
-			// int j = 0;
-			// while (cube.texture[j])
-			// {
-			// 	printf ("%s\n", cube.texture[j]);
-			// 	j++;
-			// }
+			j = 0;
+			while (cube.map[j])
+			{
+				printf ("%s\n", cube.map[j]);
+				j++;
+			}
+			printf ("%d\n", cube.player);
+			printf ("%d\n", cube.one);
+			printf ("%d\n", cube.zero);
+
 			// // 	printf ("--*-%s\n", cube.map[0]);
 			// j = 0;
 			// while (cube.map[j])

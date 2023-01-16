@@ -10,6 +10,7 @@ SRC =	main.c \
 		check_map_name.c \
 		errors.c \
 		read_from_map.c \
+		get_next_line.c \
 
 # BNC_SRC =
 

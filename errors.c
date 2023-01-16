@@ -3,7 +3,7 @@
 
 void	ft_wrong_character_err(char s)
 {
-	printf("character %c is not valid\n", s);
+	printf("character '%c' is not valid\n", s);
 	exit(0);
 }
 

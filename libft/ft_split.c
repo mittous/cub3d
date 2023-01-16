@@ -28,7 +28,7 @@ static size_t	ft_count_word(char const *s, char c)
 	return (words);
 }
 
-static char	**free_word(char **s)
+char	**free_word(char **s)
 {
 	while (*s)
 		free(*s++);

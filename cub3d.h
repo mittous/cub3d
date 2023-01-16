@@ -9,9 +9,13 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <sys/fcntl.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
 # include "libft/libft.h"
 // # include "../get_next_line/get_next_line.h"
 
+# define BUFFER_SIZE 1
 # define WIN_HEIGHT 720
 # define WIN_WIDTH 1080
 # define TILE_SIZE 10
@@ -43,8 +47,12 @@ typedef struct s_cube
 
 int		mini_check(char map);
 int		ft_checkber(char *s, int ac);
-char	*get_next_line(int fd, t_cube *cube, int check);
+// char	*get_next_line(int fd/* , t_cube *cube, int check */);
 void	ft_wrong_character_err(char bufer);
 void	ft_messing_character_err(char *message);
+void	get_next_line(int fd, t_cube *cube);
+char	**ft_split_gnl(char const *s, char c);
+void	ft_count_char(char c, t_cube *cube);
+void	ft_wrong_character_err(char s);
 
 #endif
