@@ -101,9 +101,7 @@ void	one_line(char *lines, t_cube *cube)
 	while (*lines && j != 6)
 	{
 		if (*lines == '\n')
-		{
 			j++;
-		}
 		lines++;
 	}
 	cube->map = ft_split(lines, '\n');
@@ -119,4 +117,10 @@ void	get_next_line(int fd, t_cube *cube)
 	if (!file_line)
 		return ;
 	one_line(file_line, cube);
+	if (cube->player != 1)
+		ft_messing_character_err("You'r messing one of the following chars (N,E,W,S)");
+	if (cube->one < 1)
+		ft_messing_character_err("Ther is no wall (1)");
+	if (cube->zero < 1)
+		ft_messing_character_err("Ther is no free space (0)");
 }

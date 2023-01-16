@@ -140,7 +140,8 @@ int	main(int ac, char **av)
 			// cube.texture = ft_split(get_next_line(cube.fd/* , &cube, 0 */) , '\n');
 			// ft_check_texture(&cube);
 			get_next_line(cube.fd, &cube);
-			
+			ft_check_texture(&cube);
+			ft_check_map_close (cube.map, &cube);
 			// cube.texture = get_next_line(cube.fd);
 
 			// printf ("*-%s\n", cube.texture[0]);
@@ -167,7 +168,6 @@ int	main(int ac, char **av)
 			// printf ("%s\n", cube.map[5]);
 			// printf ("%s\n", cube.map[6]);
 			// cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
-			// ft_check_map_close (cube.map, &cube);
 
 			// printf ("%s", get_next_line(cube.fd, &cube, 1));
 
