@@ -140,10 +140,11 @@ int	main(int ac, char **av)
 			cube.texture = ft_split(get_next_line(cube.fd, &cube, 0) , '\n');
 			ft_check_texture(&cube);
 			
-			cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
-			ft_check_map_close (cube.map, &cube);
+			// cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
+			// ft_check_map_close (cube.map, &cube);
 
 			// printf ("%s", get_next_line(cube.fd, &cube, 1));
+
 			// int j = 0;
 			// while (cube.texture[j])
 			// {
