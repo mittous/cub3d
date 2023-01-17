@@ -3,7 +3,7 @@
 # define CUB3D_H
 
 # include <unistd.h>
-// # include  <mlx.h>
+
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h>
@@ -16,8 +16,8 @@
 // # include "../get_next_line/get_next_line.h"
 
 # define BUFFER_SIZE 1
-# define WIN_HEIGHT 720
-# define WIN_WIDTH 1080
+# define WIN_HEIGHT 650
+# define WIN_WIDTH 1650
 # define TILE_SIZE 10
 # define PLAYER_SQUARE 2
 # define WHITE 16777215
@@ -45,6 +45,15 @@ typedef struct s_cube
 	char	*ceiling;
 }				t_cube;
 
+typedef struct s_display
+{
+	void	*mlx_ptr;
+	void	*window;
+	void	*wall;
+	void	*eps;
+	void	*image;
+} 			t_display;
+
 int		mini_check(char map);
 int		ft_checkber(char *s, int ac);
 // char	*get_next_line(int fd/* , t_cube *cube, int check */);
@@ -54,5 +63,7 @@ void	get_next_line(int fd, t_cube *cube);
 char	**ft_split_gnl(char const *s, char c);
 void	ft_count_char(char c, t_cube *cube);
 void	ft_wrong_character_err(char s);
+///////////////////
+void draw_2d_map(char **map);
 
 #endif

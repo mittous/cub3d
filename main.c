@@ -251,12 +251,12 @@ int	main(int ac, char **av)
 			// printf ("*-%s\n", cube.texture[3]);
 			// printf ("*-%s\n", cube.texture[4]);
 			// printf ("*-%s\n", cube.texture[5]);
-			int j = 0;
-			while (cube.texture[j])
-			{
-				printf ("*-%s\n", cube.texture[j]);
-				j++;
-			}
+			// int j = 0;
+			// while (cube.texture[j])
+			// {
+			// 	printf ("*-%s\n", cube.texture[j]);
+			// 	j++;
+			// }
 			// printf ("*-%s\n", cube.texture[9]);
 
 			// // cube.map = get_next_line(cube.fd);
@@ -271,18 +271,22 @@ int	main(int ac, char **av)
 			// cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
 
 			// printf ("%s", get_next_line(cube.fd, &cube, 1));
-
-			j = 0;
-			while (cube.map[j])
+			draw_2d_map(cube.map);
+			while (1)
 			{
-				printf ("%s\n", cube.map[j]);
-				j++;
+				
 			}
-			printf ("%d\n", cube.player);
-			printf ("%d\n", cube.one);
-			printf ("%d\n", cube.zero);
-			printf ("c=%s\n", cube.ceiling);
-			printf ("f=%s\n", cube.floor);
+			// j = 0;
+			// while (cube.map[j])
+			// {
+			// 	printf ("%s\n", cube.map[j]);
+			// 	j++;
+			// }
+			// printf ("%d\n", cube.player);
+			// printf ("%d\n", cube.one);
+			// printf ("%d\n", cube.zero);
+			// printf ("c=%s\n", cube.ceiling);
+			// printf ("f=%s\n", cube.floor);
 
 			// // 	printf ("--*-%s\n", cube.map[0]);
 			// j = 0;
