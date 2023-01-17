@@ -140,7 +140,7 @@ char *ft_count_coma(char	*color /* t_cube *cub */)
 			// int nb = ft_atoi_cub(rgb[i]);
 			rgb[i] = ft_strtrim(rgb[i], " ");
 			int nb = ft_atoi_cub(rgb[i]);
-			if (nb <= 0 && nb >= 255)
+			if (nb < 0 || nb > 255)
 			{
 				ft_putendl_fd("color is not valid", 2);
 				exit (0);
@@ -224,6 +224,10 @@ void	ft_check_texture(t_cube *cub)
 	}
 }
 
+
+
+
+
 int	main(int ac, char **av)
 {
 	t_cube	cube;
@@ -232,9 +236,10 @@ int	main(int ac, char **av)
 	{
 		ft_init(&cube);
 		cube.fd = open(av[1], O_RDONLY);
-		if (cube.fd == -1)
+		if (cube.fd < 0)
 		{
 			printf("file is not valid");
+			return 1;
 		}
 			// cube.texture = ft_split(get_next_line(cube.fd/* , &cube, 0 */) , '\n');
 			// ft_check_texture(&cube);
