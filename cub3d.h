@@ -16,8 +16,8 @@
 // # include "../get_next_line/get_next_line.h"
 
 # define BUFFER_SIZE 1
-# define WIN_HEIGHT 650
-# define WIN_WIDTH 1650
+# define WIN_HEIGHT 450
+# define WIN_WIDTH 1920
 # define TILE_SIZE 10
 # define PLAYER_SQUARE 2
 # define WHITE 16777215
@@ -26,7 +26,32 @@
 # define ORANGE 65454456
 # define RAD 0.01745329251
 
+typedef struct	s_player {
+	int		x;
+	int		y;
+	double		turn_direction;
+	double		walk_direction;
+	double		move_speed;
+	double		retation_angle;
+	double		retation_speed;
+}				t_player;
 
+typedef struct	draw {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+
+}				t_draw;
+typedef struct s_display
+{
+	void	*mlx_ptr;
+	void	*window;
+	void	*wall;
+	void	*eps;
+	void	*image;
+} 			t_display;
 typedef struct s_cube
 {
 	char	**map;
@@ -45,14 +70,15 @@ typedef struct s_cube
 	char	*ceiling;
 }				t_cube;
 
-typedef struct s_display
-{
-	void	*mlx_ptr;
-	void	*window;
-	void	*wall;
-	void	*eps;
-	void	*image;
-} 			t_display;
+typedef struct	s_data {
+	t_player	*p;
+	t_draw		*draw;
+	t_display	*win;
+	t_cube		*cube;
+}				t_data;
+
+
+
 
 int		mini_check(char map);
 int		ft_checkber(char *s, int ac);
@@ -64,6 +90,9 @@ char	**ft_split_gnl(char const *s, char c);
 void	ft_count_char(char c, t_cube *cube);
 void	ft_wrong_character_err(char s);
 ///////////////////
-void draw_2d_map(char **map);
+int draw_2d_map(t_data *sd);
+int	key_hook(int key, t_data *sd);
+void p_search(t_data *sd);
+void   p_init(t_player *p);
 
 #endif

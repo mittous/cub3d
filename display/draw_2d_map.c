@@ -6,94 +6,119 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/17 15:15:21 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:28:30 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 # include  <mlx.h>
 
-void print_pixel(char **img_addr, int y, int x, int color)
+// void    player_print(t_data *conf)
+// {
+//     int r = 15; 
+//     int i = 0;
+//     int j = 0;
+//     double x = conf->p->x;
+//     double y = conf->p->y;
+//     i = -r;
+//     int f = 0;
+//     // line(conf,conf->player.py * minimap,
+// 	// conf->player.px * minimap,
+// 	// ((conf->player.py  + ( 10 * sin(conf->player.rotangle)) * minimap)) ,
+// 	// ((conf->player.px  + ( 10 * cos(conf->player.rotangle)) * minimap)), C2);
+//     i = -r;
+//     while (i < r)
+//     {
+//         j = -r;
+//         while (j < r)
+//         {
+//             if ((i * i) + (j * j) <= (r * r))
+//             {
+//                 conf->draw->addr[(int)(((i + y))) *
+//                 WIN_WIDTH + (int)(((j + x) ))] = RED;
+//                 // conf->img.addr[(int)(((i + y))) *
+//                 // (WIDTH) + (int)(((j + x)))] = C2;
+//             }
+//             j++;
+//         }
+//         i++;
+//     }
+// }
+void	my_mlx_pixel_put(t_draw *data, int y, int x, int color)
 {
-    int i;
-    int j;
+	char	*dst;
 
-    x *= 50;
-    y *= 50;
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+void print_pixel(t_data *test, int x, int y, int color )
+{
+   int i;
+   int j;
+    x *= 30;
+    y *= 30;
     i = 0;
-    while (i < 50)
+    
+    while (i < 29)
     {
         j = 0;
-        while (j < 50)
+        while (j < 29)
         {
-            
-            img_addr[(int)(y + j)+ (int)((x + i))] = color;
+          
+            // if(((x == test->p->x * 30) && (y == test->p->y * 30)) && (j == 15 && i == 15))
+            //     my_mlx_pixel_put(test->draw, y + j ,x + i, RED);
+            // else
+            my_mlx_pixel_put(test->draw, y + j ,x + i, color);
             j++;
         }
         i++;
     }
+    // player_print(test);
+    my_mlx_pixel_put(test->draw, test->p->y ,test->p->x, RED);
 }
 
-void draw_2d_map(char **map)
+// t_player    p_init()
+// {
+//     t_player    p;
+
+//     p.x = 0;
+//     p.y = 0;
+//     p.turn_direction = 0;
+//     p.walk_direction = 0;
+//     p.move_speed = 2.0;
+//     p.retation_angle = M_PI / 2;
+//     p.retation_speed = 3 * (M_PI / 180);
+//     return (p);
+// }
+
+int draw_2d_map(t_data *sd)
 {
-    t_display win;
+    // t_display win;
     int i;
     int j;
 
+    t_player   p;
+
     i = 0;
     j = 0;
-    int y;
-    int x;
-    int pixel_bits;
-    int line_bytes;
-    int endian;
-  
-    win.mlx_ptr = mlx_init();
-    win.window = mlx_new_window(win.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
-    win.image = mlx_new_image(win.mlx_ptr, 50, 50);
-    char *buffer = mlx_get_data_addr(win.image, &pixel_bits, &line_bytes, &endian);
-    while(map[j])
+    
+    sd->draw->img = mlx_new_image(sd->win->mlx_ptr, WIN_WIDTH,  WIN_HEIGHT);
+    sd->draw->addr = mlx_get_data_addr(sd->draw->img, &sd->draw->bits_per_pixel, &sd->draw->line_length,&sd->draw->endian);
+    while(sd->cube->map[i])
     {
-        while(map[j][i])
+        j = 0;
+        while(sd->cube->map[i][j])
         {
-            if (map[j][i] == 1)
-            {
-                print_pixel(&buffer,j,i,0xABCDEF);
-                i++;
-            }
-            if (map[j][i] == 0)
-            {
-                print_pixel(&buffer,j,i,3136335);
-                i++;
-            }
-            i++;
+            if (sd->cube->map[i][j] == '1')
+                print_pixel(sd,j,i,BLACK);
+            else if (sd->cube->map[i][j] == '0')
+                print_pixel(sd,j,i,WHITE);
+            j++;
         }
-        j++;
+        i++;
     }
-//     int color = 0xABCDEF;
-
-// if (pixel_bits != 32)
-//     color = mlx_get_color_value(win.mlx_ptr, color);
-
-// for(int y = 0; y < 360; ++y)
-// for(int x = 0; x < 640; ++x)
-// {
-//     int pixel = (y * line_bytes) + (x * 4);
-
-//     if (endian == 1)        // Most significant (Alpha) byte first
-//     {
-//         buffer[pixel + 0] = (color >> 24);
-//         buffer[pixel + 1] = (color >> 16) & 0xFF;
-//         buffer[pixel + 2] = (color >> 8) & 0xFF;
-//         buffer[pixel + 3] = (color) & 0xFF;
-//     }
-//     else if (endian == 0)   // Least significant (Blue) byte first
-//     {
-//         buffer[pixel + 0] = (color) & 0xFF;
-//         buffer[pixel + 1] = (color >> 8) & 0xFF;
-//         buffer[pixel + 2] = (color >> 16) & 0xFF;
-//         buffer[pixel + 3] = (color >> 24);
-//     }
-// }
-    mlx_loop(win.mlx_ptr);
+    mlx_put_image_to_window( sd->win->mlx_ptr, sd->win->window, sd->draw->img, 0, 0);
+    // mlx_key_hook(win.window, key_hook, &draw);
+    return(0);
 }

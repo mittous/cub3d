@@ -12,6 +12,8 @@ SRC =	main.c \
 		read_from_map.c \
 		get_next_line.c \
 		display/draw_2d_map.c\
+		display/utils.c\
+		display/p_movment.c\
 
 # BNC_SRC =
 

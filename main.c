@@ -1,5 +1,6 @@
 
 #include "cub3d.h"
+#include <mlx.h>
 
 void	ft_init(t_cube *cube)
 {	
@@ -227,6 +228,9 @@ void	ft_check_texture(t_cube *cub)
 int	main(int ac, char **av)
 {
 	t_cube	cube;
+	t_data	game;
+	t_display win;
+	t_player	p;
 
 	if (ft_checkber(av[1], ac))
 	{
@@ -236,65 +240,21 @@ int	main(int ac, char **av)
 		{
 			printf("file is not valid");
 		}
-			// cube.texture = ft_split(get_next_line(cube.fd/* , &cube, 0 */) , '\n');
-			// ft_check_texture(&cube);
-			get_next_line(cube.fd, &cube);
-
-			ft_check_texture(&cube);
-
-			ft_check_map_close (cube.map, &cube);
-			// cube.texture = get_next_line(cube.fd);
-
-			// printf ("*-%s\n", cube.texture[0]);
-			// printf ("*-%s\n", cube.texture[1]);
-			// printf ("*-%s\n", cube.texture[2]);
-			// printf ("*-%s\n", cube.texture[3]);
-			// printf ("*-%s\n", cube.texture[4]);
-			// printf ("*-%s\n", cube.texture[5]);
-			// int j = 0;
-			// while (cube.texture[j])
-			// {
-			// 	printf ("*-%s\n", cube.texture[j]);
-			// 	j++;
-			// }
-			// printf ("*-%s\n", cube.texture[9]);
-
-			// // cube.map = get_next_line(cube.fd);
-			
-			// printf ("%s\n", cube.map[0]);
-			// printf ("%s\n", cube.map[1]);
-			// printf ("%s\n", cube.map[2]);
-			// printf ("%s\n", cube.map[3]);
-			// printf ("%s\n", cube.map[4]);
-			// printf ("%s\n", cube.map[5]);
-			// printf ("%s\n", cube.map[6]);
-			// cube.map = ft_split(get_next_line(cube.fd, &cube, 1) , '\n');
-
-			// printf ("%s", get_next_line(cube.fd, &cube, 1));
-			draw_2d_map(cube.map);
-			while (1)
-			{
-				
-			}
-			// j = 0;
-			// while (cube.map[j])
-			// {
-			// 	printf ("%s\n", cube.map[j]);
-			// 	j++;
-			// }
-			// printf ("%d\n", cube.player);
-			// printf ("%d\n", cube.one);
-			// printf ("%d\n", cube.zero);
-			// printf ("c=%s\n", cube.ceiling);
-			// printf ("f=%s\n", cube.floor);
-
-			// // 	printf ("--*-%s\n", cube.map[0]);
-			// j = 0;
-			// while (cube.map[j])
-			// {
-			// 	printf ("%s\n", cube.map[j]);
-			// 	j++;
-			// }
+		get_next_line(cube.fd, &cube);
+		ft_check_texture(&cube);
+		ft_check_map_close (cube.map, &cube);
+		game.win = &win;
+		p_init(&p);
+		game.cube = &cube;
+		game.p = &p;
+		game.win->mlx_ptr = mlx_init();
+    	game.win->window = mlx_new_window(game.win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
+		p_search(&game);
+		mlx_hook(game.win->window, 2, 1L << 1, key_hook, &game);
+		mlx_loop_hook(game.win->mlx_ptr, draw_2d_map, &game);
+		// printf("##################\n");
+		// mlx_hook(game.win, 17, 0, ft_exit, &game);
+		// draw_2d_map(&game);
+		mlx_loop(game.win->mlx_ptr);
 	}
 }
-
