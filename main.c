@@ -170,7 +170,7 @@ void	ft_check_texture(t_cube *cub)
 	while (cub->texture[i])
 	{
 		path = ft_split (cub->texture[i], ' ');
-		if (path[1])
+		if (path[1] && !path[2])
 		{
 			int j = 2;
 			while (path[j])
@@ -178,7 +178,6 @@ void	ft_check_texture(t_cube *cub)
 				path[1] = ft_strjoin(path[1], path[j]);
 				j++;
 			}
-			
 			if (!ft_isdigit(path[1][0]))
 			{
 				fd = open(path[1], O_RDWR);
@@ -212,7 +211,7 @@ void	ft_check_texture(t_cube *cub)
 		}
 		else
 		{
-			ft_putendl_fd("An information of one/more element is messing", 2);
+			ft_putendl_fd("An information of more or lesse lement than two", 2);
 			exit (0);
 		}
 		i++;
