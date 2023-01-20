@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-void p_search(t_data *sd)
+void p_search(t_data *sd, t_cube *cube)
 {
     int i;
     int j;
@@ -23,8 +23,8 @@ void p_search(t_data *sd)
         j = 0;
         while(sd->cube->map[i][j])
         {
-    
-            if (sd->cube->map[i][j] == 'N' || sd->cube->map[i][j] == 'W' || sd->cube->map[i][j] == 'S' || sd->cube->map[i][j] == 'E')
+            // printf("-*-*%c-*-*-", cube->player_char);
+            if (sd->cube->map[i][j] == cube->player_char)
             {
                 sd->cube->map[i][j] = '0';
                 sd->p->x = (j * 30) + 15;

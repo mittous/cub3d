@@ -62,13 +62,6 @@ void	ft_check_map_close(char **map, t_cube *cube)
 					if ((!map[j - 1][i] || map[j - 1][i] == ' ') || (!map[j + 1][i] || map[j + 1][i] == ' ') ||
 						(!map[j][i + 1] || map[j][i + 1] == ' ') || (!map[j][i - 1] || map[j][i - 1] == ' '))
 					{
-						printf ("[%d][%d] = %c\n",j, i, map[j][i]);
-
-						printf ("[j][i + 1] = %c\n", map[j][i + 1]);
-						printf ("[j][i - 1] = %c\n", map[j][i - 1]);
-
-						printf ("[j - 1][i] = %c\n", map[j - 1][i]);
-						printf ("[j + 1][i] = %c\n", map[j + 1][i]);
 						printf ("map is not suround by one");
 						exit(0);
 					}
@@ -146,7 +139,6 @@ char *ft_count_coma(char	*color /* t_cube *cub */)
 				ft_putendl_fd("color is not valid", 2);
 				exit (0);
 			}
-			printf ("rgb[%d] = %s\n", i, rgb[i]);
 			rgb[i] = ft_strjoin(rgb[i], ",");
 			i++;
 		}
@@ -253,7 +245,7 @@ int	main(int ac, char **av)
 		game.p = &p;
 		game.win->mlx_ptr = mlx_init();
     	game.win->window = mlx_new_window(game.win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
-		p_search(&game);
+		p_search(&game, &cube);
 		mlx_hook(game.win->window, 2, 1L << 1, key_hook, &game);
 		mlx_loop_hook(game.win->mlx_ptr, draw_2d_map, &game);
 		// printf("##################\n");

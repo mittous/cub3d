@@ -92,7 +92,7 @@ void	ft_wrong_character_err(char s);
 ///////////////////
 int draw_2d_map(t_data *sd);
 int	key_hook(int key, t_data *sd);
-void p_search(t_data *sd);
+void p_search(t_data *sd, t_cube *cube);
 void   p_init(t_player *p);
 
 #endif
