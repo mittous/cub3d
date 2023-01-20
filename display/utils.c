@@ -23,7 +23,6 @@ void p_search(t_data *sd, t_cube *cube)
         j = 0;
         while(sd->cube->map[i][j])
         {
-            // printf("-*-*%c-*-*-", cube->player_char);
             if (sd->cube->map[i][j] == cube->player_char)
             {
                 sd->cube->map[i][j] = '0';

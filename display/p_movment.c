@@ -18,7 +18,7 @@ void ft_move_right(t_data *sd)
     int x;
     int y;
 
-    x = sd->p->x / 30;
+    x = (sd->p->x + sd->p->move_speed) / 30;
     y = sd->p->y / 30;
     if(sd->cube->map[y][x] != '1')
         sd->p->x += sd->p->move_speed;
@@ -26,22 +26,21 @@ void ft_move_right(t_data *sd)
 
 void ft_move_up(t_data *sd)
 {
-     int x;
+    int x;
     int y;
-
     x = sd->p->x / 30;
-    y = sd->p->y / 30;
+    y = (sd->p->y - sd->p->move_speed) / 30;
     if(sd->cube->map[y][x] != '1')
         sd->p->y -= sd->p->move_speed;
 }
 
 void ft_move_down(t_data *sd)
 {
-     int x;
+    int x;
     int y;
 
     x = sd->p->x / 30;
-    y = sd->p->y / 30;
+    y = (sd->p->y + sd->p->move_speed) / 30;
     if(sd->cube->map[y][x] != '1')
         sd->p->y += sd->p->move_speed;
 }
@@ -51,7 +50,7 @@ void ft_move_left(t_data *sd)
     int x;
     int y;
 
-    x = sd->p->x / 30;
+    x = (sd->p->x - sd->p->move_speed) / 30;
     y = sd->p->y / 30;
     if(sd->cube->map[y][x] != '1')
         sd->p->x -= sd->p->move_speed;
