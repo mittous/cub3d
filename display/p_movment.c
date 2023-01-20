@@ -58,6 +58,8 @@ void ft_move_left(t_data *sd)
 
 int	key_hook(int key, t_data *sd)
 {
+    if (key == 53)
+		exit(0);
 	if (key == 2 || key == 124)
 		ft_move_right(sd);
 	if (key == 13 || key == 126)
