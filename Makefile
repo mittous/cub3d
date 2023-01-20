@@ -11,6 +11,9 @@ SRC =	main.c \
 		errors.c \
 		read_from_map.c \
 		get_next_line.c \
+		display/draw_2d_map.c\
+		display/utils.c\
+		display/p_movment.c\
 
 # BNC_SRC =
 
@@ -18,7 +21,7 @@ OBJ = $(SRC:.c=.o)
 
 OBJ_BNC = $(BNC_SRC:.c=.o)
 
-MLX = #-lmlx -framework OpenGL -framework AppKit
+MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = cc
 
@@ -28,7 +31,9 @@ all : $(NAME)
 
 $(NAME) : $(INC) $(OBJ)
 	make bonus -C libft/
-	$(CC) $(CFLAGS) $(SRC) libft/libft.a $(MLX) -o $(NAME)
+	$(CC) $(OBJ) libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+#$(NAME): $(OBJ)
+	
 
 # bonus : $(NAME_BNS)
 
