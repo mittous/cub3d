@@ -35,9 +35,9 @@ void p_search(t_data *sd, t_cube *cube)
                     sd->p->angle = 0;
                 sd->cube->map[i][j] = '0';
                 sd->p->x = (j * TILE_SIZE) + (TILE_SIZE / 2);
-                sd->p->xx = (j * 30) + 15;
+                sd->p->xx = (j * TILE_SIZE) + (TILE_SIZE / 2);
                 sd->p->y = (i * TILE_SIZE) + (TILE_SIZE / 2);
-                sd->p->yy = (i * 30) + 15;
+                sd->p->yy = (i * TILE_SIZE) + (TILE_SIZE / 2);
                 break;
             }
             j++;
