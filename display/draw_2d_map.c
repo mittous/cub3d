@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/21 16:03:17 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:06:22 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int draw_2d_map(t_data *sd)
         }
         i++;
     }
-    // ft_draw_line(sd, 30);
+    ft_draw_line(sd, 30);
     mlx_put_image_to_window( sd->win->mlx_ptr, sd->win->window, sd->draw->img, 0, 0);
     // mlx_key_hook(win.window, key_hook, &draw);
     return(0);
