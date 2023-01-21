@@ -75,7 +75,17 @@ void print_pixel(t_data *test, int x, int y, int color )
         i++;
     }
     // player_print(test);
-    my_mlx_pixel_put(test->draw, test->p->y ,test->p->x, RED);
+	test->p->xx = test->p->x;
+	while (test->p->xx < test->p->x + 5)
+	{
+		test->p->yy = test->p->y;
+		while (test->p->yy < test->p->y + 5)
+		{
+		    my_mlx_pixel_put(test->draw, test->p->yy ,test->p->xx, RED);
+			test->p->yy++;
+		}
+		test->p->xx++;
+	}
 }
 
 // t_player    p_init()

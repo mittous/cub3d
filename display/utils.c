@@ -27,7 +27,9 @@ void p_search(t_data *sd, t_cube *cube)
             {
                 sd->cube->map[i][j] = '0';
                 sd->p->x = (j * 30) + 15;
+                sd->p->xx = (j * 30) + 15;
                 sd->p->y = (i * 30) + 15;
+                sd->p->yy = (i * 30) + 15;
                 break;
             }
             j++;

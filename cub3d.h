@@ -28,7 +28,9 @@
 
 typedef struct	s_player {
 	int		x;
+	int		xx;
 	int		y;
+	int		yy;
 	double		turn_direction;
 	double		walk_direction;
 	double		move_speed;
