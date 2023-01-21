@@ -18,7 +18,8 @@
 # define BUFFER_SIZE 1
 # define WIN_HEIGHT 450
 # define WIN_WIDTH 1920
-# define TILE_SIZE 10
+# define TILE_SIZE 30
+# define speed 3.0
 # define PLAYER_SQUARE 2
 # define WHITE 16777215
 # define BLACK 8421504
@@ -29,10 +30,9 @@
 typedef struct	s_player {
 	int		x;
 	int		y;
-	double		turn_direction;
-	double		walk_direction;
 	double		move_speed;
 	double		retation_angle;
+	double		angle;
 	double		retation_speed;
 }				t_player;
 
@@ -94,5 +94,6 @@ int draw_2d_map(t_data *sd);
 int	key_hook(int key, t_data *sd);
 void p_search(t_data *sd, t_cube *cube);
 void   p_init(t_player *p);
+void ft_draw_line(t_data    *sd , int len);
 
 #endif
