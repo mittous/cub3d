@@ -108,7 +108,6 @@ char *ft_count_coma(char	*color /* t_cube *cub */)
 
 	i = 0;
 	count = 0;
-	printf ("color =%s\n", color);
 	while (color[i])
 	{
 		if (ft_isdigit(color[i]))
@@ -125,7 +124,6 @@ char *ft_count_coma(char	*color /* t_cube *cub */)
 	}
 	i = 0;
 	// int j = 0;
-	printf ("%d\n", count);
 	if (count == 2)
 	{
 		rgb = ft_split(color, ',');

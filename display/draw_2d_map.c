@@ -75,11 +75,11 @@ void print_pixel(t_data *test, int x, int y, int color )
         i++;
     }
     // player_print(test);
-	test->p->xx = test->p->x -5;
-	while (test->p->xx < test->p->x + 5)
+	test->p->xx = test->p->x -3;
+	while (test->p->xx < test->p->x + 3)
 	{
-		test->p->yy = test->p->y -5;
-		while (test->p->yy < test->p->y + 5)
+		test->p->yy = test->p->y -3;
+		while (test->p->yy < test->p->y + 3)
 		{
 		    my_mlx_pixel_put(test->draw, test->p->yy ,test->p->xx, RED);
 			test->p->yy++;
