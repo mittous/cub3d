@@ -14,6 +14,7 @@ SRC =	main.c \
 		display/draw_2d_map.c\
 		display/utils.c\
 		display/p_movment.c\
+		display/raycasting.c\
 
 # BNC_SRC =
 
