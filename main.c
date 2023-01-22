@@ -245,6 +245,7 @@ int	main(int ac, char **av)
     	game.win->window = mlx_new_window(game.win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 		p_search(&game, &cube);
 		mlx_hook(game.win->window, 2, 1L << 1, key_hook, &game);
+		mlx_hook(game.win->window, 3, 2L << 0, key_rel, &game);
 		mlx_loop_hook(game.win->mlx_ptr, draw_2d_map, &game);
 		// printf("##################\n");
 		// mlx_hook(game.win, 17, 0, ft_exit, &game);

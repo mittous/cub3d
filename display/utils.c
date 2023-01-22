@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:46:47 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/21 16:58:36 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/01/22 10:33:06 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@ void   p_init(t_player *p)
 	// p = malloc(sizeof(t_player));
     p->x = 0;
     p->y = 0;
-    p->move_speed = speed;
-    p->retation_angle = M_PI / 10;
+    p->move_speed = SPEED;
+    p->retation_angle = M_PI / 6;
     p->retation_speed = 3 * (M_PI / 180);
+    p->move_right = 0;
+    p->move_up = 0;
+    p->rotation = 0;
 }
 
 void ft_draw_line(t_data    *sd , int len)
