@@ -19,7 +19,7 @@
 # define WIN_HEIGHT 450
 # define WIN_WIDTH 1920
 # define TILE_SIZE 30
-# define speed 3.0
+# define SPEED 3
 # define PLAYER_SQUARE 2
 # define WHITE 16777215
 # define BLACK 8421504
@@ -36,6 +36,10 @@ typedef struct	s_player {
 	double		retation_angle;
 	double		angle;
 	double		retation_speed;
+	int			move_up;//-1 move down 1 move up
+	int			move_right;//-1 move left 1 move right
+	int			rotation;//-1 turn left 1 turn right
+
 }				t_player;
 
 typedef struct	draw {
@@ -98,5 +102,7 @@ void p_search(t_data *sd, t_cube *cube);
 void   p_init(t_player *p);
 void ft_draw_line(t_data    *sd , int len);
 void	my_mlx_pixel_put(t_draw *data, int y, int x, int color);
+void ft_move(t_data *sd);
+int	key_rel(int key, t_data *sd);
 
 #endif
