@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:41:35 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/22 10:29:12 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/01/22 11:55:35 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void ft_move_left(t_data *sd)
 
 void ft_move_left_ang(t_data *sd)
 {
-    sd->p->angle += sd->p->retation_angle;
+    sd->p->angle += sd->p->retation_speed;
 }
 
 void ft_move_right_ang(t_data *sd)
 {
-    sd->p->angle -= sd->p->retation_angle;
+    sd->p->angle -= sd->p->retation_speed;
 }
 void ft_move(t_data *sd)
 {

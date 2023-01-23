@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/22 11:25:07 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/01/22 14:47:29 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ int draw_2d_map(t_data *sd)
     int i;
     int j;
 
-    t_player   p;
-
     i = 0;
     j = 0;
     
@@ -80,6 +78,7 @@ int draw_2d_map(t_data *sd)
         i++;
     }
     ft_raycasting(sd);
+    // ft_draw_line(sd, sd->p->angle, sd->p->x, sd->p->y + 30);
     mlx_put_image_to_window( sd->win->mlx_ptr, sd->win->window, sd->draw->img, 0, 0);
     ft_move(sd);
     // mlx_key_hook(win.window, key_hook, &draw);
