@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/22 14:47:29 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/01/24 09:34:16 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ void print_pixel(t_data *test, int x, int y, int color )
         i++;
     }
     // player_print(test);
-	test->p->xx = test->p->x -3;
-	while (test->p->xx < test->p->x + 3)
+	test->p->x_cube = test->p->x -3;
+	while (test->p->x_cube < test->p->x + 3)
 	{
-		test->p->yy = test->p->y -3;
-		while (test->p->yy < test->p->y + 3)
+		test->p->y_cube = test->p->y -3;
+		while (test->p->y_cube < test->p->y + 3)
 		{
-		    my_mlx_pixel_put(test->draw, test->p->yy ,test->p->xx, RED);
-			test->p->yy++;
+		    my_mlx_pixel_put(test->draw, test->p->y_cube ,test->p->x_cube, RED);
+			test->p->y_cube++;
 		}
-		test->p->xx++;
+		test->p->x_cube++;
 	}
 }
 
@@ -81,6 +81,7 @@ int draw_2d_map(t_data *sd)
     // ft_draw_line(sd, sd->p->angle, sd->p->x, sd->p->y + 30);
     mlx_put_image_to_window( sd->win->mlx_ptr, sd->win->window, sd->draw->img, 0, 0);
     ft_move(sd);
+    // sleep (3);
     // mlx_key_hook(win.window, key_hook, &draw);
     return(0);
 }

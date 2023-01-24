@@ -72,7 +72,7 @@ void	ft_check_map_close(char **map, t_cube *cube)
 			j++;
 		}
 	}
-	printf ("map is-- valid");
+	printf ("map is-- valid\n");
 }
 
 int	ft_atoi_cub(const char *str)
