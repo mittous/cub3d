@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:46:47 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/22 16:14:34 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/01/24 09:34:01 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void p_search(t_data *sd, t_cube *cube)
                     sd->p->angle = 0;
                 sd->cube->map[i][j] = '0';
                 sd->p->x = (j * TILE_SIZE) + (TILE_SIZE / 2);
-                sd->p->xx = (j * TILE_SIZE) + (TILE_SIZE / 2);
+                sd->p->x_cube = (j * TILE_SIZE) + (TILE_SIZE / 2);
                 sd->p->y = (i * TILE_SIZE) + (TILE_SIZE / 2);
-                sd->p->yy = (i * TILE_SIZE) + (TILE_SIZE / 2);
+                sd->p->y_cube = (i * TILE_SIZE) + (TILE_SIZE / 2);
                 break;
             }
             j++;
