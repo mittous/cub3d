@@ -16,6 +16,7 @@ SRC =	main.c \
 		display/p_movment.c\
 		display/raycasting.c\
 		display/vertical_check.c\
+		display/horizontal_check.c\
 
 # BNC_SRC =
 

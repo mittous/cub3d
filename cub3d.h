@@ -116,5 +116,6 @@ void ft_move(t_data *sd);
 int	key_rel(int key, t_data *sd);
 void ft_raycasting(t_data   *sd);
 void ft_vertical_check(t_data    *sd, double ang, double  *y, double  *x);
+void ft_horizontal_check(double ang, t_data *sd, double *x, double *y);
 
 #endif
