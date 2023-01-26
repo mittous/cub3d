@@ -73,8 +73,6 @@ void ft_draw_line(t_data    *sd , int len)
         i++;
    }
 }
-// #include "cub3d.h"
-
 // int	create_rgb(int r, int g, int b)
 // {
 // 	return (r << 16 | g << 8 | b);
@@ -104,46 +102,65 @@ void ft_draw_line(t_data    *sd , int len)
 // 	}
 // }
 
-// void	ft_drawing_wall(int start, int len, t_data *data)
+// void	ft_drawing_wall(int wall_start, int len, t_data *data)
 // {
-// 	int	color;
+// 	int	color/* , *bpp, *sz_line, *end */;
+// 	void	*img;
+	
+// 	// img = mlx_xpm_file_to_image(&data->mlx, data->textures.no, , 30);
+// 	// void *data_addr = mlx_get_data_addr(img, &data->img.bits_per_pixel, &data->img.line_length, &data->img.endian);
 
-// 	color = create_rgb(45, 97, 34);
-// 	// ft_draw_ceiling(data, 0, start);
-// 	// ft_draw_floor(data, start + len, W_HEIGHT);
-// 	if (len > W_HEIGHT)
-// 		len = W_HEIGHT;
-// 	while (start < len)
+// 	color = create_rgb(25, 81, 100);
+// 	int i = wall_start;
+// 	int j = 0;
+// 	while (wall_start < len + i)
 // 	{
-// 		my_mlx_pixel_put(&data->img, data->id, start, color);
-// 		start++;
+// 		// while()
+// 		// {
+// 			// j = j*TILE;
+// 			my_mlx_pixel_put(&data->img, data->id, wall_start, data->textures.img_data[0][j % TILE]);
+// 		// }
+// 		// printf ("%d\n")
+// 		j++;
+// 		wall_start++;
 // 	}
-// 	printf ("start: %d\n, len: %d\n", start, len);
 // }
 
-
+// int	ft_pixel_color_textur()
+// {
+	
+// }
 // int	ft_rendering_wall(t_data *data)
 // {
 // 	double		wall_height;
 // 	double		wall_start;
 // 	double		dis_projplane;
-// 	double		rayangle;
 
-// 	rayangle = FOFV / W_WIDTH;
 // 	dis_projplane = (W_WIDTH / 2) / tan(FOFV / 2);
 // 	data->id = 0;
+// 		int j = 0;
+// 		int mov = 0;
 // 	while (data->id < W_WIDTH)
 // 	{
 // 		wall_height = (TILE / data->dis_rays[data->id]) * dis_projplane;
 // 		wall_start = W_HEIGHT / 2 - (wall_height / 2);
-// 		my_mlx_pixel_put(&data->img, data->id, W_HEIGHT / 2 - (wall_height / 2), \
-// 			create_rgb(255, 255, 255));
-// 		ft_drawing_wall(wall_start, wall_height, data);
+
+// 		int wall_end = wall_start + wall_height;
+// 		while (wall_start < wall_end)
+// 		{
+// 			ft_pixel_color_textur();
+// 			// my_mlx_pixel_put(&data->img, data->id, wall_start, data->textures.img_data[0][j % TILE]);
+// 			// j *= TILE + mov;
+// 			wall_start++;
+// 		}
+// 		mov++;
+
+// 		// ft_drawing_wall(wall_start, wall_height, data);
+// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) ), \
+// 		// 	create_rgb(255, 255, 255));
 // 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +1), \
 // 		// 	create_rgb(255, 255, 255));
 // 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +2), \
-// 		// 	create_rgb(255, 255, 255));
-// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +3), \
 // 		// 	create_rgb(255, 255, 255));
 // 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +4), \
 // 		// 	create_rgb(255, 255, 255));
@@ -153,15 +170,15 @@ void ft_draw_line(t_data    *sd , int len)
 // 		// 	create_rgb(255, 255, 255));
 
 
-// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height-6), \
+// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height), \
 // 		// 	create_rgb(255, 255, 255));
-// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height-7), \
+// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height-1), \
+// 		// 	create_rgb(255, 255, 255));
+// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height-2), \
 // 		// 	create_rgb(255, 255, 255));
 // 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height-3), \
 // 		// 	create_rgb(255, 255, 255));
-// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height-4), \
-// 		// 	create_rgb(255, 255, 255));
-// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height-5), \
+// 		// my_mlx_pixel_put(&data->img, data->id, (W_HEIGHT / 2 - (wall_height / 2) +wall_height/2), \
 // 		// 	create_rgb(255, 255, 255));
 
 // 		data->id++;
@@ -169,5 +186,3 @@ void ft_draw_line(t_data    *sd , int len)
 // 	return (data->id = 0, 0);
 // }
 
-
-		
