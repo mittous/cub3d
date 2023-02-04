@@ -7,6 +7,7 @@ INC =	cub3d.h
 # INC_BNS = 
 
 SRC =	main.c \
+		struct_init.c\
 		check_map_name.c \
 		errors.c \
 		read_from_map.c \

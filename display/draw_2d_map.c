@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/25 09:59:10 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/04 10:55:48 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void print_pixel(t_data *test, int x, int y, int color )
 	}
 }
 
-int draw_2d_map(t_data *sd)
+int draw_2d_map(t_data **sd)
 {
     // t_display win;
     int i;
@@ -62,26 +62,27 @@ int draw_2d_map(t_data *sd)
     i = 0;
     j = 0;
     
-    sd->draw->img = mlx_new_image(sd->win->mlx_ptr, WIN_WIDTH,  WIN_HEIGHT);
-    sd->draw->addr = mlx_get_data_addr(sd->draw->img, &sd->draw->bits_per_pixel, &sd->draw->line_length,&sd->draw->endian);
-    while(sd->cube->map[i])
+    (*sd)->draw->img = mlx_new_image((*sd)->win->mlx_ptr, WIN_WIDTH,  WIN_HEIGHT);
+    (*sd)->draw->addr = mlx_get_data_addr((*sd)->draw->img, &(*sd)->draw->bits_per_pixel, &(*sd)->draw->line_length,&(*sd)->draw->endian);
+    while((*sd)->cube->map[i])
     {
         j = 0;
-        while(sd->cube->map[i][j])
+        while((*sd)->cube->map[i][j])
         {
-            if (sd->cube->map[i][j] == '1')
-                print_pixel(sd,j,i,BLACK);
-            else if (sd->cube->map[i][j] == '0')
-                print_pixel(sd,j,i,WHITE);
+            if ((*sd)->cube->map[i][j] == '1')
+                print_pixel((*sd),j,i,BLACK);
+            else if ((*sd)->cube->map[i][j] == '0')
+                print_pixel((*sd),j,i,WHITE);
             j++;
         }
         i++;
     }
-    ft_raycasting(sd);
-    // ft_draw_line(sd, sd->p->angle, sd->p->x, sd->p->y + 30);
-    mlx_put_image_to_window( sd->win->mlx_ptr, sd->win->window, sd->draw->img, 0, 0);
-    ft_move(sd);
+    ft_raycasting((*sd));
+    // ft_draw_line((*sd), (*sd)->p->angle, (*sd)->p->x, (*sd)->p->y + 30);
+    ft_move((*sd));
+    mlx_put_image_to_window( (*sd)->win->mlx_ptr, (*sd)->win->window, (*sd)->draw->img, 0, 0);
     // sleep (3);
     // mlx_key_hook(win.window, key_hook, &draw);
+    
     return(0);
 }
