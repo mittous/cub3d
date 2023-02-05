@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:34:32 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/04 11:13:21 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:02:10 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,35 @@
 
 void ft_vertical_check(t_data    *sd, double ang)
 {
-    if (sd->line->ray_right == 1)
+     double y_intercept;
+   double x_intercept;
+   double v_dx;
+   double dy;
+
+   x_intercept = floor(sd->p->x / TILE_SIZE) * TILE_SIZE;
+   if (sd->line->ray_right == 1)
+         x_intercept += 30;
+    y_intercept = sd->p->y + (x_intercept - sd->p->x) * tan(ang);
+    sd->line->v_x = x_intercept;
+    sd->line->v_y = y_intercept;
+    v_dx = TILE_SIZE;
+    if(sd->line->ray_left == 1)
+        v_dx *= -1;
+    dy = TILE_SIZE*tan(ang); 
+    if(sd->line->ray_up == 1 && dy > 0)
+        dy *= -1;
+    if(sd->line->ray_down == 1 && dy < 0)
+        dy *= -1;
+    if(sd->line->ray_left == 1)
+        sd->line->v_x--;
+    while(sd->line->v_x >= 0 && sd->line->v_x < WIN_WIDTH && sd->line->v_y >= 0 && sd->line->v_y < WIN_HEIGHT)
     {
-        sd->line->v_x = (abs(sd->p->x / 30) + 1) * 30;
-       sd->line->v_y = sd->p->y - (sin(ang) * ((sd->line->v_x - sd->p->x) / cos(ang)));
-        if (sd->line->ray_up == 1)
+        if(sd->cube->map[(int)(fabs(sd->line->v_y / TILE_SIZE))][(int)(fabs(sd->line->v_x / TILE_SIZE))] == '1')
         {
-            
-            while (((int)(sd->line->v_y/TILE_SIZE) > 0 && (int)(sd->line->v_y/TILE_SIZE) < WIN_HEIGHT/TILE_SIZE) && ((int)(sd->line->v_x/TILE_SIZE) > 0 && (int)(sd->line->v_x/TILE_SIZE) < WIN_WIDTH/TILE_SIZE) &&(sd->cube->map[(int)(sd->line->v_y / TILE_SIZE)][(int)(sd->line->v_x / TILE_SIZE)] != '1'))
-             {
-                sd->line->v_x += TILE_SIZE;
-               sd->line->v_y = sd->line->v_y - (sin(ang)* (TILE_SIZE/cos(ang)));
-            }
-            // ft_draw_line(sd, ang, sd->line->v_x, sd->line->v_y);
+            sd->line->v_hit = true;
+            break;
         }
-       if (sd->line->ray_down == 1)
-        {
-                sd->line->v_x = (abs(sd->p->x / 30) + 1) * 30;
-                sd->line->v_y = sd->p->y + (sin(ang)* ((sd->p->x - sd->line->v_x) / cos(ang)));
-                while (((int)(sd->line->v_y/TILE_SIZE) > 0 && (int)(sd->line->v_y/TILE_SIZE) < WIN_HEIGHT/TILE_SIZE) && ((int)(sd->line->v_x/TILE_SIZE) > 0 && (int)(sd->line->v_x/TILE_SIZE) < WIN_WIDTH/TILE_SIZE) &&(sd->cube->map[(int)(sd->line->v_y / TILE_SIZE)][(int)(sd->line->v_x / TILE_SIZE)] != '1' ))
-                 {
-                    sd->line->v_x += TILE_SIZE;
-                    sd->line->v_y = sd->line->v_y + sin(ang)* (TILE_SIZE/cos(ang));
-                }
-                // ft_draw_line(sd, ang, sd->line->v_x, *y);
-        }
-        // ft_draw_line(sd, ang, x, y);
+        sd->line->v_x += v_dx;
+        sd->line->v_y += dy;
     }
-
-    //  if ((ang <  ((3 *M_PI)/2) && ang >= M_PI) ||(ang < M_PI &&  ang > (M_PI/2)))
-    //  {
-
-    //     if (ang <  ((3 *M_PI)/2) && ang >= M_PI)
-    //     {
-    //         // printf("###################ANG=%f\n", ang);
-    //         *x = abs(sd->p->x / 30) * 30;
-    //         *y = sd->p->y - (sin(ang) * ((*x - sd->p->x) / cos(ang)));
-            
-    //         while (((int)(*y/TILE_SIZE) > 0 && (int)(*y/TILE_SIZE) < WIN_HEIGHT/TILE_SIZE) && ((int)(*x/TILE_SIZE) > 0 && (int)(*x/TILE_SIZE) < WIN_WIDTH/TILE_SIZE) &&(sd->cube->map[(int)(*y / TILE_SIZE)][(int)(*x / TILE_SIZE)] != '1'))
-    //          {
-    //             *x -= TILE_SIZE;
-    //             *y = *y - (sin(ang)* (TILE_SIZE/cos(ang)));
-    //         }
-            
-    //     }
-    //     if (ang < M_PI &&  ang > (M_PI/2))
-    //     {
-    //         *x = abs(sd->p->x / 30) * 30;
-    //         *y = sd->p->y + (sin(ang) * ((*x - sd->p->x) / cos(ang)));
-    //         if (ang >  ((3 *M_PI)/2) && ang < (2 *M_PI))
-    //         {
-                
-    //             while (((int)(*y/TILE_SIZE) > 0 && (int)(*y/TILE_SIZE) < WIN_HEIGHT/TILE_SIZE) && ((int)(*x/TILE_SIZE) > 0 && (int)(*x/TILE_SIZE) < WIN_WIDTH/TILE_SIZE) &&(sd->cube->map[(int)(*y / TILE_SIZE)][(int)(*x / TILE_SIZE)] != '1'))
-    //              {
-    //                 *x -= TILE_SIZE;
-    //                 *y = *y + (sin(ang)* (TILE_SIZE/cos(ang)));
-    //             }
-                
-    //         }
-    //     }
-        // ft_draw_line(sd, ang, *x, *y);
-     }
-     
-    // if (ang > (M_PI / 2))
-    // {
-    //     *x = abs(sd->p->x / 30) * 30;
-    //     *y = sd->p->y - sin(ang)* ((*x - sd->p->x) / cos(ang));
-    //      if (ang > M_PI)
-    //     {
-    //         while (((int)(*y/TILE_SIZE) > 0 && (int)(*y/TILE_SIZE) < WIN_HEIGHT/TILE_SIZE) && ((int)(*x/TILE_SIZE) > 0 && (int)(*x/TILE_SIZE) < WIN_WIDTH/TILE_SIZE) &&sd->cube->map[(int)(*y / TILE_SIZE)][(int)(*x / TILE_SIZE)] != '1' )
-    //         {
-    //             *x -= TILE_SIZE;
-    //             *y -= sd->p->y - sin(ang)* (TILE_SIZE/cos(ang));
-    //         }
-    //     }
-    //     ft_draw_line(sd, ang, *x, *y);
-    // }
-// }
+}

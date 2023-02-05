@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:41:35 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/04 10:03:38 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/05 17:48:23 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,19 @@ void ft_move_left(t_data **sd)
 
 void ft_move_left_ang(t_data **sd)
 {
+    (*sd)->p->angle += (*sd)->p->retation_speed;
     (*sd)->p->angle = fmod((*sd)->p->angle, 2 * M_PI);
     if ((*sd)->p->angle < 0)
         (*sd)->p->angle += (2 * M_PI);
-    (*sd)->p->angle += (*sd)->p->retation_speed;
     // printf("ANG=%f\n", sd->p->angle);
 }
 
 void ft_move_right_ang(t_data **sd)
 {
+    (*sd)->p->angle -= (*sd)->p->retation_speed;
     (*sd)->p->angle = fmod((*sd)->p->angle, 2 * M_PI);
     if ((*sd)->p->angle < 0)
         (*sd)->p->angle += (2 * M_PI);
-    (*sd)->p->angle -= (*sd)->p->retation_speed;
     // printf("ANG=%f\n", sd->p->angle);
 }
 void ft_move(t_data *sd)

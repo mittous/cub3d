@@ -30,6 +30,8 @@
 
 typedef struct	line {
 	double		ang;
+	bool		h_hit;
+	bool		v_hit;
 	double		h_x;
 	double		h_y;
 	double		v_x;
