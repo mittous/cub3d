@@ -45,7 +45,7 @@ void ft_raycasting(t_data   *sd)
         y2 = sd->p->y;
         if (ang !=   M_PI/2 && ang !=   M_PI/2)
             ft_vertical_check(sd, ang, &x, &y);
-       if (ang !=   0 && ang !=   M_PI)
+        if (ang !=   0 && ang !=   M_PI)
             ft_horizontal_check(ang, sd, &x2, &y2);
         if (distance(sd->p->x,sd->p->y,x,y) < distance(sd->p->x,sd->p->y,x2,y2))
             ft_draw_line(sd, ang, x, y);
