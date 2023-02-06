@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:34:32 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/05 18:02:10 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:14:34 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void ft_vertical_check(t_data    *sd, double ang)
    double v_dx;
    double dy;
 
+    // puts("1\n");
    x_intercept = floor(sd->p->x / TILE_SIZE) * TILE_SIZE;
    if (sd->line->ray_right == 1)
          x_intercept += 30;
@@ -45,4 +46,6 @@ void ft_vertical_check(t_data    *sd, double ang)
         sd->line->v_x += v_dx;
         sd->line->v_y += dy;
     }
+        // printf("h_x = %f\n h_y = %f\n",sd->line->v_x,sd->line->v_y);
+
 }

@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:46:47 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/24 09:34:01 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:48:13 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void   p_init(t_player *p)
     p->rotation = 0;
 }
 
-void ft_draw_line(t_data    *sd , double angle,double  x2,double  y2)
+void ft_draw_line(t_data    *sd ,double  x2,double  y2)
 {
    int i = 0;
    double   dx;
@@ -73,10 +73,10 @@ void ft_draw_line(t_data    *sd , double angle,double  x2,double  y2)
     y = sd->p->y;
     dx = x2 - x;
     dy = y2 - y;
-    if(dx > dy)
-        steps = dx;
+    if(fabs(dx) > fabs(dy))
+        steps = fabs(dx);
     else
-        steps = dy;
+        steps = fabs(dy);
    while(i <= (int)steps)
    {
         my_mlx_pixel_put(sd->draw, y, x, RED);
