@@ -16,9 +16,11 @@
 void	my_mlx_pixel_put(t_draw *data, int y, int x, int color)
 {
 	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*) dst = color;
+    if (y >= 0 && y < WIN_HEIGHT && x < WIN_WIDTH && x >= 0)
+	{
+	    dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	    *(unsigned int*) dst = color;
+    }
 }
 
 void	print_pixel(t_data *test, int x, int y, int color )

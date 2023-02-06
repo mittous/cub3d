@@ -25,6 +25,7 @@
 # define BLACK 8421504
 # define RED 16711680
 # define ORANGE 65454456
+// # define FOFV	1.0471975512
 # define RAD 0.01745329251
 
 

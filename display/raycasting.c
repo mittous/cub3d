@@ -46,6 +46,11 @@ void line_direction_init(t_line   *line, double angle)
     }
 }
 
+int	ft_rgb_to_color(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
+}
+
 void ft_raycasting(t_data   *sd)
 {
     double ang_inc;
@@ -66,6 +71,7 @@ void ft_raycasting(t_data   *sd)
     //     sd->line->v_y = 0;
     //     sd->line->h_x = 0;
     //     sd->line->h_y = 0;
+    double dis_projplane = (WIN_WIDTH / 2) / tan(30 * (M_PI / 180));
     while (i < WIN_WIDTH)
     {
         sd->line->v_hit = false;
@@ -84,14 +90,33 @@ void ft_raycasting(t_data   *sd)
         if (distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y) < distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y) &&  sd->line->v_hit == true)
         {
             // puts("1\n");
+            sd->line->distance = distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y);
             ft_draw_line(sd, sd->line->v_x, sd->line->v_y);
         }
         else
         {
             // printf("h_x = %f\n h_y = %f\n",sd->line->h_x,sd->line->h_y);
 
+            sd->line->distance =  distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y);
             ft_draw_line(sd, sd->line->h_x , sd->line->h_y);
         }
+        printf("distance = %f\n",sd->line->distance);
+        double wall_height = (TILE_SIZE / sd->line->distance) * dis_projplane;
+		double wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
+
+		// int wall_end = wall_start + wall_height;
+        printf ("wall_height = *-%d-*\n", wall_height);
+        printf ("wall_start = *-%d*-\n", wall_start);
+        // printf ("wall_end = *-%d*-\n", wall_end);
+        while (wall_start < 1000000)
+        {
+            // printf("i = %d\n", i);
+            my_mlx_pixel_put(sd->draw, i, wall_start, ft_rgb_to_color(255, 255, 255));
+            wall_start++;
+        }
+        // my_mlx_pixel_put(&sd->draw, sd->line , (WIN_HEIGHT / 2 - (wall_height / 2) ), 11);
+		// ft_drawing_wall(wall_start, wall_height, data, increes);
+		// increes++;
         ang += ang_inc;
         i++;
     }
