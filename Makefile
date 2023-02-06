@@ -7,6 +7,7 @@ INC =	cub3d.h
 # INC_BNS = 
 
 SRC =	main.c \
+		struct_init.c\
 		check_map_name.c \
 		errors.c \
 		read_from_map.c \
@@ -14,6 +15,9 @@ SRC =	main.c \
 		display/draw_2d_map.c\
 		display/utils.c\
 		display/p_movment.c\
+		display/raycasting.c\
+		display/vertical_check.c\
+		display/horizontal_check.c\
 
 # BNC_SRC =
 

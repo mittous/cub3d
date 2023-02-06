@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:46:47 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/01/21 16:58:36 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:48:13 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void p_search(t_data *sd, t_cube *cube)
                     sd->p->angle = 0;
                 sd->cube->map[i][j] = '0';
                 sd->p->x = (j * TILE_SIZE) + (TILE_SIZE / 2);
-                sd->p->xx = (j * TILE_SIZE) + (TILE_SIZE / 2);
+                sd->p->x_cube = (j * TILE_SIZE) + (TILE_SIZE / 2);
                 sd->p->y = (i * TILE_SIZE) + (TILE_SIZE / 2);
-                sd->p->yy = (i * TILE_SIZE) + (TILE_SIZE / 2);
+                sd->p->y_cube = (i * TILE_SIZE) + (TILE_SIZE / 2);
                 break;
             }
             j++;
@@ -52,24 +52,36 @@ void   p_init(t_player *p)
 	// p = malloc(sizeof(t_player));
     p->x = 0;
     p->y = 0;
-    p->move_speed = speed;
-    p->retation_angle = M_PI / 10;
+    p->move_speed = SPEED;
+    p->retation_angle = M_PI / 6;
     p->retation_speed = 3 * (M_PI / 180);
+    p->move_right = 0;
+    p->move_up = 0;
+    p->rotation = 0;
 }
 
-void ft_draw_line(t_data    *sd , int len)
+void ft_draw_line(t_data    *sd ,double  x2,double  y2)
 {
    int i = 0;
-   double   x;
-   double   y;
+   double   dx;
+   double   dy;
+   double x;
+   double y;
+   int steps;
 
     x = sd->p->x;
     y = sd->p->y;
-   while(i <= len)
+    dx = x2 - x;
+    dy = y2 - y;
+    if(fabs(dx) > fabs(dy))
+        steps = fabs(dx);
+    else
+        steps = fabs(dy);
+   while(i <= (int)steps)
    {
         my_mlx_pixel_put(sd->draw, y, x, RED);
-        x += cos(sd->p->angle);
-        y += sin(sd->p->angle);
+        x += dx/steps;
+        y += dy/steps;
         i++;
    }
 }

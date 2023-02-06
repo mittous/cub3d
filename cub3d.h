@@ -19,7 +19,7 @@
 # define WIN_HEIGHT 450
 # define WIN_WIDTH 1920
 # define TILE_SIZE 30
-# define speed 3.0
+# define SPEED 3
 # define PLAYER_SQUARE 2
 # define WHITE 16777215
 # define BLACK 8421504
@@ -27,15 +27,35 @@
 # define ORANGE 65454456
 # define RAD 0.01745329251
 
+
+typedef struct	line {
+	double		ang;
+	bool		h_hit;
+	bool		v_hit;
+	double		h_x;
+	double		h_y;
+	double		v_x;
+	double		v_y;
+	double		distance;
+	int			ray_down;
+	int			ray_up;
+	int			ray_right;
+	int			ray_left;
+}				t_line;
+
 typedef struct	s_player {
 	int		x;
-	int		xx;
+	int		x_cube;
 	int		y;
-	int		yy;
+	int		y_cube;
 	double		move_speed;
 	double		retation_angle;
 	double		angle;
 	double		retation_speed;
+	int			move_up;//-1 move down 1 move up
+	int			move_right;//-1 move left 1 move right
+	int			rotation;//-1 turn left 1 turn right
+
 }				t_player;
 
 typedef struct	draw {
@@ -77,6 +97,7 @@ typedef struct	s_data {
 	t_draw		*draw;
 	t_display	*win;
 	t_cube		*cube;
+	t_line		*line;
 }				t_data;
 
 
@@ -92,11 +113,17 @@ char	**ft_split_gnl(char const *s, char c);
 void	ft_count_char(char c, t_cube *cube);
 void	ft_wrong_character_err(char s);
 ///////////////////
-int draw_2d_map(t_data *sd);
-int	key_hook(int key, t_data *sd);
-void p_search(t_data *sd, t_cube *cube);
-void   p_init(t_player *p);
-void ft_draw_line(t_data    *sd , int len);
+int		draw_2d_map(t_data **sd);
+int		key_hook(int key, t_data **sd);
+void	p_search(t_data *sd, t_cube *cube);
+void	p_init(t_player *p);
+void	ft_draw_line(t_data    *sd ,double  x2,double  y2);
 void	my_mlx_pixel_put(t_draw *data, int y, int x, int color);
+void	ft_move(t_data *sd);
+int		key_rel(int key, t_data **sd);
+void	ft_raycasting(t_data   *sd);
+void	ft_vertical_check(t_data    *sd, double ang);
+void	ft_horizontal_check(double ang, t_data *sd);
+t_data	*allocate_data(void) ;
 
 #endif

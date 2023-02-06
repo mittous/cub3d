@@ -72,7 +72,7 @@ void	ft_check_map_close(char **map, t_cube *cube)
 			j++;
 		}
 	}
-	printf ("map is-- valid");
+	printf ("map is-- valid\n");
 }
 
 int	ft_atoi_cub(const char *str)
@@ -220,35 +220,42 @@ void	ft_check_texture(t_cube *cub)
 
 int	main(int ac, char **av)
 {
-	t_cube	cube;
-	t_data	game;
-	t_display win;
-	t_player	p;
+	// t_cube	cube;
+	t_data	*game = allocate_data();
+	// t_display win;
+	// t_player	p;
 
 	if (ft_checkber(av[1], ac))
 	{
-		ft_init(&cube);
-		cube.fd = open(av[1], O_RDONLY);
-		if (cube.fd < 0)
+		// ft_init(&game->cube);
+		ft_memset(game->cube,0, sizeof(t_cube));
+		game->cube->fd = open(av[1], O_RDONLY);
+		if (game->cube->fd < 0)
 		{
 			printf("file is not valid");
 			return 1;
 		}
-		get_next_line(cube.fd, &cube);
-		ft_check_texture(&cube);
-		ft_check_map_close (cube.map, &cube);
-		game.win = &win;
-		p_init(&p);
-		game.cube = &cube;
-		game.p = &p;
-		game.win->mlx_ptr = mlx_init();
-    	game.win->window = mlx_new_window(game.win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
-		p_search(&game, &cube);
-		mlx_hook(game.win->window, 2, 1L << 1, key_hook, &game);
-		mlx_loop_hook(game.win->mlx_ptr, draw_2d_map, &game);
+		game->win->mlx_ptr = mlx_init();
+		game->draw->img = mlx_new_image(game->win->mlx_ptr, WIN_WIDTH,
+			WIN_HEIGHT);
+	game->draw->addr = mlx_get_data_addr(game->draw->img,
+			&game->draw->bits_per_pixel, &game->draw->line_length,
+			&game->draw->endian);
+		get_next_line(game->cube->fd, game->cube);
+		ft_check_texture(game->cube);
+		ft_check_map_close (game->cube->map, game->cube);
+		// game.win = &win;
+		p_init(game->p);
+		// game->cube = &game->cube;
+		// game->p = &game->p;
+    	game->win->window = mlx_new_window(game->win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
+		p_search(game, game->cube);
+		mlx_hook(game->win->window, 2, 1L << 1, key_hook, &game);
+		mlx_hook(game->win->window, 3, 2L << 0, key_rel, &game);
+		mlx_loop_hook(game->win->mlx_ptr, draw_2d_map, &game);
 		// printf("##################\n");
-		// mlx_hook(game.win, 17, 0, ft_exit, &game);
+		// mlx_hook(game->win, 17, 0, ft_exit, &game);
 		// draw_2d_map(&game);
-		mlx_loop(game.win->mlx_ptr);
+		mlx_loop(game->win->mlx_ptr);
 	}
 }
