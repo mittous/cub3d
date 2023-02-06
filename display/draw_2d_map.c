@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/06 13:59:30 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:48:11 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void  ft_clear_image(t_data *test)
         j = 0;
         while (j < WIN_WIDTH)
         {
-            my_mlx_pixel_put(test->draw, i, j, 0);
+			if (i < WIN_HEIGHT/2)
+            	my_mlx_pixel_put(test->draw, i, j, 0);
+			else
+				my_mlx_pixel_put(test->draw, i, j, WHITE);
             j++;
         }
         i++;
