@@ -54,6 +54,24 @@ void	print_pixel(t_data *test, int x, int y, int color )
 	}
 }
 
+void  ft_clear_image(t_data *test)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < WIN_HEIGHT)
+    {
+        j = 0;
+        while (j < WIN_WIDTH)
+        {
+            my_mlx_pixel_put(test->draw, i, j, 0);
+            j++;
+        }
+        i++;
+    }
+}
+
 int	draw_2d_map(t_data **sd)
 {
 	int	i;
@@ -62,19 +80,20 @@ int	draw_2d_map(t_data **sd)
 	i = 0;
 	j = 0;
 	mlx_clear_window((*sd)->win->mlx_ptr, (*sd)->win->window);
-	while ((*sd)->cube->map[i])
-	{
-		j = 0;
-		while ((*sd)->cube->map[i][j])
-		{
-			if ((*sd)->cube->map[i][j] == '1')
-				print_pixel((*sd), j, i, BLACK);
-			else if ((*sd)->cube->map[i][j] == '0')
-				print_pixel((*sd), j, i, WHITE);
-			j++;
-		}
-		i++;
-	}
+	// while ((*sd)->cube->map[i])
+	// {
+	// 	j = 0;
+	// 	while ((*sd)->cube->map[i][j])
+	// 	{
+	// 		if ((*sd)->cube->map[i][j] == '1')
+	// 			print_pixel((*sd), j, i, BLACK);
+	// 		else if ((*sd)->cube->map[i][j] == '0')
+	// 			print_pixel((*sd), j, i, WHITE);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
+	ft_clear_image((*sd));
 	ft_raycasting((*sd));
 	ft_move((*sd));
 	mlx_put_image_to_window((*sd)->win->mlx_ptr, (*sd)->win->window,

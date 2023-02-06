@@ -238,7 +238,7 @@ int	main(int ac, char **av)
 		game->win->mlx_ptr = mlx_init();
 		game->draw->img = mlx_new_image(game->win->mlx_ptr, WIN_WIDTH,
 			WIN_HEIGHT);
-	game->draw->addr = mlx_get_data_addr(game->draw->img,
+		game->draw->addr = mlx_get_data_addr(game->draw->img,
 			&game->draw->bits_per_pixel, &game->draw->line_length,
 			&game->draw->endian);
 		get_next_line(game->cube->fd, game->cube);
