@@ -113,17 +113,17 @@ char	**ft_split_gnl(char const *s, char c);
 void	ft_count_char(char c, t_cube *cube);
 void	ft_wrong_character_err(char s);
 ///////////////////
-int draw_2d_map(t_data **sd);
-int	key_hook(int key, t_data **sd);
-void p_search(t_data *sd, t_cube *cube);
-void   p_init(t_player *p);
-void ft_draw_line(t_data    *sd ,double  x2,double  y2);
+int		draw_2d_map(t_data **sd);
+int		key_hook(int key, t_data **sd);
+void	p_search(t_data *sd, t_cube *cube);
+void	p_init(t_player *p);
+void	ft_draw_line(t_data    *sd ,double  x2,double  y2);
 void	my_mlx_pixel_put(t_draw *data, int y, int x, int color);
-void ft_move(t_data *sd);
-int	key_rel(int key, t_data **sd);
-void ft_raycasting(t_data   *sd);
-void ft_vertical_check(t_data    *sd, double ang);
-void ft_horizontal_check(double ang, t_data *sd);
-t_data *allocate_data(void) ;
+void	ft_move(t_data *sd);
+int		key_rel(int key, t_data **sd);
+void	ft_raycasting(t_data   *sd);
+void	ft_vertical_check(t_data    *sd, double ang);
+void	ft_horizontal_check(double ang, t_data *sd);
+t_data	*allocate_data(void) ;
 
 #endif

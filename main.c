@@ -235,6 +235,12 @@ int	main(int ac, char **av)
 			printf("file is not valid");
 			return 1;
 		}
+		game->win->mlx_ptr = mlx_init();
+		game->draw->img = mlx_new_image(game->win->mlx_ptr, WIN_WIDTH,
+			WIN_HEIGHT);
+	game->draw->addr = mlx_get_data_addr(game->draw->img,
+			&game->draw->bits_per_pixel, &game->draw->line_length,
+			&game->draw->endian);
 		get_next_line(game->cube->fd, game->cube);
 		ft_check_texture(game->cube);
 		ft_check_map_close (game->cube->map, game->cube);
@@ -242,7 +248,6 @@ int	main(int ac, char **av)
 		p_init(game->p);
 		// game->cube = &game->cube;
 		// game->p = &game->p;
-		game->win->mlx_ptr = mlx_init();
     	game->win->window = mlx_new_window(game->win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 		p_search(game, game->cube);
 		mlx_hook(game->win->window, 2, 1L << 1, key_hook, &game);
