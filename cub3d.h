@@ -13,6 +13,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+#include "get_net_line/get_next_line.h"
+
 // # include "../get_next_line/get_next_line.h"
 
 # define BUFFER_SIZE 1
@@ -93,12 +95,25 @@ typedef struct s_cube
 	char	*ceiling;
 }				t_cube;
 
+typedef struct s_textur
+{
+	char	*text_file;
+	int		fd;
+	void	*img;
+	int		*addr;
+	int		width;
+	int		height;
+}			t_textur;
+
+
+
 typedef struct	s_data {
 	t_player	*p;
 	t_draw		*draw;
 	t_display	*win;
 	t_cube		*cube;
 	t_line		*line;
+	t_textur	textur[4];
 }				t_data;
 
 
@@ -106,10 +121,9 @@ typedef struct	s_data {
 
 int		mini_check(char map);
 int		ft_checkber(char *s, int ac);
-// char	*get_next_line(int fd/* , t_cube *cube, int check */);
 void	ft_wrong_character_err(char bufer);
 void	ft_messing_character_err(char *message);
-void	get_next_line(int fd, t_cube *cube);
+void	get_next_line_cub(int fd, t_cube *cube);
 char	**ft_split_gnl(char const *s, char c);
 void	ft_count_char(char c, t_cube *cube);
 void	ft_wrong_character_err(char s);
@@ -126,5 +140,8 @@ void	ft_raycasting(t_data   *sd);
 void	ft_vertical_check(t_data    *sd, double ang);
 void	ft_horizontal_check(double ang, t_data *sd);
 t_data	*allocate_data(void) ;
+/////////////////////////
+void    ft_read_textur_files(t_data *data);
+void    ft_get_textur(t_data *data);
 
 #endif

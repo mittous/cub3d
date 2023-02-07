@@ -46,6 +46,8 @@ void ft_vertical_check(t_data    *sd, double ang)
                 break;
             }
         }
+        size_t i = fabs(sd->line->v_y / TILE_SIZE);
+        size_t j = fabs(sd->line->v_x / TILE_SIZE);
         if(sd->cube->map[(int)(fabs(sd->line->v_y / TILE_SIZE))][(int)(fabs(sd->line->v_x / TILE_SIZE))] == '1')
         {
             sd->line->v_hit = true;

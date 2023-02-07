@@ -241,11 +241,12 @@ int	main(int ac, char **av)
 		game->draw->addr = mlx_get_data_addr(game->draw->img,
 			&game->draw->bits_per_pixel, &game->draw->line_length,
 			&game->draw->endian);
-		get_next_line(game->cube->fd, game->cube);
+		get_next_line_cub(game->cube->fd, game->cube);
 		ft_check_texture(game->cube);
 		ft_check_map_close (game->cube->map, game->cube);
 		// game.win = &win;
 		p_init(game->p);
+		ft_get_textur(game);
 		// game->cube = &game->cube;
 		// game->p = &game->p;
     	game->win->window = mlx_new_window(game->win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");

@@ -18,6 +18,9 @@ SRC =	main.c \
 		display/raycasting.c\
 		display/vertical_check.c\
 		display/horizontal_check.c\
+		display/get_textur.c\
+		get_net_line/get_next_line.c\
+		get_net_line/get_next_line_utils.c\
 
 # BNC_SRC =
 
@@ -35,7 +38,7 @@ all : $(NAME)
 
 $(NAME) : $(INC) $(OBJ)
 	make bonus -C libft/
-	$(CC) $(OBJ) libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJ) $(CFLAGS) libft/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 #$(NAME): $(OBJ)
 	
 

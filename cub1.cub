@@ -1,7 +1,7 @@
-SO main.c
-WE main.c
-NO main.c
-EA main.c
+SO ./texturs/wall.xpm
+WE ./texturs/wall.xpm
+NO ./texturs/wall.xpm
+EA ./texturs/wall.xpm
 F 36,37,38
 C 104,106,119
 

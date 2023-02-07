@@ -10,91 +10,79 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "get_next_line.h"
 
-
-char	*read_buff_size_cub(int fd, char *lines, t_cube *cube)
+char	*read_buff_size(int fd, char *lines)
 {
 	char	*bufer;
-	char	old_read;
-	int		count_text;
 	int		i;
 
 	i = 1;
-	count_text = 0;
-	old_read = '\n';
+	int count_text = 0;
 	bufer = malloc(BUFFER_SIZE + 1);
-	lines = NULL; // = malloc(BUFFER_SIZE + 1);
-	if (!bufer)
+	lines = malloc(BUFFER_SIZE);
+	if (!bufer || !lines)
 		return (NULL);
 	while (i)
 	{
 		i = read(fd, bufer, BUFFER_SIZE);
+		if (i == 0)
+			break ;
 		if (i == -1)
 		{
 			free(bufer);
-			bufer = NULL;
 			return (NULL);
 		}
 		bufer[i] = '\0';
-
-		if (bufer[0] == '\n')
-		{
-			if (old_read != '\n')
-			{
-				lines = ft_strjoin_gnl(lines, bufer);
-				count_text++;
-			}
-			if (old_read == '\n' && count_text > 6)
-			{
-				ft_putendl_fd("new line on the map", 2);
-				exit (0);
-			}
-		}
-		else
-			lines = ft_strjoin_gnl(lines, bufer);
-		if (bufer[0] && count_text > 5)
-			ft_count_char(bufer[0], cube);
-		old_read = bufer[0];
+		lines = ft_strjoin_gnl(lines, bufer);
 	}
 	free (bufer);
-	bufer = NULL;
 	return (lines);
 }
 
-void	one_line_cub(char *lines, t_cube *cube)
+char	*one_line(char *lines)
 {
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
 	if (!lines[i])
-		return ;
-	cube->texture = ft_split_gnl(lines, '\n');
-	while (*lines && j != 6)
-	{
-		if (*lines == '\n')
-			j++;
-		lines++;
-	}
-	cube->map = ft_split(lines, '\n');
+		return (NULL);
+	while (lines[i] != '\n' && lines[i])
+		i++;
+	return (ft_substr(lines, 0, ++i));
 }
 
-void	get_next_line_cub(int fd, t_cube *cube)
+char	*lines_rest(char *file_line)
+{
+	int		j;
+	char	*dup;
+
+	j = 0;
+	while (file_line[j] != '\n' && file_line[j])
+		j++;
+	if (!file_line[j])
+	{
+		free(file_line);
+		return (NULL);
+	}
+	dup = ft_substr(file_line, ++j, ft_strlen(file_line));
+	free(file_line);
+	return (dup);
+}
+
+char	*get_next_line(int fd)
 {
 	static char	*file_line;
+	char		*o_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return ;
-	file_line = read_buff_size_cub(fd, file_line, cube);
+		return (NULL);
+	file_line = NULL;
+	file_line = read_buff_size(fd, file_line);
 	if (!file_line)
-		return ;
-	one_line_cub(file_line, cube);
-	if (cube->player != 1)
-		ft_messing_character_err("You'r messing one of the following chars (N,E,W,S)");
-	if (cube->one < 1)
-		ft_messing_character_err("Ther is no wall (1)");
-	if (cube->zero < 1)
-		ft_messing_character_err("Ther is no free space (0)");
+		return (NULL);
+	
+	o_line = one_line(file_line);
+	file_line = lines_rest(file_line);
+	return (o_line);
 }
