@@ -18,16 +18,14 @@ char	*read_buff_size(int fd, char *lines)
 	int		i;
 
 	i = 1;
-	int count_text = 0;
 	bufer = malloc(BUFFER_SIZE + 1);
 	lines = malloc(BUFFER_SIZE);
 	if (!bufer || !lines)
 		return (NULL);
+	lines = NULL;
 	while (i)
 	{
 		i = read(fd, bufer, BUFFER_SIZE);
-		if (i == 0)
-			break ;
 		if (i == -1)
 		{
 			free(bufer);

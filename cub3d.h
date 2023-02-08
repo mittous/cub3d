@@ -12,6 +12,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+#include <mlx.h>
 # include "libft/libft.h"
 #include "get_net_line/get_next_line.h"
 
@@ -27,7 +28,7 @@
 # define BLACK 8421504
 # define RED 16711680
 # define ORANGE 65454456
-// # define FOFV	1.0471975512
+# define FOFV	1.0471975512
 # define RAD 0.01745329251
 
 

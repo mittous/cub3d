@@ -66,7 +66,7 @@ void  ft_clear_image(t_data *test)
         while (j < WIN_WIDTH)
         {
 			if (i < WIN_HEIGHT/2)
-            	my_mlx_pixel_put(test->draw, i, j, 0);
+				my_mlx_pixel_put(test->draw, i, j, 0);
 			else
 				my_mlx_pixel_put(test->draw, i, j, WHITE);
             j++;

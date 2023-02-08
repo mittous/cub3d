@@ -50,9 +50,14 @@ void    ft_drawing_wall(int ray ,double wall_start, double wall_end, t_data *dat
 {
     int color;
 
+    color = 0;
     while (wall_start < wall_end)
     {
-        my_mlx_pixel_put(data->draw, wall_start, ray, 211);
+        // int x = (int)((RAD / (2 * M_PI)) * data->textur[0].width) % data->textur[0].width;
+        // int y = (int)((RAD / (2 * M_PI)) * data->textur[0].height) % data->textur[0].height;
+        // printf("x = %d, y = %d\n", x, y);
+        my_mlx_pixel_put(data->draw, (int) wall_start % data->textur[0].width , ray, data->textur[0].addr[color *data->textur[0].width + increes] * 0xFFFFFF);
+        color++;
         wall_start++;
     }
 }
@@ -83,6 +88,7 @@ void ft_raycasting(t_data   *sd)
     //     sd->line->h_x = 0;
     //     sd->line->h_y = 0;
     double dis_projplane = (WIN_WIDTH / 2) / tan(30 * (M_PI / 180));
+    int increes = 0;
     while (i < WIN_WIDTH)
     {
         sd->line->v_hit = false;
@@ -106,8 +112,9 @@ void ft_raycasting(t_data   *sd)
 		double wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
 
 		int wall_end = wall_start + wall_height;
-		ft_drawing_wall(i, wall_start, wall_end, sd, 0);
+		ft_drawing_wall(i, wall_start, wall_end, sd, increes);
         ang += ang_inc;
+        increes++;
         i++;
     }
     
