@@ -126,10 +126,17 @@ void ft_raycasting(t_data   *sd)
         wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
         wall_end = wall_start + wall_height;
 
-        if (floor(ang) == floor((3 * M_PI) / 2))
+        if (sd->line->v_x)
+        {
+            puts("0");
 		    ft_drawing_wall(i  , wall_height, sd, offset_x, 1);
+        }
         else
+        {
+            
+            puts("1");
             ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
+        }
 
         // printf("ang = %f\n", ang);
         // printf ("(3 * M_PI) / 2 = %f\n", (3 * M_PI) / 2);
