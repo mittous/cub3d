@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:12:37 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/06 10:34:17 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/12 13:24:40 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,23 @@ void line_direction_init(t_line   *line, double angle)
     }
 }
 
-void    ft_drawing_wall(int ray ,double wall_start, double wall_end, t_data *data, int offset_x)
+void    ft_drawing_wall(int ray ,double wall_real_height, t_data *data, int offset_x)
 {
-    int color;
+    double  wall_height;
+    int     start;
+    int     end;
 
-    color = 0;
-    int start = wall_start;
-    // while (start < wall_end)
-    // {
-    //     my_mlx_pixel_put(data->draw, start , ray, data->textur[0].addr[color *data->textur[0].width + increes] );
-    //     color++;
-    //     start++;
-    // }
-    while (start < wall_end)
+    if (wall_real_height > WIN_HEIGHT)
+        wall_height = WIN_HEIGHT;
+    else
+        wall_height = wall_real_height;
+	start = (WIN_HEIGHT / 2.0) - (wall_height / 2.0);
+	end = (WIN_HEIGHT / 2.0) + (wall_height / 2.0);
+    while (start < end)
     {
-        int offset_y = ((int)start - wall_start) * data->textur[0].height / (wall_end - wall_start);
+        int dis_from_top = start + (wall_real_height / 2) - (WIN_HEIGHT / 2);
+		int offset_y = dis_from_top / wall_real_height * data->textur->height;
         my_mlx_pixel_put(data->draw, start , ray, data->textur[0].addr[(data->textur[0].width * offset_y) + offset_x]);
-        color++;
         start++;
     }
 
@@ -110,25 +110,32 @@ void ft_raycasting(t_data   *sd)
             ft_vertical_check(sd, ang);
        if (ang !=  0 && ang !=  M_PI)
             ft_horizontal_check(ang, sd);
-
+        double wall_height;
+        double wall_start;
+        int wall_end;
         if (distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y) < distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y) &&  sd->line->v_hit == true)
+        {
             sd->line->distance = distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y);
+            offset_x = fmod(sd->line->v_y, TILE_SIZE) / TILE_SIZE * sd->textur->width;
+        }
         else
+        {
             sd->line->distance =  distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y);
+            offset_x = fmod(sd->line->h_x, TILE_SIZE) / TILE_SIZE * sd->textur->width;
+        }
+        wall_height = (TILE_SIZE / sd->line->distance) * dis_projplane;
+        wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
+        wall_end = wall_start + wall_height;
 
-        double wall_height = (TILE_SIZE / sd->line->distance) * dis_projplane;
-		double wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
+        
 
-		int wall_end = wall_start + wall_height;
-        if (wall_end >= WIN_HEIGHT)
-            wall_end = WIN_HEIGHT - 1;
-        if (wall_start < 0)
-            wall_start = 0;
-        if (sd->line->v_hit == true)
-            offset_x = (int)sd->line->h_x % TILE_SIZE;
-        else
-            offset_x = (int)sd->line->h_y % TILE_SIZE;
-		ft_drawing_wall(i  , wall_start, wall_end, sd, offset_x);
+	
+        // if (sd->line->v_hit == true)
+            
+        // else
+            
+        // printf("offset_x = %d, v_y = %f, h_x = %f\n", offset_x, sd->line->v_y, sd->line->h_x);
+		ft_drawing_wall(i  , wall_height, sd, offset_x);
         // printf ("h_x = %f\n", sd->line->h_x);
         ang += ang_inc;
         increes++;
