@@ -12,23 +12,24 @@ void	ft_init(t_cube *cube)
 	cube->map = NULL;
 }
 
-int	ft_count_line(char **map)
+int	ft_count_line(char **map, t_cube *cube)
 {
 	int	j;
 
 	j = 0;
 	while (map[j])
 		j++;
+	cube->map_y = j;
 	return (j);
 }
 
-int	ft_check_up_down_map(char **map)
+int	ft_check_up_down_map(char **map, t_cube *cube)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	j = ft_count_line(map) - 1;
+	j = ft_count_line(map, cube) - 1;
 	while (map[0][i] == '1' || map[0][i] == ' ')
 		i++;
 	if (i == ft_strlen(map[0]))
@@ -50,7 +51,8 @@ void	ft_check_map_close(char **map, t_cube *cube)
 
 	i = 0;
 	j = 0;
-	if (ft_check_up_down_map(map))
+	cube->map_x = 0;
+	if (ft_check_up_down_map(map, cube))
 	{
 		while (map[j])
 		{
@@ -65,14 +67,14 @@ void	ft_check_map_close(char **map, t_cube *cube)
 						printf ("map is not suround by one");
 						exit(0);
 					}
-				} 
-
+				}
 				i++;
+				if (cube->map_x < i)
+					cube->map_x = i;
 			}
 			j++;
 		}
 	}
-	printf ("map is-- valid\n");
 }
 
 int	ft_atoi_cub(const char *str)
@@ -244,6 +246,7 @@ int	main(int ac, char **av)
 		get_next_line_cub(game->cube->fd, game->cube);
 		ft_check_texture(game->cube);
 		ft_check_map_close (game->cube->map, game->cube);
+
 		// game.win = &win;
 		p_init(game->p);
 		ft_get_textur(game);
