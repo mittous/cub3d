@@ -19,6 +19,7 @@
 // # include "../get_next_line/get_next_line.h"
 
 # define BUFFER_SIZE 1
+# define MINI_MAPE 0.2
 # define WIN_HEIGHT 450
 # define WIN_WIDTH 1920
 # define TILE_SIZE 30
