@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/06 17:48:11 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/12 10:25:27 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	print_pixel(t_data *test, int x, int y, int color )
 	x *= TILE_SIZE;
 	y *= TILE_SIZE;
 	i = 0;
-	while (i < TILE_SIZE - 1)
+	while (MINI_MAPE * (i < TILE_SIZE - 1))
 	{
 		j = 0;
-		while (j < TILE_SIZE - 1)
+		while (MINI_MAPE * (j < TILE_SIZE - 1))
 		{
-			my_mlx_pixel_put(test->draw, y + j, x + i, color);
+			my_mlx_pixel_put(test->draw, MINI_MAPE * (y + j),MINI_MAPE * ( x + i), color);
 			j++;
 		}
 		i++;
@@ -47,7 +47,7 @@ void	print_pixel(t_data *test, int x, int y, int color )
 		test->p->y_cube = test->p->y -3;
 		while (test->p->y_cube < test->p->y + 3)
 		{
-			my_mlx_pixel_put(test->draw, test->p->y_cube, test->p->x_cube, RED);
+			my_mlx_pixel_put(test->draw, MINI_MAPE * (test->p->y_cube), MINI_MAPE * (test->p->x_cube), RED);
 			test->p->y_cube++;
 		}
 		test->p->x_cube++;
@@ -60,7 +60,7 @@ void  ft_clear_image(t_data *test)
     int j;
 
     i = 0;
-    while (i < WIN_HEIGHT)
+    while ((i < WIN_HEIGHT))
     {
         j = 0;
         while (j < WIN_WIDTH)
@@ -83,21 +83,21 @@ int	draw_2d_map(t_data **sd)
 	i = 0;
 	j = 0;
 	mlx_clear_window((*sd)->win->mlx_ptr, (*sd)->win->window);
-	// while ((*sd)->cube->map[i])
-	// {
-	// 	j = 0;
-	// 	while ((*sd)->cube->map[i][j])
-	// 	{
-	// 		if ((*sd)->cube->map[i][j] == '1')
-	// 			print_pixel((*sd), j, i, BLACK);
-	// 		else if ((*sd)->cube->map[i][j] == '0')
-	// 			print_pixel((*sd), j, i, WHITE);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
 	ft_clear_image((*sd));
 	ft_raycasting((*sd));
+	while ((*sd)->cube->map[i])
+	{
+		j = 0;
+		while ((*sd)->cube->map[i][j])
+		{
+			if ((*sd)->cube->map[i][j] == '1')
+				print_pixel((*sd), j, i, BLACK);
+			else if ((*sd)->cube->map[i][j] == '0')
+				print_pixel((*sd), j, i, WHITE);
+			j++;
+		}
+		i++;
+	}
 	ft_move((*sd));
 	mlx_put_image_to_window((*sd)->win->mlx_ptr, (*sd)->win->window,
 		(*sd)->draw->img, 0, 0);
