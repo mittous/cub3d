@@ -46,7 +46,7 @@ void line_direction_init(t_line   *line, double angle)
     }
 }
 
-void    ft_drawing_wall(int ray ,double wall_real_height, t_data *data, int offset_x)
+void    ft_drawing_wall(int ray ,double wall_real_height, t_data *data, int offset_x, int text)
 {
     double  wall_height;
     int     start;
@@ -62,7 +62,7 @@ void    ft_drawing_wall(int ray ,double wall_real_height, t_data *data, int offs
     {
         int dis_from_top = start + (wall_real_height / 2) - (WIN_HEIGHT / 2);
 		int offset_y = dis_from_top / wall_real_height * data->textur->height;
-        my_mlx_pixel_put(data->draw, start , ray, data->textur[0].addr[(data->textur[0].width * offset_y) + offset_x]);
+        my_mlx_pixel_put(data->draw, start , ray, data->textur[text].addr[(data->textur[text].width * offset_y) + offset_x]);
         start++;
     }
 
@@ -96,7 +96,6 @@ void ft_raycasting(t_data   *sd)
     double dis_projplane = (WIN_WIDTH / 2) / tan(30 * (M_PI / 180));
     int increes = 0;
     int offset_x = 0;
-    int offset_y = 0;
     while (i < WIN_WIDTH)
     {
         sd->line->v_hit = false;
@@ -127,15 +126,22 @@ void ft_raycasting(t_data   *sd)
         wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
         wall_end = wall_start + wall_height;
 
-        
+        if (floor(ang) == floor((3 * M_PI) / 2))
+		    ft_drawing_wall(i  , wall_height, sd, offset_x, 1);
+        else
+            ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
 
-	
-        // if (sd->line->v_hit == true)
-            
-        // else
-            
-        // printf("offset_x = %d, v_y = %f, h_x = %f\n", offset_x, sd->line->v_y, sd->line->h_x);
-		ft_drawing_wall(i  , wall_height, sd, offset_x);
+        // printf("ang = %f\n", ang);
+        // printf ("(3 * M_PI) / 2 = %f\n", (3 * M_PI) / 2);
+		// ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
+
+            // sd->textur[0].addr;
+        // if (sd->cube->map[i][j] == 'S')
+        //     sd->p->angle = M_PI / 2;
+        // if (sd->cube->map[i][j] == 'W')
+        //     sd->p->angle = M_PI;
+        // if (sd->cube->map[i][j] == 'E')
+        //     sd->p->angle = 0;
         // printf ("h_x = %f\n", sd->line->h_x);
         ang += ang_inc;
         increes++;

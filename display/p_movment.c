@@ -18,12 +18,15 @@ void ft_move_right(t_data **sd)
 	int x;
 	int y;
 
-    x = ((*sd)->p->x - (cos((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed)) / TILE_SIZE;
     y = ((*sd)->p->y - (sin((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed)) / TILE_SIZE;
-    if((*sd)->cube->map[y][x] != '1')
+    if((*sd)->cube->map[y][(int)(*sd)->p->x / TILE_SIZE] != '1')
+    {
+        (*sd)->p->y -= sin((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed;
+    }
+    x = ((*sd)->p->x - (cos((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed)) / TILE_SIZE;
+    if((*sd)->cube->map[(int)(*sd)->p->y / TILE_SIZE][x] != '1')
     {
         (*sd)->p->x -= cos((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed;
-        (*sd)->p->y -= sin((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed;
     }
 }
 
@@ -32,12 +35,15 @@ void ft_move_up(t_data **sd)
     int x;
     int y;
 
-    x = ((*sd)->p->x - (cos((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
     y = ((*sd)->p->y - (sin((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
-    if((*sd)->cube->map[y][x] != '1')
+    if((*sd)->cube->map[y][(int)(*sd)->p->x / TILE_SIZE] != '1')
     {
-        (*sd)->p->x -= cos((*sd)->p->angle) * (*sd)->p->move_speed;
         (*sd)->p->y -= sin((*sd)->p->angle) * (*sd)->p->move_speed;
+    }
+    x = ((*sd)->p->x - (cos((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
+    if((*sd)->cube->map[(int)(*sd)->p->y / TILE_SIZE][x] != '1')
+    {
+       (*sd)->p->x -= cos((*sd)->p->angle) * (*sd)->p->move_speed;
     }
 }
 
@@ -47,13 +53,15 @@ void ft_move_down(t_data **sd)
 	int x;
 	int y;
 
-    x = ((*sd)->p->x + (cos((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
-    y = ((*sd)->p->y
-     + (sin((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
-    if((*sd)->cube->map[y][x] != '1')
+    y = ((*sd)->p->y + (sin((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
+    if((*sd)->cube->map[y][(int)(*sd)->p->x / TILE_SIZE] != '1')
     {
-        (*sd)->p->x += cos((*sd)->p->angle) * (*sd)->p->move_speed;
         (*sd)->p->y += sin((*sd)->p->angle) * (*sd)->p->move_speed;
+    }
+    x = ((*sd)->p->x + (cos((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
+    if((*sd)->cube->map[(int)(*sd)->p->y / TILE_SIZE][x] != '1')
+    {
+       (*sd)->p->x += cos((*sd)->p->angle) * (*sd)->p->move_speed;
     }
 }
 
@@ -62,12 +70,15 @@ void ft_move_left(t_data **sd)
 	int x;
 	int y;
 
-    x = ((*sd)->p->x - (cos((*sd)->p->angle + M_PI / 2) * (*sd)->p->move_speed)) / TILE_SIZE;
     y = ((*sd)->p->y - (sin((*sd)->p->angle + M_PI / 2) * (*sd)->p->move_speed)) / TILE_SIZE;
-    if((*sd)->cube->map[y][x] != '1')
+    if((*sd)->cube->map[y][(int)(*sd)->p->x / TILE_SIZE] != '1')
     {
-        (*sd)->p->x -= cos((*sd)->p->angle + M_PI / 2) * (*sd)->p->move_speed;
         (*sd)->p->y -= sin((*sd)->p->angle + M_PI / 2) * (*sd)->p->move_speed;
+    }
+    x = ((*sd)->p->x - (cos((*sd)->p->angle + M_PI / 2) * (*sd)->p->move_speed)) / TILE_SIZE;
+    if((*sd)->cube->map[(int)(*sd)->p->y / TILE_SIZE][x] != '1')
+    {
+      (*sd)->p->x -= cos((*sd)->p->angle + M_PI / 2) * (*sd)->p->move_speed;
     }
 }
 
