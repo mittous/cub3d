@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:12:37 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/12 13:24:40 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/12 13:53:51 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,12 @@ void ft_raycasting(t_data   *sd)
         int wall_end;
         if (distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y) < distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y) &&  sd->line->v_hit == true)
         {
-            sd->line->distance = distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y);
+            sd->line->distance = distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y) * cos(ang - sd->p->angle);
             offset_x = fmod(sd->line->v_y, TILE_SIZE) / TILE_SIZE * sd->textur->width;
         }
         else
         {
-            sd->line->distance =  distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y);
+            sd->line->distance =  distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y) * cos(ang - sd->p->angle);
             offset_x = fmod(sd->line->h_x, TILE_SIZE) / TILE_SIZE * sd->textur->width;
         }
         wall_height = (TILE_SIZE / sd->line->distance) * dis_projplane;

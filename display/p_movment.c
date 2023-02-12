@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:41:35 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/06 13:16:10 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/12 13:40:11 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void ft_move_right(t_data **sd)
     y = ((*sd)->p->y - (sin((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed)) / TILE_SIZE;
     if((*sd)->cube->map[y][x] != '1')
     {
-        (*sd)->p->x -= cos((*sd)->p->angle - M_PI / 2) * ((*sd)->p->move_speed);
-        (*sd)->p->y -= sin((*sd)->p->angle - M_PI / 2) * ((*sd)->p->move_speed);
+        (*sd)->p->x -= cos((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed;
+        (*sd)->p->y -= sin((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed;
     }
 }
 
@@ -48,7 +48,8 @@ void ft_move_down(t_data **sd)
 	int y;
 
     x = ((*sd)->p->x + (cos((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
-    y = ((*sd)->p->y + (sin((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
+    y = ((*sd)->p->y
+     + (sin((*sd)->p->angle) * (*sd)->p->move_speed)) / TILE_SIZE;
     if((*sd)->cube->map[y][x] != '1')
     {
         (*sd)->p->x += cos((*sd)->p->angle) * (*sd)->p->move_speed;
