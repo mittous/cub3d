@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/12 13:14:30 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:37:43 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	print_pixel(t_data *test, int x, int y, int color )
 	x *= TILE_SIZE;
 	y *= TILE_SIZE;
 	i = 0;
-	while (MINI_MAPE * i < MINI_MAPE * (TILE_SIZE - 1))
+	while ((MINI_MAPE * i) < (MINI_MAPE * TILE_SIZE))
 	{
 		j = 0;
-		while (MINI_MAPE * j < MINI_MAPE * (TILE_SIZE - 1))
+		while ((MINI_MAPE * j) < (MINI_MAPE * TILE_SIZE))
 		{
 			my_mlx_pixel_put(test->draw, MINI_MAPE * (y + j),MINI_MAPE * ( x + i), color);
 			j++;
