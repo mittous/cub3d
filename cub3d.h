@@ -20,8 +20,8 @@
 
 # define BUFFER_SIZE 1
 # define MINI_MAPE 0.2
-# define WIN_HEIGHT 450
-# define WIN_WIDTH 1920
+# define WIN_HEIGHT 540
+# define WIN_WIDTH 2190
 # define TILE_SIZE 30
 # define SPEED 3.0
 # define PLAYER_SQUARE 2
@@ -49,10 +49,10 @@ typedef struct	line {
 }				t_line;
 
 typedef struct	s_player {
-	int		x;
-	int		x_cube;
-	int		y;
-	int		y_cube;
+	double		x;
+	double		x_cube;
+	double		y;
+	double		y_cube;
 	double		move_speed;
 	double		retation_angle;
 	double		angle;
