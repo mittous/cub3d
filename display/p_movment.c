@@ -22,8 +22,8 @@ void ft_move_right(t_data **sd)
     y = ((*sd)->p->y - (sin((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed)) / TILE_SIZE;
     if((*sd)->cube->map[y][x] != '1')
     {
-        (*sd)->p->x -= cos((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed;
-        (*sd)->p->y -= sin((*sd)->p->angle - M_PI / 2) * (*sd)->p->move_speed;
+        (*sd)->p->x -= cos((*sd)->p->angle - M_PI / 2) * ((*sd)->p->move_speed);
+        (*sd)->p->y -= sin((*sd)->p->angle - M_PI / 2) * ((*sd)->p->move_speed);
     }
 }
 
