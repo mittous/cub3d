@@ -19,11 +19,11 @@
 // # include "../get_next_line/get_next_line.h"
 
 # define BUFFER_SIZE 1
-# define MINI_MAPE 0.2
 # define WIN_HEIGHT 540
 # define WIN_WIDTH 2190
+# define MINI_MAPE 0.2
 # define TILE_SIZE 30
-# define SPEED 3.0
+# define SPEED 8.0
 # define PLAYER_SQUARE 2
 # define WHITE 16777215
 # define BLACK 8421504
@@ -147,5 +147,6 @@ t_data	*allocate_data(void) ;
 /////////////////////////
 void    ft_read_textur_files(t_data *data);
 void    ft_get_textur(t_data *data);
+int		ft_rgb_to_color(int r, int g, int b);
 
 #endif
