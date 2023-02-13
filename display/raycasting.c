@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:12:37 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/12 17:20:53 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/13 08:30:33 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,13 @@ void ft_raycasting(t_data   *sd)
         int wall_end;
         if (distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y) < distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y) &&  sd->line->v_hit == true)
         {
+             if (sd->line->ray_right == 1)
+                ft_drawing_wall(i  , wall_height, sd, offset_x, 1);
+            else if (sd->line->ray_left == 1)
+                ft_drawing_wall(i  , wall_height, sd, offset_x, 2);
+            wall_height = (TILE_SIZE / sd->line->distance) * dis_projplane;
+            wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
+            wall_end = wall_start + wall_height;
             sd->line->distance = distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y) * cos(ang - sd->p->angle);
             offset_x = fmod(sd->line->v_y, TILE_SIZE) / TILE_SIZE * sd->textur->width;
         }
@@ -120,26 +127,33 @@ void ft_raycasting(t_data   *sd)
         {
             sd->line->distance =  distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y) * cos(ang - sd->p->angle);
             offset_x = fmod(sd->line->h_x, TILE_SIZE) / TILE_SIZE * sd->textur->width;
-        }
-        wall_height = (TILE_SIZE / sd->line->distance) * dis_projplane;
-        wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
-        wall_end = wall_start + wall_height;
-
-
-        if (sd->line->v_hit)
-        {
-            if (ang > (3 * M_PI) / 2 || ang < M_PI / 2)
-                ft_drawing_wall(i  , wall_height, sd, offset_x, 1);
-            else if (ang > M_PI / 2 && ang < (3 * M_PI) / 2)
-                ft_drawing_wall(i  , wall_height, sd, offset_x, 2);
-        }
-        else if (!sd->line->v_hit)
-        {
-            if (ang > M_PI)
+            wall_height = (TILE_SIZE / sd->line->distance) * dis_projplane;
+            wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
+            wall_end = wall_start + wall_height;
+            if (sd->line->ray_up == 1)
                 ft_drawing_wall(i  , wall_height, sd, offset_x, 3);
-            else if (ang < M_PI)
+            else if (sd->line->ray_down == 1)
                 ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
         }
+        // wall_height = (TILE_SIZE / sd->line->distance) * dis_projplane;
+        // wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
+        // wall_end = wall_start + wall_height;
+
+
+        // if (sd->line->v_hit)
+        // {
+        //     if (ang > (3 * M_PI) / 2 || ang < M_PI / 2)
+        //         ft_drawing_wall(i  , wall_height, sd, offset_x, 1);
+        //     else if (ang > M_PI / 2 && ang < (3 * M_PI) / 2)
+        //         ft_drawing_wall(i  , wall_height, sd, offset_x, 2);
+        // }
+        // else if (!sd->line->v_hit)
+        // {
+        //     if (ang > M_PI)
+        //         ft_drawing_wall(i  , wall_height, sd, offset_x, 3);
+        //     else if (ang < M_PI)
+        //         ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
+        // }
         ang += ang_inc;
         i++;
     }

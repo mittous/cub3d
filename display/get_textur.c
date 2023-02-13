@@ -14,10 +14,10 @@ void    ft_get_textur(t_data *data)
 	
 	data->textur[2].img = mlx_xpm_file_to_image(data->win->mlx_ptr, data->cube->we, &data->textur[2].height, \
 	&data->textur[2].width);
-	data->textur[2].addr = (int *)mlx_get_data_addr(data->textur[1].img, &tmp, &tmp, &tmp);
+	data->textur[2].addr = (int *)mlx_get_data_addr(data->textur[2].img, &tmp, &tmp, &tmp);
 
 
 	data->textur[3].img = mlx_xpm_file_to_image(data->win->mlx_ptr, data->cube->no, &data->textur[3].height, \
 	&data->textur[3].width);
-	data->textur[3].addr = (int *)mlx_get_data_addr(data->textur[1].img, &tmp, &tmp, &tmp);
+	data->textur[3].addr = (int *)mlx_get_data_addr(data->textur[3].img, &tmp, &tmp, &tmp);
 }
