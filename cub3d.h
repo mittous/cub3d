@@ -95,6 +95,8 @@ typedef struct s_cube
 	char	*ea;
 	char	*floor;
 	char	*ceiling;
+	int 	map_y;
+	int 	map_x;
 }				t_cube;
 
 typedef struct s_textur

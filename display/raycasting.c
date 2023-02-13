@@ -94,7 +94,6 @@ void ft_raycasting(t_data   *sd)
     //     sd->line->h_x = 0;
     //     sd->line->h_y = 0;
     double dis_projplane = (WIN_WIDTH / 2) / tan(30 * (M_PI / 180));
-    int increes = 0;
     int offset_x = 0;
     while (i < WIN_WIDTH)
     {
@@ -105,10 +104,10 @@ void ft_raycasting(t_data   *sd)
             ang += (2 * M_PI);
         line_direction_init(sd->line, ang);
 
-        if (ang !=   M_PI/2 && ang !=  (1.5 * M_PI))
-            ft_vertical_check(sd, ang);
-       if (ang !=  0 && ang !=  M_PI)
+        if (ang !=  0 && ang !=  M_PI)
             ft_horizontal_check(ang, sd);
+        if (ang != M_PI/2 && ang !=  (1.5 * M_PI))
+            ft_vertical_check(sd, ang);
         double wall_height;
         double wall_start;
         int wall_end;
@@ -117,7 +116,7 @@ void ft_raycasting(t_data   *sd)
             sd->line->distance = distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y) * cos(ang - sd->p->angle);
             offset_x = fmod(sd->line->v_y, TILE_SIZE) / TILE_SIZE * sd->textur->width;
         }
-        else
+        else if (distance(sd->p->x,sd->p->y,sd->line->v_x,sd->line->v_y) > distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y) &&  sd->line->h_hit == true)
         {
             sd->line->distance =  distance(sd->p->x,sd->p->y,sd->line->h_x ,sd->line->h_y) * cos(ang - sd->p->angle);
             offset_x = fmod(sd->line->h_x, TILE_SIZE) / TILE_SIZE * sd->textur->width;
@@ -126,32 +125,22 @@ void ft_raycasting(t_data   *sd)
         wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
         wall_end = wall_start + wall_height;
 
-        if (sd->line->v_x)
-        {
-            puts("0");
-		    ft_drawing_wall(i  , wall_height, sd, offset_x, 1);
-        }
-        else
-        {
-            
-            puts("1");
-            ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
-        }
 
-        // printf("ang = %f\n", ang);
-        // printf ("(3 * M_PI) / 2 = %f\n", (3 * M_PI) / 2);
-		// ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
-
-            // sd->textur[0].addr;
-        // if (sd->cube->map[i][j] == 'S')
-        //     sd->p->angle = M_PI / 2;
-        // if (sd->cube->map[i][j] == 'W')
-        //     sd->p->angle = M_PI;
-        // if (sd->cube->map[i][j] == 'E')
-        //     sd->p->angle = 0;
-        // printf ("h_x = %f\n", sd->line->h_x);
+        if (sd->line->v_hit)
+        {
+            if (ang > (3 * M_PI) / 2 || ang < M_PI / 2)
+                ft_drawing_wall(i  , wall_height, sd, offset_x, 1);
+            else if (ang > M_PI / 2 && ang < (3 * M_PI) / 2)
+                ft_drawing_wall(i  , wall_height, sd, offset_x, 2);
+        }
+        else if (!sd->line->v_hit)
+        {
+            if (ang > M_PI)
+                ft_drawing_wall(i  , wall_height, sd, offset_x, 3);
+            else if (ang < M_PI)
+                ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
+        }
         ang += ang_inc;
-        increes++;
         i++;
     }
     
