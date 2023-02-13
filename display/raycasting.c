@@ -125,19 +125,19 @@ void ft_raycasting(t_data   *sd)
         wall_start = WIN_HEIGHT / 2 - (wall_height / 2);
         wall_end = wall_start + wall_height;
 
-
+        printf ("sd->line->v_hit[%d] = %d\n",i, sd->line->v_hit);
         if (sd->line->v_hit)
         {
             if (ang > (3 * M_PI) / 2 || ang < M_PI / 2)
                 ft_drawing_wall(i  , wall_height, sd, offset_x, 1);
-            else if (ang > M_PI / 2 && ang < (3 * M_PI) / 2)
+            if (ang > M_PI / 2 && ang < (3 * M_PI) / 2)
                 ft_drawing_wall(i  , wall_height, sd, offset_x, 2);
         }
         else if (!sd->line->v_hit)
         {
             if (ang > M_PI)
                 ft_drawing_wall(i  , wall_height, sd, offset_x, 3);
-            else if (ang < M_PI)
+            if (ang < M_PI)
                 ft_drawing_wall(i  , wall_height, sd, offset_x, 0);
         }
         ang += ang_inc;
