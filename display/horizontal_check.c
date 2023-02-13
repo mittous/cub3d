@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:34:29 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/06 13:46:50 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/13 08:40:47 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_horizontal_check(double ang, t_data *sd)
 		dx *= -1;
 	if (sd->line->ray_right == 1 && dx < 0)
 		dx *= -1;
-	while (sd->line->h_x >= 0 && sd->line->h_x <= WIN_WIDTH
-			&& sd->line->h_y >= 0 && sd->line->h_y <= WIN_HEIGHT )
+	while (sd->line->h_x >= 0 && sd->line->h_x <= (sd->cube->map_x * 30)
+			&& sd->line->h_y >= 0 && sd->line->h_y <= (sd->cube->map_y * 30) )
 	{
 		if (sd->line->ray_up == 1)
 		{

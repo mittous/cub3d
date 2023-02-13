@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/12 14:37:43 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/13 10:49:21 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,11 @@ void  ft_clear_image(t_data *test)
 {
     int i;
     int j;
+	// char **c;
+	// char **f;
 
+	// c = ft_split(test->cube->ceiling, ',');
+	// f = ft_split(test->cube->floor, ',');
     i = 0;
     while ((i < WIN_HEIGHT))
     {
@@ -66,7 +70,7 @@ void  ft_clear_image(t_data *test)
         while (j < WIN_WIDTH)
         {
 			if (i < WIN_HEIGHT/2)
-				my_mlx_pixel_put(test->draw, i, j, 0);
+				my_mlx_pixel_put(test->draw, i, j, BLACK);
 			else
 				my_mlx_pixel_put(test->draw, i, j, WHITE);
             j++;
