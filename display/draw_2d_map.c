@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/14 09:05:47 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/14 10:10:44 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	my_mlx_pixel_put(t_draw *data, int y, int x, int color)
 
 void	print_player(t_data *sd)
 {
+	sd->p->x_cube = sd->p->x;
+	sd->p->y_cube = sd->p->y;
 	sd->p->x_cube = sd->p->x -3;
 	while (sd->p->x_cube < sd->p->x + 3)
 	{
