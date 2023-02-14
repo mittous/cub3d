@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:46:28 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 06:47:52 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:21:38 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,9 @@ void	ft_get_textur(t_data *data)
 	&tmp, &tmp, &tmp);
 	data->textur[3].addr = (int *)mlx_get_data_addr(data->textur[3].img, \
 	&tmp, &tmp, &tmp);
+
+	// free(data->cube->so);
+	// free(data->cube->ea);
+	// free(data->cube->we);
+	// free(data->cube->no);
 }

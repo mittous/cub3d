@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 09:08:22 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:19:13 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ int ft_tronsform_int_to_rgb(int count, char *color, int rgb_color)
 		{
 			rgb_color = ft_rgb_to_color(ft_atoi_cub(rgb[0]), \
 				ft_atoi_cub(rgb[1]), ft_atoi_cub(rgb[2]));
+			free_word(rgb);
 			return (rgb_color);
 		}
 	}
@@ -182,9 +183,15 @@ void	ft_fill_infos(t_cube *cub, char **path)
 	else if (!ft_strcmp(path[0], "EA") && ft_check_file_exist(path[1]))
 		cub->ea = path[1];
 	else if (!ft_strcmp(path[0], "C"))
+	{
 		cub->ceiling = ft_count_coma(path[1]);
+		free_word(path);
+	}
 	else if (!ft_strcmp(path[0], "F"))
+	{
 		cub->floor = ft_count_coma(path[1]);
+		free_word(path);
+	}
 	else
 	{
 		ft_putendl_fd("Invalide identefire", 2);
