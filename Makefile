@@ -8,7 +8,8 @@ INC =	cub3d.h
 
 SRC =	main.c \
 		struct_init.c\
-		check_map_name.c \
+		check_map_name.c\
+		pars1.c\
 		errors.c \
 		read_from_map.c \
 		get_next_line.c \
