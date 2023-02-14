@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
+/*   Updated: 2023/02/14 06:51:40 by imittous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
-#include <mlx.h>
 
 void	ft_init(t_cube *cube)
 {	
@@ -40,14 +50,14 @@ int	ft_check_up_down_map(char **map, t_cube *cube)
 		if (i == ft_strlen(map[j]))
 			return (1);
 	}
-	ft_putendl_fd("map **is not valid", 2);
-	exit (0);
+	ft_putendl_fd("map is not valid", 2);
+	return (0);
 }
 
 void	ft_check_map_close(char **map, t_cube *cube)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -91,26 +101,54 @@ int	ft_atoi_cub(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		base = (base * 10) + (str[i] - 48);
+		if (base > 2147483647 && sign == 1)
+			ft_putendl_fd("your number is > than 255", 2);
 		i++;
 	}
 	while (str[i] && (str[i] == ' '))
 		i++;
 	if (!str[i])
 		return (base * sign);
-	ft_putendl_fd("this format (1 2 2,) is not valid, fix it to this( 122 ,)", 2);
-	exit (EXIT_FAILURE) ;
+	ft_putendl_fd("this format (1 , 2, 3) is not valid, this( 1,2,3)", 2);
+	return (0);
 }
 
+int ft_tronsform_int_to_rgb(int count, char *color, int rgb_color)
+{
+	int	i;
+	char	**rgb;
 
-char *ft_count_coma(char	*color /* t_cube *cub */)
+	i = -1;
+	if (count == 2)
+	{
+		rgb = ft_split(color, ',');
+		while (rgb[++i])
+		{
+			rgb[i] = ft_strtrim(rgb[i], " ");
+			if (ft_atoi_cub(rgb[i]) < 0 || ft_atoi_cub(rgb[i]) > 255)
+			{
+				ft_putendl_fd("color is not valid", 2);
+			}
+		}
+		if (rgb[0] && rgb[1] && rgb[2])
+		{
+			rgb_color = ft_rgb_to_color(ft_atoi_cub(rgb[0]), \
+				ft_atoi_cub(rgb[1]), ft_atoi_cub(rgb[2]));
+			return (rgb_color);
+		}
+	}
+	ft_putendl_fd("color is not valid", 2);
+	return (0);
+}
+
+int	ft_count_coma(char	*color)
 {
 	int		i;
 	int		count;
-	char	**rgb;
 
-	i = 0;
+	i = -1;
 	count = 0;
-	while (color[i])
+	while (color[++i])
 	{
 		if (ft_isdigit(color[i]))
 		{
@@ -120,99 +158,58 @@ char *ft_count_coma(char	*color /* t_cube *cub */)
 		else
 		{
 			ft_putendl_fd("Non digit information for colors", 2);
-			exit (0);
 		}
-		i++;
 	}
-	i = 0;
-	// int j = 0;
-	if (count == 2)
+	return (ft_tronsform_int_to_rgb(count, color, 0));
+}
+
+int	ft_check_file_exist(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 	{
-		rgb = ft_split(color, ',');
-		while (rgb[i])
-		{
-			// int nb = ft_atoi_cub(rgb[i]);
-			rgb[i] = ft_strtrim(rgb[i], " ");
-			int nb = ft_atoi_cub(rgb[i]);
-			if (nb < 0 || nb > 255)
-			{
-				ft_putendl_fd("color is not valid", 2);
-				exit (0);
-			}
-			rgb[i] = ft_strjoin(rgb[i], ",");
-			i++;
-		}
-		if (rgb[0] && rgb[1] && rgb[2])
-		{
-			color = ft_strjoin(rgb[0], rgb[1]);
-			color = ft_strjoin(color, rgb[2]);
-			return (color);
-		}
+		ft_putendl_fd("texture file is not exist\n", 2);
 	}
-	ft_putendl_fd("color is not valid", 2);
-	exit (0);
+	return (fd);
+}
+
+void	ft_fill_infos(t_cube *cub, char **path)
+{
+	if (!ft_strcmp(path[0], "NO") && ft_check_file_exist(path[1]))
+		cub->no = path[1];
+	else if (!ft_strcmp(path[0], "SO") && ft_check_file_exist(path[1]))
+		cub->so = path[1];
+	else if (!ft_strcmp(path[0], "WE") && ft_check_file_exist(path[1]))
+		cub->we = path[1];
+	else if (!ft_strcmp(path[0], "EA") && ft_check_file_exist(path[1]))
+		cub->ea = path[1];
+	else if (!ft_strcmp(path[0], "C"))
+		cub->ceiling = ft_count_coma(path[1]);
+	else if (!ft_strcmp(path[0], "F"))
+		cub->floor = ft_count_coma(path[1]);
+	else
+	{
+		ft_putendl_fd("Invalide identefire", 2);
+	}
 }
 
 void	ft_check_texture(t_cube *cub)
 {
 	int		i;
 	char	**path;
-	int		fd;
 
-	i = 0;
-	while (cub->texture[i])
+	i = -1;
+	while (cub->texture[++i])
 	{
 		path = ft_split (cub->texture[i], ' ');
 		if (path[1] && !path[2])
-		{
-			int j = 2;
-			while (path[j])
-			{
-				path[1] = ft_strjoin(path[1], path[j]);
-				j++;
-			}
-			if (!ft_isdigit(path[1][0]))
-			{
-				fd = open(path[1], O_RDWR);
-				if (fd == -1)
-				{
-					printf ("%s\n", path[0]);
-					printf("texture file is not valid");
-					exit(0);
-				}
-			}
-			if (!ft_strcmp(path[0], "NO"))
-				cub->no = path[1];
-			else if (!ft_strcmp(path[0], "SO"))
-				cub->so = path[1];
-			else if (!ft_strcmp(path[0], "WE"))
-				cub->we = path[1];
-			else if (!ft_strcmp(path[0], "EA"))
-				cub->ea = path[1];
-			else if (!ft_strcmp(path[0], "C"))
-			{
-				
-				cub->ceiling = ft_count_coma(path[1]);
-			}
-			else if (!ft_strcmp(path[0], "F"))
-				cub->floor = path[1];
-			else
-			{
-				ft_putendl_fd("Invalide identefire", 2);
-				exit (0);
-			}
-		}
+			ft_fill_infos(cub, path);
 		else
 		{
-			ft_putendl_fd("An information of more or lesse lement than two", 2);
-			exit (0);
+			ft_putendl_fd("you may have space in the middele of the info", 2);
 		}
-		i++;
-	}
-	if (!cub->no || !cub->so || !cub->we || !cub->ea || !cub->ceiling || !cub->floor)
-	{
-		ft_putendl_fd("An information of one/more element is messing", 2);
-		exit (0);
 	}
 }
 

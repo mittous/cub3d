@@ -38,6 +38,5 @@ int	ft_atoi(const char *str)
 	}
 	if (!str[i])
 		return (base * sign);
-	ft_putendl_fd("color is not valid", 2);
-	exit (0);
+	return (0);
 }

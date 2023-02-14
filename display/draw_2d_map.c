@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_2d_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/13 10:49:21 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/14 06:50:45 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 void	my_mlx_pixel_put(t_draw *data, int y, int x, int color)
 {
 	char	*dst;
-    if (y >= 0 && y < WIN_HEIGHT && x < WIN_WIDTH && x >= 0)
+
+	if (y >= 0 && y < WIN_HEIGHT && x < WIN_WIDTH && x >= 0)
 	{
-	    dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	    *(unsigned int*) dst = color;
-    }
+		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+		*(unsigned int*) dst = color;
+	}
 }
 
-void	print_pixel(t_data *test, int x, int y, int color )
+void	print_pixel(t_data *test, int x, int y, int color)
 {
 	int	i;
 	int	j;
@@ -54,29 +55,25 @@ void	print_pixel(t_data *test, int x, int y, int color )
 	}
 }
 
-void  ft_clear_image(t_data *test)
+void	ft_clear_image(t_data *test)
 {
-    int i;
-    int j;
-	// char **c;
-	// char **f;
+	int	i;
+	int	j;
 
-	// c = ft_split(test->cube->ceiling, ',');
-	// f = ft_split(test->cube->floor, ',');
-    i = 0;
-    while ((i < WIN_HEIGHT))
-    {
-        j = 0;
-        while (j < WIN_WIDTH)
-        {
-			if (i < WIN_HEIGHT/2)
-				my_mlx_pixel_put(test->draw, i, j, BLACK);
+	i = 0;
+	while ((i < WIN_HEIGHT))
+	{
+		j = 0;
+		while (j < WIN_WIDTH)
+		{
+			if (i < WIN_HEIGHT / 2)
+				my_mlx_pixel_put(test->draw, i, j, test->cube->ceiling);
 			else
-				my_mlx_pixel_put(test->draw, i, j, WHITE);
-            j++;
-        }
-        i++;
-    }
+				my_mlx_pixel_put(test->draw, i, j, test->cube->floor);
+			j++;
+		}
+		i++;
+	}
 }
 
 int	draw_2d_map(t_data **sd)

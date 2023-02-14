@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:34:29 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/13 08:40:47 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/14 06:49:06 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_horizontal_check(double ang, t_data *sd)
 	if (sd->line->ray_right == 1 && dx < 0)
 		dx *= -1;
 	while (sd->line->h_x >= 0 && sd->line->h_x <= (sd->cube->map_x * 30)
-			&& sd->line->h_y >= 0 && sd->line->h_y <= (sd->cube->map_y * 30) )
+		&& sd->line->h_y >= 0 && sd->line->h_y <= (sd->cube->map_y * 30))
 	{
 		if (sd->line->ray_up == 1)
 		{
@@ -43,7 +43,7 @@ void	ft_horizontal_check(double ang, t_data *sd)
 				&& sd->cube->map[(int)((sd->line->h_y - 1) / TILE_SIZE)][(int)((sd->line->h_x) / TILE_SIZE)] == '1')
 			{
 				sd->line->h_hit = true;
-				break;
+				break ;
 			}
 		}
 		if(sd->cube->map[(int)((sd->line->h_y) / TILE_SIZE)] 
