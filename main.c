@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 09:06:04 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/14 22:14:02 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,8 @@ void	ft_check_texture(t_cube *cub)
 	int		i;
 	char	**path;
 
+	cub->ceiling = -1;
+	cub->floor = -1;
 	i = -1;
 	while (cub->texture[++i])
 	{
@@ -206,6 +208,11 @@ void	ft_check_texture(t_cube *cub)
 		{
 			ft_putendl_fd("you may have space in the middele of the info", 2);
 		}
+	}
+	if (cub->ceiling == -1 || cub->floor == -1 || !cub->no || !cub->so \
+		|| !cub->we || !cub->ea)
+	{
+		ft_putendl_fd("you have to fill all the texture", 2);
 	}
 }
 
