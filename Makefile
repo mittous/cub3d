@@ -8,13 +8,15 @@ INC =	cub3d.h
 
 SRC =	main.c \
 		struct_init.c\
-		check_map_name.c \
+		check_map_name.c\
+		pars1.c\
 		errors.c \
 		read_from_map.c \
 		get_next_line.c \
 		display/draw_2d_map.c\
 		display/utils.c\
 		display/p_movment.c\
+		display/p_movment2.c\
 		display/raycasting.c\
 		display/vertical_check.c\
 		display/horizontal_check.c\

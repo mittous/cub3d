@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 06:45:56 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:11:55 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,17 @@ typedef struct s_player{
 }				t_player;
 
 typedef struct draw{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	double		dis_projplane;
+	int			offset_x;
+	double		wall_height;
+	double		wall_start;
+	int			wall_end;
+	int			offset_y;
 
 }				t_draw;
 typedef struct s_display
@@ -137,9 +143,9 @@ void	ft_wrong_character_err(char s);
 ///////////////////
 int		draw_2d_map(t_data **sd);
 int		key_hook(int key, t_data **sd);
-void	p_search(t_data *sd, t_cube *cube);
+void	p_search(t_data *sd, t_cube *cube, int i, int j);
 void	p_init(t_player *p);
-void	ft_draw_line(t_data *sd, double x2, double y2);
+void	ft_draw_line(t_data *sd, double x2, double y2, int i);
 void	my_mlx_pixel_put(t_draw *data, int y, int x, int color);
 void	ft_move(t_data *sd);
 int		key_rel(int key, t_data **sd);
@@ -151,5 +157,17 @@ t_data	*allocate_data(void);
 void	ft_read_textur_files(t_data *data);
 void	ft_get_textur(t_data *data);
 int		ft_rgb_to_color(int r, int g, int b);
+//player Movment///////////
+void	ft_move_right(t_data **sd);
+void	ft_move_up(t_data **sd);
+void	ft_move_down(t_data **sd);
+void	ft_move_left(t_data **sd);
+double	distance(double x1, double y1, double x2, double y2);
+void	line_direction_init(t_line *line, double angle);
+int		ft_count_line(char **map, t_cube *cube);
+int		ft_check_up_down_map(char **map, t_cube *cube);
+void	ft_check_map_close(char **map, t_cube *cube);
+int		ft_atoi_cub(const char *str);
+int		ft_tronsform_int_to_rgb(int count, char *color, int rgb_color);
 
 #endif

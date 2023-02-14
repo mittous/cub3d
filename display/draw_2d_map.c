@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_2d_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/14 06:50:45 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/14 10:10:44 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,31 @@ void	my_mlx_pixel_put(t_draw *data, int y, int x, int color)
 
 	if (y >= 0 && y < WIN_HEIGHT && x < WIN_WIDTH && x >= 0)
 	{
-		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-		*(unsigned int*) dst = color;
+		dst = data->addr + (y * data->line_length
+				+ x * (data->bits_per_pixel / 8));
+		*(unsigned int *) dst = color;
 	}
 }
 
-void	print_pixel(t_data *test, int x, int y, int color)
+void	print_player(t_data *sd)
+{
+	sd->p->x_cube = sd->p->x;
+	sd->p->y_cube = sd->p->y;
+	sd->p->x_cube = sd->p->x -3;
+	while (sd->p->x_cube < sd->p->x + 3)
+	{
+		sd->p->y_cube = sd->p->y -3;
+		while (sd->p->y_cube < sd->p->y + 3)
+		{
+			my_mlx_pixel_put(sd->draw, MINI_MAPE * (sd->p->y_cube),
+				MINI_MAPE * (sd->p->x_cube), RED);
+			sd->p->y_cube++;
+		}
+		sd->p->x_cube++;
+	}
+}
+
+void	print_pixel(t_data *sd, int x, int y, int color)
 {
 	int	i;
 	int	j;
@@ -37,22 +56,13 @@ void	print_pixel(t_data *test, int x, int y, int color)
 		j = 0;
 		while ((MINI_MAPE * j) < (MINI_MAPE * TILE_SIZE))
 		{
-			my_mlx_pixel_put(test->draw, MINI_MAPE * (y + j),MINI_MAPE * ( x + i), color);
+			my_mlx_pixel_put(sd->draw, MINI_MAPE * (y + j),
+				MINI_MAPE * (x + i), color);
 			j++;
 		}
 		i++;
 	}
-	test->p->x_cube = test->p->x -3;
-	while (test->p->x_cube < test->p->x + 3)
-	{
-		test->p->y_cube = test->p->y -3;
-		while (test->p->y_cube < test->p->y + 3)
-		{
-			my_mlx_pixel_put(test->draw, MINI_MAPE * (test->p->y_cube), MINI_MAPE * (test->p->x_cube), RED);
-			test->p->y_cube++;
-		}
-		test->p->x_cube++;
-	}
+	print_player(sd);
 }
 
 void	ft_clear_image(t_data *test)
