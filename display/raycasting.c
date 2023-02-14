@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:12:37 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/13 08:30:33 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:21:31 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,7 @@ void ft_raycasting(t_data   *sd)
 
     i = 0;
     ang_inc = (60 *(M_PI/180)) / WIN_WIDTH;
-    // sd->p->angle = fmod(sd->p->angle, 2 * M_PI);
-    // if (sd->p->angle < 0)
-    //     sd->p->angle += (2 * M_PI);
     ang = sd->p->angle - (30 * (M_PI / 180));
-    // ang = fmod(ang, 2 * M_PI);
-    // if (ang < 0)
-    //     ang += (2 * M_PI);
-    //     sd->line->v_x = 0;
-    //     sd->line->v_y = 0;
-    //     sd->line->h_x = 0;
-    //     sd->line->h_y = 0;
     double dis_projplane = (WIN_WIDTH / 2) / tan(30 * (M_PI / 180));
     int offset_x = 0;
     while (i < WIN_WIDTH)
