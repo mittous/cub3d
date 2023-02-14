@@ -82,6 +82,25 @@ void	ft_check_texture(t_cube *cub)
 	}
 }
 
+int ft_exit(t_data *game)
+{
+	int	i;
+
+	i = -1;
+	while (game->cube->texture[++i])
+		free(game->cube->texture[i]);
+	free(game->cube->texture);
+	i = -1;
+	while (game->cube->map[++i])
+		free(game->cube->map[i]);
+	free(game->cube->map);
+	free(game->cube);
+	free(game->win);
+	free(game->draw);
+	free(game);
+	exit(0);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*game;
