@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 06:45:56 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:19:33 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,10 @@ t_data	*allocate_data(void);
 void	ft_read_textur_files(t_data *data);
 void	ft_get_textur(t_data *data);
 int		ft_rgb_to_color(int r, int g, int b);
+//player Movment///////////
+void	ft_move_right(t_data **sd);
+void	ft_move_up(t_data **sd);
+void	ft_move_down(t_data **sd);
+void	ft_move_left(t_data **sd);
 
 #endif
