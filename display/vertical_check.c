@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:34:32 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/06 13:05:13 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/13 08:43:29 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void ft_vertical_check(t_data    *sd, double ang)
         dy *= -1;
     // if(sd->line->ray_left == 1)
     //     sd->line->v_x--;
-    while(sd->line->v_x >= 0 && sd->line->v_x < WIN_WIDTH && sd->line->v_y >= 0 && sd->line->v_y < WIN_HEIGHT)
+    while (sd->line->v_x >= 0 && sd->line->v_x <= (sd->cube->map_x * 30)
+			&& sd->line->v_y >= 0 && sd->line->v_y <= (sd->cube->map_y * 30) )
     {
         if(sd->line->ray_left == 1)
         {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:23:34 by imittous          #+#    #+#             */
-/*   Updated: 2021/12/19 22:25:32 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/14 06:34:57 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ char	*get_next_line(int fd)
 	file_line = read_buff_size(fd, file_line);
 	if (!file_line)
 		return (NULL);
-	
 	o_line = one_line(file_line);
 	file_line = lines_rest(file_line);
 	return (o_line);

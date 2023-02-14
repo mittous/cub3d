@@ -38,7 +38,7 @@ all : $(NAME)
 
 $(NAME) : $(INC) $(OBJ)
 	make bonus -C libft/
-	$(CC) $(OBJ) $(CFLAGS) libft/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC)  $(OBJ)  $(CFLAGS)  libft/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 #$(NAME): $(OBJ)
 	
 

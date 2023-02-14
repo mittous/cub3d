@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   struct_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:39:38 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/04 10:51:05 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/14 06:33:30 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-#include <stdlib.h>
-
-t_data *allocate_data(void) 
+t_data	*allocate_data(void)
 {
 	t_data *data = (t_data *)malloc(sizeof(t_data));
 	if (data == NULL) {

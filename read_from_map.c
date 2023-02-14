@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_from_map.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 06:32:40 by imittous          #+#    #+#             */
+/*   Updated: 2023/02/14 06:32:54 by imittous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -55,63 +66,3 @@ char	**ft_split_gnl(char const *s, char c)
 	word[j] = NULL;
 	return (word);
 }
-
-// char	*get_next_line(int fd, t_cube *cube, int check_digit)
-// {
-// 	static char	*lines;
-// 	char		*bufer;
-// 	int			read_ret;
-// 	int			check_nl;
-// 	int			count_id;
-
-// 	read_ret = 1;
-// 	bufer = malloc(2);
-// 	lines = malloc(1);
-// 	check_nl = 0;
-// 	if (!bufer)
-// 		return (NULL);
-// 	count_id = 0;
-// 	while (read_ret)
-// 	{
-// 	printf ("check_digit = %d\n", check_digit);
-// 	printf ("count_id = %d\n", count_id);
-// 		if (check_digit == 0 && count_id == 6)
-// 			break ;
-// 		read_ret = read(fd, bufer, 1);
-// 		if (read_ret == -1) 
-// 		{
-// 			ft_putendl_fd("Error wille reading file", 2);
-// 			exit (0);
-// 		}
-// 		bufer[1] = '\0';
-// 		if (check_nl == 1 && bufer[0] != '\n')
-// 		{
-// 			count_id++;
-// 			check_nl = 0;
-// 		}
-// 		if (check_digit == 1 && !mini_check(bufer[0])) //had lblasa fach kaysali i9ra ident kaylga \n okayzidha flmap
-// 		{
-// 			printf ("-*%c*-\n", lines[0]);
-// 			ft_wrong_character_err(bufer[0]);
-// 		}
-// 		if (!read_ret || /* (check_digit == 0 && count_id == 6)|| */ (check_digit == 1 && bufer[0] == '\n' && bufer[0] == lines[ft_strlen(lines) - 1]))
-// 		{
-// 			printf ("*-%c-*\n", bufer[0]);
-// 			break ;
-// 		}
-// 		if (bufer[0] == '\n')
-// 			check_nl = 1;
-// 		ft_count_char(bufer[0], cube);
-// 		lines = ft_strjoin(lines, bufer);
-// 	}
-
-// 	// if (cube->player != 1)
-// 	// 	ft_messing_character_err("You'r messing one of the following chars (N,E,W,S)");
-// 	// if (cube->one < 1)
-// 	// 	ft_messing_character_err("Ther is no wall (1)");
-// 	// if (cube->zero < 1)
-// 	// 	ft_messing_character_err("Ther is no free space (0)");
-// 	// free (bufer);
-// 	printf ("%s\n", lines);
-// 	return (lines);
-// }
