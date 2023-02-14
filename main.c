@@ -6,21 +6,11 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 06:51:40 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:06:04 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	ft_init(t_cube *cube)
-{	
-	cube->n = 0;
-	cube->one = 0;
-	cube->zero = 0;
-	cube->player = 0;
-	cube->fd = 0;
-	cube->map = NULL;
-}
 
 int	ft_count_line(char **map, t_cube *cube)
 {
@@ -54,6 +44,18 @@ int	ft_check_up_down_map(char **map, t_cube *cube)
 	return (0);
 }
 
+int	ft_check_rdlu_space(char **map, int i, int j)
+{
+	if ((!map[j - 1][i] || map[j - 1][i] == ' ')
+		|| (!map[j + 1][i] || map[j + 1][i] == ' ')
+		|| (!map[j][i + 1] || map[j][i + 1] == ' ')
+		|| (!map[j][i - 1] || map[j][i - 1] == ' '))
+	{
+		return (1);
+	}
+	return (0);
+}
+
 void	ft_check_map_close(char **map, t_cube *cube)
 {
 	int	i;
@@ -70,14 +72,8 @@ void	ft_check_map_close(char **map, t_cube *cube)
 			while (map[j][i])
 			{
 				if (map[j][i] == '0' || map[j][i] == cube->player_char)
-				{
-					if ((!map[j - 1][i] || map[j - 1][i] == ' ') || (!map[j + 1][i] || map[j + 1][i] == ' ') ||
-						(!map[j][i + 1] || map[j][i + 1] == ' ') || (!map[j][i - 1] || map[j][i - 1] == ' '))
-					{
-						printf ("map is not suround by one");
-						exit(0);
-					}
-				}
+					if (ft_check_rdlu_space(map, i, j))
+						ft_putendl_fd("map is not suround by one", 2);
 				i++;
 				if (cube->map_x < i)
 					cube->map_x = i;
@@ -109,13 +105,13 @@ int	ft_atoi_cub(const char *str)
 		i++;
 	if (!str[i])
 		return (base * sign);
-	ft_putendl_fd("this format (1 , 2, 3) is not valid, this( 1,2,3)", 2);
+	ft_putendl_fd("this format (1 , 2, 3) is not valid, this ( 1,2,3) yes", 2);
 	return (0);
 }
 
 int ft_tronsform_int_to_rgb(int count, char *color, int rgb_color)
 {
-	int	i;
+	int		i;
 	char	**rgb;
 
 	i = -1;
@@ -213,42 +209,50 @@ void	ft_check_texture(t_cube *cub)
 	}
 }
 
+int ft_exit(t_data *game)
+{
+	int	i;
 
-
-
+	i = -1;
+	while (game->cube->texture[++i])
+		free(game->cube->texture[i]);
+	free(game->cube->texture);
+	i = -1;
+	while (game->cube->map[++i])
+		free(game->cube->map[i]);
+	free(game->cube->map);
+	free(game->cube);
+	free(game->win);
+	free(game->draw);
+	free(game);
+	exit(0);
+}
 
 int	main(int ac, char **av)
 {
-	// t_cube	cube;
-	t_data	*game = allocate_data();
-	// t_display win;
-	// t_player	p;
+	t_data	*game;
 
+	game = allocate_data();
 	if (ft_checkber(av[1], ac))
 	{
-		// ft_init(&game->cube);
-		ft_memset(game->cube,0, sizeof(t_cube));
+		ft_memset(game->cube, 0, sizeof(t_cube));
 		game->cube->fd = open(av[1], O_RDONLY);
 		if (game->cube->fd < 0)
 		{
 			printf("file is not valid");
-			return 1;
+			return (1);
 		}
 		game->win->mlx_ptr = mlx_init();
 		game->draw->img = mlx_new_image(game->win->mlx_ptr, WIN_WIDTH,
-			WIN_HEIGHT);
+				WIN_HEIGHT);
 		game->draw->addr = mlx_get_data_addr(game->draw->img,
-			&game->draw->bits_per_pixel, &game->draw->line_length,
-			&game->draw->endian);
+				&game->draw->bits_per_pixel, &game->draw->line_length,
+				&game->draw->endian);
 		get_next_line_cub(game->cube->fd, game->cube);
 		ft_check_texture(game->cube);
 		ft_check_map_close (game->cube->map, game->cube);
-
-		// game.win = &win;
 		p_init(game->p);
 		ft_get_textur(game);
-		// game->cube = &game->cube;
-		// game->p = &game->p;
     	game->win->window = mlx_new_window(game->win->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 		p_search(game, game->cube);
 		mlx_hook(game->win->window, 2, 1L << 1, key_hook, &game);
