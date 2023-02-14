@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 22:16:54 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/15 00:51:17 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,15 @@ void	ft_check_texture(t_cube *cub)
 		path = ft_split (cub->texture[i], ' ');
 		if (path[1] && !path[2])
 			ft_fill_infos(cub, path);
-		else
-			ft_putendl_fd("you may have space in the middele of the info", 2);
 	}
 	if (cub->ceiling == -1 || cub->floor == -1 || !cub->no || !cub->so \
 		|| !cub->we || !cub->ea)
 	{
-		ft_putendl_fd("you have to fill all the texture", 2);
+		ft_putendl_fd("check that you have all (6) informations needed", 2);
 	}
 }
 
-int ft_exit(t_data *game)
+int	ft_exit(t_data *game)
 {
 	int	i;
 
@@ -106,6 +104,19 @@ int ft_exit(t_data *game)
 	free(game->draw);
 	free(game);
 	exit(0);
+}
+
+int mouse_move(int x, int y, t_data *game)
+{
+	if (x < 0 || x > WIN_WIDTH || y < 0 || y > WIN_HEIGHT)
+		return (0);
+	if (x > WIN_WIDTH / 2)
+		game->p->rotation = 1;
+	else if (x < WIN_WIDTH / 2)
+		game->p->rotation = -1;
+	else
+		game->p->rotation = 0;
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -135,9 +146,11 @@ int	main(int ac, char **av)
 		ft_get_textur(game);
 		game->win->window = mlx_new_window(game->win->mlx_ptr,
 				WIN_WIDTH, WIN_HEIGHT, "cub3d");
+	game->p->rotation = 0;
 		p_search(game, game->cube, 0, 0);
 		mlx_hook(game->win->window, 2, 1L << 1, key_hook, &game);
 		mlx_hook(game->win->window, 3, 2L << 0, key_rel, &game);
+		mlx_hook(game->win->window, 6, 0, mouse_move, &game); // adding mouse move but dosent work ???
 		mlx_loop_hook(game->win->mlx_ptr, draw_2d_map, &game);
 		mlx_loop(game->win->mlx_ptr);
 	}
