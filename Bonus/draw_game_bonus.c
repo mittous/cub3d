@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_2d_map.c                                      :+:      :+:    :+:   */
+/*   draw_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/15 13:48:35 by mel-hous         ###   ########.fr       */
+/*   Created: 2023/02/15 13:57:49 by mel-hous          #+#    #+#             */
+/*   Updated: 2023/02/15 13:59:04 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
-#include  <mlx.h>
-
-void	my_mlx_pixel_put(t_draw *data, int y, int x, int color)
-{
-	char	*dst;
-
-	if (y >= 0 && y < WIN_HEIGHT && x < WIN_WIDTH && x >= 0)
-	{
-		dst = data->addr + (y * data->line_length
-				+ x * (data->bits_per_pixel / 8));
-		*(unsigned int *) dst = color;
-	}
-}
-
+#include "../Mandatory/cub3d.h"
 
 void	ft_clear_image(t_data *test)
 {

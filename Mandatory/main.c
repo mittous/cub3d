@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/15 11:31:01 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:50:09 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,31 +108,12 @@ int	ft_exit(t_data *game)
 
 int mouse_move(int x, int y, t_data **game)
 {
-	// if (x < 0 || x > WIN_WIDTH || y < 0 || y > WIN_HEIGHT)
-	// {
-	// 	(*game)->p->rotation = 0;
-	// 	return (0);
-	// }
-	// else
-	// {
-	// 	if (x > WIN_WIDTH / 2)
-	// 		(*game)->p->rotation = -1;
-	// 	else if (x < WIN_WIDTH / 2)
-	// 		(*game)->p->rotation = 1;
-	// }
-	// return (0);
-	static int	old_x;
-
 	(void)y;
-	if (x <= WIN_WIDTH && x >= 0 && x < old_x)
+	if (x <= WIN_WIDTH && x >= 0 && x < (*game)->p->x_mouse)
 		(*game)->p->angle -= 2.5 * (M_PI / 180);
-	if (x >= 0 && x <= WIN_WIDTH && x > old_x)
+	if (x >= 0 && x <= WIN_WIDTH && x > (*game)->p->x_mouse)
 		(*game)->p->angle += 2.5 * (M_PI / 180);
-	old_x = x;
-	if (x <= 0)
-		old_x = 0;
-	if (x >= WIN_WIDTH)
-		old_x = WIN_WIDTH;
+	(*game)->p->x_mouse = x;
 	return (0);
 }
 

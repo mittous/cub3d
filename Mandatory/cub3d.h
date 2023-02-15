@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/15 13:47:43 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:46:26 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_player{
 	int			move_up;
 	int			move_right;
 	int			rotation;
+	int			x_mouse;
 }				t_player;
 
 typedef struct draw{
