@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/15 15:50:09 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/15 21:42:05 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_count_coma(char	*color)
 			ft_putendl_fd("Non digit information for colors", 2);
 		}
 	}
+
 	return (ft_tronsform_int_to_rgb(count, color, 0));
 }
 
@@ -49,21 +50,28 @@ int	ft_check_file_exist(char *file)
 void	ft_fill_infos(t_cube *cub, char **path)
 {
 	if (!ft_strcmp(path[0], "NO") && ft_check_file_exist(path[1]))
-		cub->no = path[1];
+		cub->no = ft_strdup(path[1]);
 	else if (!ft_strcmp(path[0], "SO") && ft_check_file_exist(path[1]))
-		cub->so = path[1];
+		cub->so = ft_strdup(path[1]);
 	else if (!ft_strcmp(path[0], "WE") && ft_check_file_exist(path[1]))
-		cub->we = path[1];
+		cub->we = ft_strdup(path[1]);
 	else if (!ft_strcmp(path[0], "EA") && ft_check_file_exist(path[1]))
-		cub->ea = path[1];
+		cub->ea = ft_strdup(path[1]);
 	else if (!ft_strcmp(path[0], "C"))
-		cub->ceiling = ft_count_coma(path[1]);
+	{
+		cub->ceiling = ft_count_coma(ft_strdup(path[1]));
+		// free_word(path);
+	}
 	else if (!ft_strcmp(path[0], "F"))
-		cub->floor = ft_count_coma(path[1]);
+	{
+		cub->floor = ft_count_coma(ft_strdup(path[1]));
+		// free_word(path);
+	}
 	else
 	{
 		ft_putendl_fd("Invalide identefire", 2);
 	}
+
 }
 
 void	ft_check_texture(t_cube *cub)
@@ -78,8 +86,12 @@ void	ft_check_texture(t_cube *cub)
 	{
 		path = ft_split (cub->texture[i], ' ');
 		if (path[1] && !path[2])
+		{
 			ft_fill_infos(cub, path);
+			free_word(path);
+		}
 	}
+	
 	if (cub->ceiling == -1 || cub->floor == -1 || !cub->no || !cub->so \
 		|| !cub->we || !cub->ea)
 	{
@@ -137,6 +149,7 @@ int	main(int ac, char **av)
 		game->draw->addr = mlx_get_data_addr(game->draw->img,
 				&game->draw->bits_per_pixel, &game->draw->line_length,
 				&game->draw->endian);
+
 		get_next_line_cub(game->cube->fd, game->cube);
 		ft_check_texture(game->cube);
 		ft_check_map_close (game->cube->map, game->cube);
@@ -145,10 +158,11 @@ int	main(int ac, char **av)
 		game->win->window = mlx_new_window(game->win->mlx_ptr,
 				WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	game->p->rotation = 0;
+
 		p_search(game, game->cube, 0, 0);
 		mlx_hook(game->win->window, 2, 1L << 1, key_hook, &game);
 		mlx_hook(game->win->window, 3, 2L << 0, key_rel, &game);
-		mlx_hook(game->win->window, 6, 0, mouse_move, &game); // adding mouse move but dosent work ???
+		mlx_hook(game->win->window, 6, 0, mouse_move, &game);
 		mlx_loop_hook(game->win->mlx_ptr, draw_2d_map, &game);
 		mlx_loop(game->win->mlx_ptr);
 	}

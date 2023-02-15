@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:52:16 by imittous          #+#    #+#             */
-/*   Updated: 2021/11/28 19:52:19 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:38:37 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ static size_t	ft_count_word(char const *s, char c)
 
 char	**free_word(char **s)
 {
-	while (*s)
-		free(*s++);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		free(s[i++]);
 	free (s);
 	return (NULL);
 }

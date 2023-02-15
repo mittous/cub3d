@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:56:46 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/14 11:04:04 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/15 20:17:36 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,18 +114,18 @@ int	ft_tronsform_int_to_rgb(int count, char *color, int rgb_color)
 	if (count == 2)
 	{
 		rgb = ft_split(color, ',');
+		free (color);
 		while (rgb[++i])
 		{
-			rgb[i] = ft_strtrim(rgb[i], " ");
+			// rgb[i] = ft_strtrim(rgb[i], " ");
 			if (ft_atoi_cub(rgb[i]) < 0 || ft_atoi_cub(rgb[i]) > 255)
-			{
 				ft_putendl_fd("color is not valid", 2);
-			}
 		}
 		if (rgb[0] && rgb[1] && rgb[2])
 		{
 			rgb_color = ft_rgb_to_color(ft_atoi_cub(rgb[0]), \
 				ft_atoi_cub(rgb[1]), ft_atoi_cub(rgb[2]));
+			free_word(rgb);
 			return (rgb_color);
 		}
 	}
