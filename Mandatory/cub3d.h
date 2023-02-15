@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 11:11:55 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:47:43 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <mlx.h>
-# include "libft/libft.h"
-# include "get_net_line/get_next_line.h"
+# include "../Utils/libft/libft.h"
+// # include "get_net_line/get_next_line.h"
 
 # define BUFFER_SIZE 1
 # define WIN_HEIGHT 800
@@ -169,5 +169,7 @@ int		ft_check_up_down_map(char **map, t_cube *cube);
 void	ft_check_map_close(char **map, t_cube *cube);
 int		ft_atoi_cub(const char *str);
 int		ft_tronsform_int_to_rgb(int count, char *color, int rgb_color);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+void	draw_mini_map(t_data	*data, int i, int j);
 
 #endif

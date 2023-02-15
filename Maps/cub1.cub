@@ -4,8 +4,8 @@
    NO    ./texturs/wall3.xpm
    EA    ./texturs/wall4.xpm
 
-F 28,115,38
-C 28,115,38
+F 0,0,0
+C 28,15,3
 
 
 
