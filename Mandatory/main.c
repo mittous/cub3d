@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/15 00:51:17 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:50:09 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,14 @@ int	ft_exit(t_data *game)
 	exit(0);
 }
 
-int mouse_move(int x, int y, t_data *game)
+int mouse_move(int x, int y, t_data **game)
 {
-	if (x < 0 || x > WIN_WIDTH || y < 0 || y > WIN_HEIGHT)
-		return (0);
-	if (x > WIN_WIDTH / 2)
-		game->p->rotation = 1;
-	else if (x < WIN_WIDTH / 2)
-		game->p->rotation = -1;
-	else
-		game->p->rotation = 0;
+	(void)y;
+	if (x <= WIN_WIDTH && x >= 0 && x < (*game)->p->x_mouse)
+		(*game)->p->angle -= 2.5 * (M_PI / 180);
+	if (x >= 0 && x <= WIN_WIDTH && x > (*game)->p->x_mouse)
+		(*game)->p->angle += 2.5 * (M_PI / 180);
+	(*game)->p->x_mouse = x;
 	return (0);
 }
 
