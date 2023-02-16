@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:38:22 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 08:50:25 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 08:52:39 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,4 @@ void	ft_wrong_character_err(char s)
 {
 	ft_putendl_fd("character '%c' is not valid\n", s);
 	exit(0);
-}
-
-void	ft_messing_character_err(char *message)
-{
-	ft_putendl_fd(message, 2);
 }

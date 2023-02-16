@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 05:08:50 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 08:52:32 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ typedef struct s_data{
 int		mini_check(char map);
 int		ft_checkber(char *s, int ac);
 void	ft_wrong_character_err(char bufer);
-void	ft_messing_character_err(char *message);
 void	get_next_line_cub(int fd, t_cube *cube);
 char	**ft_split_gnl(char const *s, char c);
 void	ft_count_char(char c, t_cube *cube);
