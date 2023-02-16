@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:34:32 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 16:54:56 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:12:17 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	vertical_hit(t_data *sd, double v_dx, double dy)
 {
+	// printf("sd->line->v_x = %f \n", sd->line->v_x);
+	// printf("sd->line->v_y = %f \n", sd->line->v_y);
+	printf("sd->cube->map_x = %d \n", sd->cube->map_x);
+	printf("sd->cube->map_y = %d \n", sd->cube->map_y);
 	while (sd->line->v_x >= 0 && sd->line->v_x < (sd->cube->map_x * 30)
 		&& sd->line->v_y >= 0 && sd->line->v_y < (sd->cube->map_y * 30))
 	{

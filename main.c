@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:26:10 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:19:12 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ int	ft_check_rdlu_space(char **map, int i, int j)
 void	ft_check_map_close(char **map, t_cube *cube)
 {
 	int	i;
+	int	map_x;
 	int	j;
 
 	i = 0;
+	
 	j = 0;
 	cube->map_x = 0;
 	if (ft_check_up_down_map(map, cube))
@@ -74,6 +76,7 @@ void	ft_check_map_close(char **map, t_cube *cube)
 				if (map[j][i] == '0' || map[j][i] == cube->player_char)
 					if (ft_check_rdlu_space(map, i, j))
 						ft_putendl_fd("map is not suround by one", 2);
+				
 				i++;
 				if (cube->map_x < i)
 					cube->map_x = i;
