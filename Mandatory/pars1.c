@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:56:46 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/15 20:17:36 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 01:45:05 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,21 @@ void	ft_check_map_close(char **map, t_cube *cube)
 	int	i;
 	int	j;
 
-	i = 0;
 	j = 0;
 	cube->map_x = 0;
 	if (ft_check_up_down_map(map, cube))
 	{
 		while (map[j])
 		{
-			i = 0;
-			while (map[j][i])
+			i = -1;
+			while (map[j][++i])
 			{
 				if (map[j][i] == '0' || map[j][i] == cube->player_char)
-				{
 					if ((!map[j - 1][i] || map[j - 1][i] == ' ')
 						|| (!map[j + 1][i] || map[j + 1][i] == ' ')
 						|| (!map[j][i + 1] || map[j][i + 1] == ' ')
 						|| (!map[j][i - 1] || map[j][i - 1] == ' '))
-					{
-						printf ("map is not suround by one");
-						exit(0);
-					}
-				}
-				i++;
+						ft_putendl_fd("map is not suround by one", 2);
 				if (cube->map_x < i)
 					cube->map_x = i;
 			}
@@ -93,7 +86,7 @@ int	ft_atoi_cub(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		base = (base * 10) + (str[i] - 48);
-		if (base > 2147483647 && sign == 1)
+		if (base > 255 && sign == 1)
 			ft_putendl_fd("your number is > than 255", 2);
 		i++;
 	}
@@ -116,11 +109,8 @@ int	ft_tronsform_int_to_rgb(int count, char *color, int rgb_color)
 		rgb = ft_split(color, ',');
 		free (color);
 		while (rgb[++i])
-		{
-			// rgb[i] = ft_strtrim(rgb[i], " ");
 			if (ft_atoi_cub(rgb[i]) < 0 || ft_atoi_cub(rgb[i]) > 255)
 				ft_putendl_fd("color is not valid", 2);
-		}
 		if (rgb[0] && rgb[1] && rgb[2])
 		{
 			rgb_color = ft_rgb_to_color(ft_atoi_cub(rgb[0]), \

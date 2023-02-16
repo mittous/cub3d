@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/15 15:46:26 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/16 05:08:50 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ typedef struct draw{
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
-	double		dis_projplane;
+	double		proj_plane;
 	int			offset_x;
-	double		wall_height;
-	double		wall_start;
-	int			wall_end;
+	double		wal_hieght;
+	double		wal_start;
+	int			wal_end;
 	int			offset_y;
 
 }				t_draw;
@@ -172,5 +172,5 @@ int		ft_atoi_cub(const char *str);
 int		ft_tronsform_int_to_rgb(int count, char *color, int rgb_color);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 void	draw_mini_map(t_data	*data, int i, int j);
-
+int		ft_exit(t_data **game);
 #endif

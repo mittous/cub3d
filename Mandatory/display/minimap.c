@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:43:47 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/15 13:49:08 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/16 01:20:33 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	print_pixel(t_data *sd, int x, int y, int color)
 	}
 	print_player(sd);
 }
-
 
 void	draw_mini_map(t_data	*data, int i, int j)
 {

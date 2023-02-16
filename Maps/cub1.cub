@@ -1,14 +1,23 @@
 
+
+
 WE    ./texturs/wall1.xpm
-SO   ./texturs/wall2.xpm
+
+
+
 NO    ./texturs/wall3.xpm
-EA    ./texturs/wall4.xpm
 
-C    225,2,78
-F  0,0,0
 
+
+F 0,0,0
+
+
+    SO    ./texturs/wall2.xpm   
+     EA    ./texturs/wall4.xpm
+
+C       10,078,255
 
 111111
-1000N1
-100001
-111111
+10000N1
+10000001
+ 111111

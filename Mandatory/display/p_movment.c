@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_movment.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:41:35 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/14 09:12:18 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/16 01:08:22 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_move(t_data *sd)
 int	key_hook(int key, t_data **sd)
 {
 	if (key == 53)
-		exit(0);
+		ft_exit(sd);
 	if (key == 2)
 		(*sd)->p->move_right = 1;
 	if (key == 0)
@@ -66,7 +66,7 @@ int	key_hook(int key, t_data **sd)
 int	key_rel(int key, t_data **sd)
 {
 	if (key == 53)
-		exit(0);
+		ft_exit(sd);
 	if (key == 2)
 		(*sd)->p->move_right = 0;
 	if (key == 0)

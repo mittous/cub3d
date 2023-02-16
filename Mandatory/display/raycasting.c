@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:12:37 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/14 10:46:50 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/16 05:08:50 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	ft_drawing_wall(int ray, double wall_real_height,
 					t_data *data, int text)
 {
-	double	wall_height;
+	double	wal_hieght;
 	int		start;
 	int		end;
 	int		dis_from_top;
 
 	if (wall_real_height > WIN_HEIGHT)
-		wall_height = WIN_HEIGHT;
+		wal_hieght = WIN_HEIGHT;
 	else
-		wall_height = wall_real_height;
-	start = (WIN_HEIGHT / 2.0) - (wall_height / 2.0);
-	end = (WIN_HEIGHT / 2.0) + (wall_height / 2.0);
+		wal_hieght = wall_real_height;
+	start = (WIN_HEIGHT / 2.0) - (wal_hieght / 2.0);
+	end = (WIN_HEIGHT / 2.0) + (wal_hieght / 2.0);
 	while (start < end)
 	{
 		dis_from_top = start + (wall_real_height / 2) - (WIN_HEIGHT / 2);
@@ -46,28 +46,28 @@ int	ft_rgb_to_color(int r, int g, int b)
 
 void	draw_wall_texturs(t_data *sd, int i)
 {
-	sd->draw->dis_projplane = (WIN_WIDTH / 2) / tan(30 * (M_PI / 180));
-	sd->draw->wall_height = (TILE_SIZE / sd->line->distance)
-		* sd->draw->dis_projplane;
-	sd->draw->wall_start = WIN_HEIGHT / 2 - (sd->draw->wall_height / 2);
-	sd->draw->wall_end = sd->draw->wall_start + sd->draw->wall_height;
+	sd->draw->proj_plane = (WIN_WIDTH / 2) / tan(30 * (M_PI / 180));
+	sd->draw->wal_hieght = (TILE_SIZE / sd->line->distance)
+		* sd->draw->proj_plane;
+	sd->draw->wal_start = WIN_HEIGHT / 2 - (sd->draw->wal_hieght / 2);
+	sd->draw->wal_end = sd->draw->wal_start + sd->draw->wal_hieght;
 	if (sd->line->v_hit == 1)
 	{
 		sd->draw->offset_x = fmod(sd->line->v_y, TILE_SIZE)
 			/ TILE_SIZE * sd->textur->width;
 		if (sd->line->ray_right == 1)
-			ft_drawing_wall(i, sd->draw->wall_height, sd, 1);
+			ft_drawing_wall(i, sd->draw->wal_hieght, sd, 1);
 		else if (sd->line->ray_left == 1)
-			ft_drawing_wall(i, sd->draw->wall_height, sd, 2);
+			ft_drawing_wall(i, sd->draw->wal_hieght, sd, 2);
 	}
 	else if (sd->line->h_hit == 1)
 	{
 		sd->draw->offset_x = fmod(sd->line->h_x, TILE_SIZE)
 			/ TILE_SIZE * sd->textur->width;
 		if (sd->line->ray_up == 1)
-			ft_drawing_wall(i, sd->draw->wall_height, sd, 3);
+			ft_drawing_wall(i, sd->draw->wal_hieght, sd, 3);
 		else if (sd->line->ray_down == 1)
-			ft_drawing_wall(i, sd->draw->wall_height, sd, 0);
+			ft_drawing_wall(i, sd->draw->wal_hieght, sd, 0);
 	}
 }
 

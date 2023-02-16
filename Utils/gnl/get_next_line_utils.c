@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:30:11 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/15 13:21:48 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/16 05:56:09 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Mandatory/cub3d.h"
+#include "../../Mandatory/cub3d.h" 
 
 char	*ft_strjoin_gnl(char *s1, char *s2)
 {

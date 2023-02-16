@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:46:28 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/15 18:24:20 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 01:20:45 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_get_textur(t_data *data)
 
 	data->textur[0].img = mlx_xpm_file_to_image(data->win->mlx_ptr, \
 	data->cube->so, &data->textur[0].height, &data->textur[0].width);
-
 	data->textur[1].img = mlx_xpm_file_to_image(data->win->mlx_ptr, \
 	data->cube->ea, &data->textur[1].height, &data->textur[1].width);
 	data->textur[2].img = mlx_xpm_file_to_image(data->win->mlx_ptr, \

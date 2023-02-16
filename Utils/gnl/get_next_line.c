@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:23:34 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/15 13:22:16 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/16 05:44:59 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Mandatory/cub3d.h"
+#include "../../Mandatory/cub3d.h"
 
 char	*ft_read_buff_size_cub(char *lines, char *bufer, t_cube *cube, \
 	char old_read)

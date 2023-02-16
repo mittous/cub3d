@@ -1,6 +1,6 @@
 NAME =	cub3D
 
-# NAME_BNS = cub3D_bonus
+NAME_BNS = cub3D_bonus
 
 INC =	Mandatory/cub3d.h
 
@@ -12,7 +12,7 @@ SRC =	Mandatory/main.c \
 		Mandatory/pars1.c\
 		Mandatory/errors.c \
 		Mandatory/read_from_map.c \
-		Utils/get_next_line.c \
+		Utils/gnl/get_next_line.c\
 		Mandatory/display/draw_game.c\
 		Mandatory/display/minimap.c\
 		Mandatory/display/utils.c\
@@ -22,7 +22,7 @@ SRC =	Mandatory/main.c \
 		Mandatory/display/vertical_check.c\
 		Mandatory/display/horizontal_check.c\
 		Mandatory/display/get_textur.c\
-		Utils/get_next_line_utils.c\
+		Utils/gnl/get_next_line_utils.c\
 
 BNC_SRC =	Bonus/draw_game_bonus.c\
 			Mandatory/main.c \
@@ -31,7 +31,7 @@ BNC_SRC =	Bonus/draw_game_bonus.c\
 			Mandatory/pars1.c\
 			Mandatory/errors.c \
 			Mandatory/read_from_map.c \
-			Utils/get_next_line.c \
+			Utils/gnl/get_next_line_utils.c\
 			Mandatory/display/minimap.c\
 			Mandatory/display/utils.c\
 			Mandatory/display/p_movment.c\
@@ -40,7 +40,7 @@ BNC_SRC =	Bonus/draw_game_bonus.c\
 			Mandatory/display/vertical_check.c\
 			Mandatory/display/horizontal_check.c\
 			Mandatory/display/get_textur.c\
-			Utils/get_next_line_utils.c\
+			Utils/gnl/get_next_line.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -62,9 +62,9 @@ $(NAME) : $(INC) $(OBJ)
 #$(NAME): $(OBJ)
 	
 
- bonus : $(OBJ_BNC)
+bonus : $(OBJ_BNC)
 		make bonus -C Utils/libft
-		$(CC)  $(OBJ_BNC)  $(CFLAGS)  Utils/libft/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+		$(CC)  $(OBJ_BNC)  $(CFLAGS)  Utils/libft/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME_BNS)
 
 clean : 
 	@-rm -rf $(OBJ) $(OBJ_BNC) $(DEP) $(OBJ_BNC)
