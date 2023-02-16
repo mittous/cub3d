@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:56:46 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:26:10 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:28:37 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ void	ft_check_map_close(char **map, t_cube *cube)
 		}
 	}
 }
+
+
+
 
 int	ft_atoi_cub(const char *str)
 {
