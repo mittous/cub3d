@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:34:32 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 17:12:17 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:40:09 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 void	vertical_hit(t_data *sd, double v_dx, double dy)
 {
-	// printf("sd->line->v_x = %f \n", sd->line->v_x);
-	// printf("sd->line->v_y = %f \n", sd->line->v_y);
-	printf("sd->cube->map_x = %d \n", sd->cube->map_x);
-	printf("sd->cube->map_y = %d \n", sd->cube->map_y);
-	while (sd->line->v_x >= 0 && sd->line->v_x < (sd->cube->map_x * 30)
-		&& sd->line->v_y >= 0 && sd->line->v_y < (sd->cube->map_y * 30))
-	{
+	while (sd->line->v_x >= 0 && sd->line->v_x <= (sd->cube->map_x * 30)
+		&& sd->line->v_y >= 0 && sd->line->v_y <= (sd->cube->map_y * 30))
+	{	
 		if (sd->line->ray_left == 1)
 		{
 			if (sd->cube->map[(int)(sd->line->v_y / TILE_SIZE)]
@@ -30,11 +26,8 @@ void	vertical_hit(t_data *sd, double v_dx, double dy)
 				break ;
 			}
 		}
-		printf("sd->cube->map[(int)(sd->line->v_y / TILE_SIZE)][(int)(sd->line->v_x / TILE_SIZE)] = *%c* \n", sd->cube->map[(int)(sd->line->v_y / TILE_SIZE)][(int)(sd->line->v_x - 1 / TILE_SIZE)]);
-		printf ("[int)(sd->line->v_y / TILE_SIZE)] = %d \n", (int)(sd->line->v_y / TILE_SIZE));
-		printf ("[int)(sd->line->v_x / TILE_SIZE)] = %d \n", (int)(sd->line->v_x - 1 / TILE_SIZE));
 		if (sd->cube->map[(int)(sd->line->v_y / TILE_SIZE)]
-			[(int)(sd->line->v_x - 1 / TILE_SIZE)] == '1')
+			[(int)(sd->line->v_x / TILE_SIZE)] == '1')
 		{
 			sd->line->v_hit = true;
 			break ;

@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:56:46 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 17:28:37 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:37:07 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,23 @@ int	ft_check_up_down_map(char **map, t_cube *cube)
 	return (0);
 }
 
+int	ft_check_rdlu_space(char **map, int i, int j)
+{
+	if ((!map[j - 1][i] || map[j - 1][i] == ' ')
+		|| (!map[j + 1][i] || map[j + 1][i] == ' ')
+		|| (!map[j][i + 1] || map[j][i + 1] == ' ')
+		|| (!map[j][i - 1] || map[j][i - 1] == ' '))
+	{
+		return (1);
+	}
+	return (0);
+}
+
 void	ft_check_map_close(char **map, t_cube *cube)
 {
 	int	i;
 	int	j;
+	int	map_x;
 
 	j = 0;
 	cube->map_x = 0;
@@ -55,17 +68,17 @@ void	ft_check_map_close(char **map, t_cube *cube)
 	{
 		while (map[j])
 		{
+			map_x = 0;
 			i = -1;
 			while (map[j][++i])
 			{
 				if (map[j][i] == '0' || map[j][i] == cube->player_char)
-					if ((!map[j - 1][i] || map[j - 1][i] == ' ')
-						|| (!map[j + 1][i] || map[j + 1][i] == ' ')
-						|| (!map[j][i + 1] || map[j][i + 1] == ' ')
-						|| (!map[j][i - 1] || map[j][i - 1] == ' '))
+					if (ft_check_rdlu_space(map, i, j))
 						ft_putendl_fd("map is not suround by one", 2);
-				if (cube->map_x < i)
-					cube->map_x = i;
+				if (map[j][i] == '1' || map[j][i] == '0' ||map[j][i] == cube->player_char)
+					map_x++;
+				if (cube->map_x < map_x)
+					cube->map_x = map_x;
 			}
 			j++;
 		}
