@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:56:46 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:26:10 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:17:10 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	ft_tronsform_int_to_rgb(int count, char *color, int rgb_color)
 		{
 			rgb_color = ft_rgb_to_color(ft_atoi_cub(rgb[0]), \
 				ft_atoi_cub(rgb[1]), ft_atoi_cub(rgb[2]));
-			//free_word(rgb);
+			free_word(rgb);
 			return (rgb_color);
 		}
 	}

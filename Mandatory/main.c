@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:26:44 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:17:10 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_check_texture(t_cube *cub)
 		if (path[1] && !path[2])
 		{
 			ft_fill_infos(cub, path);
-			//free_word(path);
+			free_word(path);
 		}
 	}
 	if (cub->ceiling == -1 || cub->floor == -1 || !cub->no || !cub->so \
@@ -93,12 +93,12 @@ void	ft_check_texture(t_cube *cub)
 int	ft_exit(t_data **game)
 {
 	(void)game;
-	//free_word((*game)->cube->map);
-	//free((*game)->cube);
-	//free((*game)->win);
-	//free((*game)->draw);
-	//free((*game)->p);
-	//free((*game));
+	free_word((*game)->cube->map);
+	free((*game)->cube);
+	free((*game)->win);
+	free((*game)->draw);
+	free((*game)->p);
+	free((*game));
 	exit(0);
 }
 

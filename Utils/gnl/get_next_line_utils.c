@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:30:11 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:25:21 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:16:32 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	while (s2[l])
 		k[j++] = s2[l++];
 	k[j] = '\0';
-	//free(s1);
+	free(s1);
 	return (k);
 }

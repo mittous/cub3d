@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:39:38 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:25:21 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:16:32 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,41 +24,41 @@ t_data	*allocate_data(void)
 	data->p = (t_player *)malloc(sizeof(t_player));
 	if (data->p == NULL)
 	{
-		//free(data);
+		free(data);
 		return (NULL);
 	}
 	data->draw = (t_draw *)malloc(sizeof(t_draw));
 	if (data->draw == NULL)
 	{
-		//free(data->p);
-		//free(data);
+		free(data->p);
+		free(data);
 		return (NULL);
 	}
 	data->win = (t_display *)malloc(sizeof(t_display));
 	if (data->win == NULL)
 	{
-		//free(data->draw);
-		//free(data->p);
-		//free(data);
+		free(data->draw);
+		free(data->p);
+		free(data);
 		return (NULL);
 	}
 	data->cube = (t_cube *)malloc(sizeof(t_cube));
 	if (data->cube == NULL)
 	{
-		//free(data->win);
-		//free(data->draw);
-		//free(data->p);
-		//free(data);
+		free(data->win);
+		free(data->draw);
+		free(data->p);
+		free(data);
 		return (NULL);
 	}
 	data->line = (t_line *)malloc(sizeof(t_line));
 	if (data->line == NULL)
 	{
-		//free(data->cube);
-		//free(data->win);
-		//free(data->draw);
-		//free(data->p);
-		//free(data);
+		free(data->cube);
+		free(data->win);
+		free(data->draw);
+		free(data->p);
+		free(data);
 		return (NULL);
 	}
 	return (data);

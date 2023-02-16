@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:23:34 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:25:21 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:16:32 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*read_buff_size_cub(int fd, char *lines, t_cube *cube)
 		i = read(fd, bufer, BUFFER_SIZE);
 		if (i == -1)
 		{
-			//free(bufer);
+			free(bufer);
 			return (NULL);
 		}
 		bufer[i] = '\0';

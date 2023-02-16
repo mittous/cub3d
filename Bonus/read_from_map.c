@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:32:40 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:26:10 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:17:10 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**ft_split_gnl(char const *s, char c)
 		if (*s && lwrd)
 			word[j++] = ft_substr(s, 0, lwrd);
 		if (lwrd != 0 && !(word[j - 1]))
-			return (//free_word(word), NULL);
+			return (free_word(word), NULL);
 		s += lwrd;
 	}
 	word[j] = NULL;
