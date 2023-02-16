@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:23:34 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 05:44:59 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 08:51:08 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,5 @@ void	get_next_line_cub(int fd, t_cube *cube)
 	file_line = read_buff_size_cub(fd, file_line, cube);
 	one_line_cub(file_line, cube);
 	if (cube->player != 1 || cube->one < 1 || cube->zero < 1)
-		ft_messing_character_err("missing character (\"N/S/E/W \",0,1)");
+		ft_putendl_fd("missing character (\"N/S/E/W \",0,1)", 2);
 }

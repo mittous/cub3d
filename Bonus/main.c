@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 08:48:45 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 08:51:47 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,4 @@ int	main(int ac, char **av)
 		mlx_loop_hook(game->win->mlx_ptr, draw_2d_map, &game);
 		mlx_loop(game->win->mlx_ptr);
 	}
-	system("leaks cub3d");
 }
