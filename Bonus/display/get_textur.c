@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_textur.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:46:28 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 01:20:45 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:15:38 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 void	ft_get_textur(t_data *data)
 {

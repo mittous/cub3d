@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 08:52:32 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:24:01 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <unistd.h>
 
@@ -25,14 +25,13 @@
 # include <stdlib.h>
 # include <mlx.h>
 # include "../Utils/libft/libft.h"
-// # include "get_net_line/get_next_line.h"
 
 # define BUFFER_SIZE 1
 # define WIN_HEIGHT 800
-# define WIN_WIDTH 800
+# define WIN_WIDTH 1900
 # define MINI_MAPE 0.2
 # define TILE_SIZE 30
-# define SPEED 5.0
+# define SPEED 3.0
 # define PLAYER_SQUARE 2
 # define WHITE 16777215
 # define BLACK 8421504
@@ -172,4 +171,5 @@ int		ft_tronsform_int_to_rgb(int count, char *color, int rgb_color);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 void	draw_mini_map(t_data	*data, int i, int j);
 int		ft_exit(t_data **game);
+
 #endif

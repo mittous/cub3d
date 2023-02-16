@@ -6,11 +6,11 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:34:29 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/14 08:57:03 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:15:47 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 void	horizontal_hit(t_data *sd, double dx, double dy)
 {

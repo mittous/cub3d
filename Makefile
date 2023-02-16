@@ -14,7 +14,6 @@ SRC =	Mandatory/main.c \
 		Mandatory/read_from_map.c \
 		Utils/gnl/get_next_line.c\
 		Mandatory/display/draw_game.c\
-		Mandatory/display/minimap.c\
 		Mandatory/display/utils.c\
 		Mandatory/display/p_movment.c\
 		Mandatory/display/p_movment2.c\
@@ -46,9 +45,9 @@ OBJ = $(SRC:.c=.o)
 
 DEP = $(SRC:.c=.d)
 
-DEP_B = $(BNC_SRC:.c=.d)
-
 OBJ_BNC = $(BNC_SRC:.c=.o)
+
+DEP_B = $(BNC_SRC:.c=.d)
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 
@@ -70,8 +69,6 @@ $(NAME_BNS) : $(INC) $(OBJ_BNC)
 	make bonus -C Utils/libft
 	$(CC)  $(OBJ_BNC)  $(CFLAGS)  Utils/libft/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME_BNS)
 	
-
-
 clean : 
 	@-rm -rf $(OBJ) $(OBJ_BNC) $(DEP) $(OBJ_BNC) $(DEP_B)
 
@@ -81,5 +78,4 @@ fclean : clean
 
 re :fclean all
 
--include $(DEP)
--include $(DEP_B)
+-include $(DEP) $(DEP_B)

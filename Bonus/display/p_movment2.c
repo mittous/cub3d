@@ -6,11 +6,11 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:09:46 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/14 09:18:01 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:16:49 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 void	ft_move_right(t_data **sd)
 {

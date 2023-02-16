@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_name.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:29:22 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 08:33:14 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:17:20 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	my_mlx_pixel_put(t_draw *data, int y, int x, int color)
 {

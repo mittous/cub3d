@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_from_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:32:40 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 06:32:54 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:19:04 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	mini_check(char map)
 {
