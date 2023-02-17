@@ -6,7 +6,11 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/02/16 11:51:58 by imittous         ###   ########.fr       */
+=======
+/*   Updated: 2023/02/17 08:46:28 by mel-hous         ###   ########.fr       */
+>>>>>>> 1d6ff38becebe7b0a2c904ca22a77425ad98ca8f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +134,7 @@ typedef struct s_data{
 	t_display	*win;
 	t_cube		*cube;
 	t_line		*line;
-	t_textur	textur[4];
+	t_textur	*textur;
 }				t_data;
 
 int		mini_check(char map);

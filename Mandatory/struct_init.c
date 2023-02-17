@@ -6,7 +6,11 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:39:38 by mel-hous          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/02/16 18:16:32 by imittous         ###   ########.fr       */
+=======
+/*   Updated: 2023/02/17 08:47:14 by mel-hous         ###   ########.fr       */
+>>>>>>> 1d6ff38becebe7b0a2c904ca22a77425ad98ca8f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +62,17 @@ t_data	*allocate_data(void)
 		free(data->win);
 		free(data->draw);
 		free(data->p);
+		free(data);
+		return (NULL);
+	}
+	data->textur = (t_textur *)malloc(sizeof(t_textur) * 4);
+	if (data->textur == NULL)
+	{
+		free(data->cube);
+		free(data->win);
+		free(data->draw);
+		free(data->p);
+		free(data->line);
 		free(data);
 		return (NULL);
 	}

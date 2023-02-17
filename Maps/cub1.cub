@@ -1,17 +1,26 @@
 
 
 
-WE    ./texturs/wall1.xpm
+WE    ./texturs/LeavesOP.xpm
 
 
 
+<<<<<<< HEAD
 NO    ./texturs/wall2.xpm
+=======
+NO    ./texturs/library.xpm
+>>>>>>> 1d6ff38becebe7b0a2c904ca22a77425ad98ca8f
 
 
 
 
+<<<<<<< HEAD
     SO    ./texturs/wall3.xpm   
      EA    ./texturs/wall4.xpm
+=======
+    EA   ./texturs/Grass.xpm  
+     SO    ./texturs/WalkStone.xpm
+>>>>>>> 1d6ff38becebe7b0a2c904ca22a77425ad98ca8f
 
 F 255,218,185    
 

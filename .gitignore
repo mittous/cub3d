@@ -9,3 +9,6 @@ notes
 **/*.o
 **/*.d
 *.out
+Utils/libft/libft.a
+Utils/libft/libft.o
+Utils/libft/libft.d
