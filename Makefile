@@ -53,7 +53,7 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = cc
 
-CFLAGS = -Wall  -Wextra -Werror -MMD -g -Ofast #-fsanitize=address 
+CFLAGS = -Wall  -Wextra -Werror -MMD -g -Ofast -fsanitize=address 
 
 all : $(NAME)
 
