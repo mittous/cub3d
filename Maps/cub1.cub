@@ -1,17 +1,17 @@
 
 
 
-WE    ./texturs/wall1.xpm
+WE    ./texturs/LeavesOP.xpm
 
 
 
-NO    ./texturs/wall3.xpm
+NO    ./texturs/library.xpm
 
 
 
 
-    SO    ./texturs/wall2.xpm   
-     EA    ./texturs/wall4.xpm
+    EA   ./texturs/Grass.xpm  
+     SO    ./texturs/WalkStone.xpm
 
 F 255,218,185    
 

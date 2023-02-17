@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 09:24:01 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/17 08:27:56 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,10 @@ typedef struct s_textur
 }			t_textur;
 
 typedef struct s_data{
-	t_player	*p;
-	t_draw		*draw;
-	t_display	*win;
 	t_cube		*cube;
+	t_draw		*draw;
+	t_player	*p;
+	t_display	*win;
 	t_line		*line;
 	t_textur	textur[4];
 }				t_data;
