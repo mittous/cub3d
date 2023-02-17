@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:57:49 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 01:15:45 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:18:37 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Mandatory/cub3d.h"
+#include "cub3d_bonus.h"
 
 void	ft_clear_image(t_data *test)
 {

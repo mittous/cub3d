@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:21:03 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 01:20:19 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:40:15 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	draw_2d_map(t_data **sd)
 	mlx_clear_window((*sd)->win->mlx_ptr, (*sd)->win->window);
 	ft_clear_image((*sd));
 	ft_raycasting((*sd));
-	draw_mini_map(*sd, i, j);
 	ft_move((*sd));
 	mlx_put_image_to_window((*sd)->win->mlx_ptr, (*sd)->win->window,
 		(*sd)->draw->img, 0, 0);

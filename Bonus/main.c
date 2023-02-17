@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 08:51:47 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:22:48 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	ft_count_coma(char	*color)
 {
@@ -103,12 +103,14 @@ int	ft_exit(t_data **game)
 
 int	mouse_move(int x, int y, t_data **game)
 {
-	(void)y;
-	if (x <= WIN_WIDTH && x >= 0 && x < (*game)->p->x_mouse)
-		(*game)->p->angle -= 2.5 * (M_PI / 180);
-	if (x >= 0 && x <= WIN_WIDTH && x > (*game)->p->x_mouse)
-		(*game)->p->angle += 2.5 * (M_PI / 180);
-	(*game)->p->x_mouse = x;
+	if(y >= 0 && y <= WIN_HEIGHT)
+	{
+		if (x <= WIN_WIDTH && x >= 0 && x < (*game)->p->x_mouse)
+			(*game)->p->angle -= 2.5 * (M_PI / 180);
+		if (x >= 0 && x <= WIN_WIDTH && x > (*game)->p->x_mouse)
+			(*game)->p->angle += 2.5 * (M_PI / 180);
+		(*game)->p->x_mouse = x;
+	}
 	return (0);
 }
 

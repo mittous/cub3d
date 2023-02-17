@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 08:52:23 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/17 08:46:28 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@
 
 # define BUFFER_SIZE 1
 # define WIN_HEIGHT 800
-# define WIN_WIDTH 800
+# define WIN_WIDTH 1900
 # define MINI_MAPE 0.2
 # define TILE_SIZE 30
-# define SPEED 5.0
+# define SPEED 3.0
 # define PLAYER_SQUARE 2
 # define WHITE 16777215
 # define BLACK 8421504
@@ -130,7 +130,7 @@ typedef struct s_data{
 	t_display	*win;
 	t_cube		*cube;
 	t_line		*line;
-	t_textur	textur[4];
+	t_textur	*textur;
 }				t_data;
 
 int		mini_check(char map);

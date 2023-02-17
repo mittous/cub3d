@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 08:48:45 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:07:36 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,6 @@ int	ft_exit(t_data **game)
 	exit(0);
 }
 
-int	mouse_move(int x, int y, t_data **game)
-{
-	(void)y;
-	if (x <= WIN_WIDTH && x >= 0 && x < (*game)->p->x_mouse)
-		(*game)->p->angle -= 2.5 * (M_PI / 180);
-	if (x >= 0 && x <= WIN_WIDTH && x > (*game)->p->x_mouse)
-		(*game)->p->angle += 2.5 * (M_PI / 180);
-	(*game)->p->x_mouse = x;
-	return (0);
-}
-
 int	main(int ac, char **av)
 {
 	t_data	*game;
@@ -141,7 +130,6 @@ int	main(int ac, char **av)
 		mlx_hook(game->win->window, 2, 1L << 1, key_hook, &game);
 		mlx_hook(game->win->window, 17, 0, ft_exit, &game);
 		mlx_hook(game->win->window, 3, 2L << 0, key_rel, &game);
-		mlx_hook(game->win->window, 6, 0, mouse_move, &game);
 		mlx_loop_hook(game->win->mlx_ptr, draw_2d_map, &game);
 		mlx_loop(game->win->mlx_ptr);
 	}
