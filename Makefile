@@ -11,6 +11,8 @@ SRC =	Mandatory/main.c \
 		Mandatory/check_map_name.c\
 		Mandatory/pars1.c\
 		Mandatory/errors.c \
+		Mandatory/ft_exit.c \
+		Mandatory/start_game.c \
 		Mandatory/read_from_map.c \
 		Utils/gnl/get_next_line.c\
 		Mandatory/display/draw_game.c\
@@ -26,6 +28,8 @@ SRC =	Mandatory/main.c \
 BNC_SRC =	Bonus/draw_game_bonus.c\
 			Bonus/main.c \
 			Bonus/struct_init.c\
+			Bonus/ft_exit.c \
+			Bonus/start_game.c \
 			Bonus/check_map_name.c\
 			Bonus/pars1.c\
 			Bonus/errors.c \
@@ -53,7 +57,7 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 CC = cc
 
-CFLAGS = -Wall  -Wextra -Werror -MMD -g -Ofast #-fsanitize=address 
+CFLAGS = -Wall  -Wextra -Werror -MMD -g #-Ofast #-fsanitize=address 
 
 all : $(NAME)
 

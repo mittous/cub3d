@@ -6,11 +6,48 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:39:38 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/17 08:47:14 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:20:02 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_data	*allocate_data1(t_data	*data)
+{
+	data->win = (t_display *)malloc(sizeof(t_display));
+	if (data->win == NULL)
+	{
+		free(data->draw);
+		free(data->p);
+		free(data);
+		return (NULL);
+	}
+	data->cube = (t_cube *)malloc(sizeof(t_cube));
+	if (data->cube == NULL)
+	{
+		free(data->win);
+		free(data->draw);
+		free(data->p);
+		free(data);
+		return (NULL);
+	}
+	return (data);
+}
+
+t_data	*allocate_data2(t_data *data)
+{
+	data->line = (t_line *)malloc(sizeof(t_line));
+	if (data->line == NULL)
+	{
+		free(data->cube);
+		free(data->win);
+		free(data->draw);
+		free(data->p);
+		free(data);
+		return (data);
+	}
+	return (data);
+}
 
 t_data	*allocate_data(void)
 {
@@ -34,43 +71,7 @@ t_data	*allocate_data(void)
 		free(data);
 		return (NULL);
 	}
-	data->win = (t_display *)malloc(sizeof(t_display));
-	if (data->win == NULL)
-	{
-		free(data->draw);
-		free(data->p);
-		free(data);
+	if (!allocate_data1(data) || !allocate_data2(data))
 		return (NULL);
-	}
-	data->cube = (t_cube *)malloc(sizeof(t_cube));
-	if (data->cube == NULL)
-	{
-		free(data->win);
-		free(data->draw);
-		free(data->p);
-		free(data);
-		return (NULL);
-	}
-	data->line = (t_line *)malloc(sizeof(t_line));
-	if (data->line == NULL)
-	{
-		free(data->cube);
-		free(data->win);
-		free(data->draw);
-		free(data->p);
-		free(data);
-		return (NULL);
-	}
-	data->textur = (t_textur *)malloc(sizeof(t_textur) * 4);
-	if (data->textur == NULL)
-	{
-		free(data->cube);
-		free(data->win);
-		free(data->draw);
-		free(data->p);
-		free(data->line);
-		free(data);
-		return (NULL);
-	}
 	return (data);
 }

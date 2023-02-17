@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/17 08:46:28 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:27:32 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ typedef struct s_data{
 	t_display	*win;
 	t_cube		*cube;
 	t_line		*line;
-	t_textur	*textur;
+	t_textur	textur[4];
 }				t_data;
 
 int		mini_check(char map);
@@ -172,4 +172,5 @@ int		ft_tronsform_int_to_rgb(int count, char *color, int rgb_color);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 void	draw_mini_map(t_data	*data, int i, int j);
 int		ft_exit(t_data **game);
+void	start_game(t_data *game);
 #endif
