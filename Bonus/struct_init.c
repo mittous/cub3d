@@ -6,36 +6,16 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:39:38 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 09:19:11 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:46:09 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-t_data	*allocate_data(void)
+t_data	*allocate_data1(t_data	*data)
 {
-	t_data	*data;
-
-	data = (t_data *)malloc(sizeof(t_data));
-	if (data == NULL)
-	{
-		return (NULL);
-	}
-	data->p = (t_player *)malloc(sizeof(t_player));
-	if (data->p == NULL)
-	{
-		free(data);
-		return (NULL);
-	}
-	data->draw = (t_draw *)malloc(sizeof(t_draw));
-	if (data->draw == NULL)
-	{
-		free(data->p);
-		free(data);
-		return (NULL);
-	}
 	data->win = (t_display *)malloc(sizeof(t_display));
-	if (data->win == NULL)
+	if (!data->win)
 	{
 		free(data->draw);
 		free(data->p);
@@ -43,7 +23,7 @@ t_data	*allocate_data(void)
 		return (NULL);
 	}
 	data->cube = (t_cube *)malloc(sizeof(t_cube));
-	if (data->cube == NULL)
+	if (!data->cube)
 	{
 		free(data->win);
 		free(data->draw);
@@ -51,8 +31,13 @@ t_data	*allocate_data(void)
 		free(data);
 		return (NULL);
 	}
+	return (data);
+}
+
+t_data	*allocate_data2(t_data *data)
+{
 	data->line = (t_line *)malloc(sizeof(t_line));
-	if (data->line == NULL)
+	if (!data->line)
 	{
 		free(data->cube);
 		free(data->win);
@@ -61,5 +46,32 @@ t_data	*allocate_data(void)
 		free(data);
 		return (NULL);
 	}
+	return (data);
+}
+
+t_data	*allocate_data(void)
+{
+	t_data	*data;
+
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+	{
+		return (NULL);
+	}
+	data->p = (t_player *)malloc(sizeof(t_player));
+	if (!data->p)
+	{
+		free(data);
+		return (NULL);
+	}
+	data->draw = (t_draw *)malloc(sizeof(t_draw));
+	if (!data->draw)
+	{
+		free(data->p);
+		free(data);
+		return (NULL);
+	}
+	if (!allocate_data1(data) || !allocate_data2(data))
+		return (NULL);
 	return (data);
 }

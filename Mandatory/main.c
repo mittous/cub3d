@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:51:24 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 09:07:36 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:27:45 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,6 @@ void	ft_check_texture(t_cube *cub)
 	}
 }
 
-int	ft_exit(t_data **game)
-{
-	free_word((*game)->cube->map);
-	free((*game)->cube);
-	free((*game)->win);
-	free((*game)->draw);
-	free((*game)->p);
-	free((*game));
-	exit(0);
-}
-
 int	main(int ac, char **av)
 {
 	t_data	*game;
@@ -123,15 +112,7 @@ int	main(int ac, char **av)
 		ft_check_map_close (game->cube->map, game->cube);
 		p_init(game->p);
 		ft_get_textur(game);
-		game->win->window = mlx_new_window(game->win->mlx_ptr,
-				WIN_WIDTH, WIN_HEIGHT, "cub3d");
-		game->p->rotation = 0;
-		p_search(game, game->cube, 0, 0);
-		mlx_hook(game->win->window, 2, 1L << 1, key_hook, &game);
-		mlx_hook(game->win->window, 17, 0, ft_exit, &game);
-		mlx_hook(game->win->window, 3, 2L << 0, key_rel, &game);
-		mlx_loop_hook(game->win->mlx_ptr, draw_2d_map, &game);
-		mlx_loop(game->win->mlx_ptr);
+		start_game(game);
 	}
-	system("leaks cub3d");
+	return (0);
 }

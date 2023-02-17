@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:12:37 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/17 09:38:21 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:58:12 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_drawing_wall(int ray, double wall_real_height,
 	double	wal_hieght;
 	int		start;
 	int		end;
-	double		dis_from_top;
+	double	dis_from_top;
 
 	if (wall_real_height > WIN_HEIGHT)
 		wal_hieght = WIN_HEIGHT;
