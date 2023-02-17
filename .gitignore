@@ -5,5 +5,7 @@ libft/libft.a
 .out
 notes
 /libft/*.o
+/libft/*.d
 **/*.o
+**/*.d
 *.out
