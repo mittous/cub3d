@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/18 08:48:04 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/18 11:06:47 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,14 @@
 # include <mlx.h>
 # include "../Utils/libft/libft.h"
 
-# define BUFFER_SIZE 1
+# define WHITE 16777215
+# define BLACK 8421504
+# define RED 16711680
 # define WIN_HEIGHT 800
 # define WIN_WIDTH 1900
 # define MINI_MAPE 0.2
 # define TILE_SIZE 30
 # define SPEED 5.0
-# define PLAYER_SQUARE 2
-# define WHITE 16777215
-# define BLACK 8421504
-# define RED 16711680
-# define ORANGE 65454456
-# define FOFV	1.0471975512
-# define RAD 0.01745329251
 
 typedef struct line{
 	double		ang;
@@ -174,5 +169,9 @@ void	render_minimap(t_data *sd);
 int		mouse_move(int x, int y, t_data **game);
 void	start_game(t_data *game);
 int		ft_exit(t_data **game);
+void	vertical_hit_facing(t_data	*sd, int i);
+void	horizontal_hit_facing(t_data	*sd, int i);
+void	ft_drawing_wall(int ray, double wall_real_height,
+			t_data *data, int text);
 
 #endif

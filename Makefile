@@ -10,6 +10,7 @@ SRC =	Mandatory/main.c \
 		Mandatory/struct_init.c\
 		Mandatory/check_map_name.c\
 		Mandatory/pars1.c\
+		Mandatory/pars2.c\
 		Mandatory/errors.c \
 		Mandatory/ft_exit.c \
 		Mandatory/start_game.c \
@@ -20,6 +21,7 @@ SRC =	Mandatory/main.c \
 		Mandatory/display/p_movment.c\
 		Mandatory/display/p_movment2.c\
 		Mandatory/display/raycasting.c\
+		Mandatory/display/raycasting1.c\
 		Mandatory/display/vertical_check.c\
 		Mandatory/display/horizontal_check.c\
 		Mandatory/display/get_textur.c\
@@ -32,6 +34,7 @@ BNC_SRC =	Bonus/draw_game_bonus.c\
 			Bonus/start_game.c \
 			Bonus/check_map_name.c\
 			Bonus/pars1.c\
+			Bonus/pars2.c\
 			Bonus/errors.c \
 			Bonus/read_from_map.c \
 			Utils/gnl/get_next_line_utils.c\
@@ -40,6 +43,7 @@ BNC_SRC =	Bonus/draw_game_bonus.c\
 			Bonus/display/p_movment.c\
 			Bonus/display/p_movment2.c\
 			Bonus/display/raycasting.c\
+			Bonus/display/raycasting1.c\
 			Bonus/display/vertical_check.c\
 			Bonus/display/horizontal_check.c\
 			Bonus/display/get_textur.c\
