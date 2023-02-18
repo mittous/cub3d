@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:43:41 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/18 11:17:13 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/18 11:29:21 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ typedef struct s_display
 {
 	void	*mlx_ptr;
 	void	*window;
-	void	*wall;
-	void	*eps;
-	void	*image;
 }				t_display;
 typedef struct s_cube
 {
@@ -132,7 +129,6 @@ void	ft_wrong_character_err(void);
 void	get_next_line_cub(int fd, t_cube *cube);
 char	**ft_split_gnl(char const *s, char c);
 void	ft_count_char(char c, t_cube *cube);
-///////////////////
 int		draw_2d_map(t_data **sd);
 int		key_hook(int key, t_data **sd);
 void	p_search(t_data *sd, t_cube *cube, int i, int j);
@@ -145,11 +141,9 @@ void	ft_raycasting(t_data *sd);
 void	ft_vertical_check(t_data *sd, double ang);
 void	ft_horizontal_check(double ang, t_data *sd);
 t_data	*allocate_data(void);
-/////////////////////////
 void	ft_read_textur_files(t_data *data);
 void	ft_get_textur(t_data *data);
 int		ft_rgb_to_color(int r, int g, int b);
-//player Movment///////////
 void	ft_move_right(t_data **sd);
 void	ft_move_up(t_data **sd);
 void	ft_move_down(t_data **sd);
