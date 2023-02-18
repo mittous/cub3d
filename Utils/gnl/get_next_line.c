@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:23:34 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/18 08:08:00 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:10:42 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	get_next_line_cub(int fd, t_cube *cube)
 		return ;
 	file_line = read_buff_size_cub(fd, file_line, cube);
 	one_line_cub(file_line, cube);
+	if (file_line[ft_strlen(file_line) - 1] == '\n')
+		ft_putendl_fd("new line on the map", 2);
 	if (cube->player != 1 || cube->one < 1 || cube->zero < 1)
 		ft_putendl_fd("missing character (\"N/S/E/W \",0,1)", 2);
 }
