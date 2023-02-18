@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_from_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:32:40 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 09:19:04 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:48:44 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_count_char(char c, t_cube *cube)
 			cube->zero++;
 	}
 	else
-		ft_wrong_character_err(c);
+		ft_wrong_character_err();
 }
 
 char	**ft_split_gnl(char const *s, char c)
