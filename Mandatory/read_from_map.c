@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:32:40 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/14 06:32:54 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:48:55 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_count_char(char c, t_cube *cube)
 			cube->zero++;
 	}
 	else
-		ft_wrong_character_err(c);
+		ft_wrong_character_err();
 }
 
 char	**ft_split_gnl(char const *s, char c)

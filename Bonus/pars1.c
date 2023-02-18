@@ -6,7 +6,7 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:56:46 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/18 08:43:54 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:52:36 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,6 @@ void	ft_count_longest_line(t_cube *cube)
 	}
 }
 
-// int	ft_check_mao_all_space(char *str, int size)
-// {
-// 	while (str[i])
-// }
-
 void	ft_fill_map_with_space(t_cube *cube)
 {
 	int	i;
@@ -83,7 +78,7 @@ void	ft_fill_map_with_space(t_cube *cube)
 			i++;
 		}
 		if (!ft_strchr(cube->map[j], '1'))
-			ft_putendl_fd("map is not suround by one", 2);
+			ft_putendl_fd("new line in map", 2);
 		j++;
 	}
 }

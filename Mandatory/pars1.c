@@ -6,12 +6,11 @@
 /*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:56:46 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 01:45:05 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:53:12 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 int	ft_count_line(char **map, t_cube *cube)
 {
 	int	j;
@@ -44,6 +43,45 @@ int	ft_check_up_down_map(char **map, t_cube *cube)
 	return (0);
 }
 
+void	ft_count_longest_line(t_cube *cube)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	cube->map_x = 0;
+	while (cube->map[j])
+	{
+		i = -1;
+		while (cube->map[j][++i])
+		{
+			if (cube->map_x < i)
+				cube->map_x = i;
+		}
+		j++;
+	}
+}
+
+void	ft_fill_map_with_space(t_cube *cube)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (cube->map[j])
+	{
+		i = ft_strlen(cube->map[j]);
+		while (i <= cube->map_x)
+		{
+			cube->map[j] = ft_strjoin(cube->map[j], " ");
+			i++;
+		}
+		if (!ft_strchr(cube->map[j], '1'))
+			ft_putendl_fd("new line in map", 2);
+		j++;
+	}
+}
+
 void	ft_check_map_close(char **map, t_cube *cube)
 {
 	int	i;
@@ -51,6 +89,8 @@ void	ft_check_map_close(char **map, t_cube *cube)
 
 	j = 0;
 	cube->map_x = 0;
+	ft_count_longest_line(cube);
+	ft_fill_map_with_space(cube);
 	if (ft_check_up_down_map(map, cube))
 	{
 		while (map[j])
@@ -64,8 +104,6 @@ void	ft_check_map_close(char **map, t_cube *cube)
 						|| (!map[j][i + 1] || map[j][i + 1] == ' ')
 						|| (!map[j][i - 1] || map[j][i - 1] == ' '))
 						ft_putendl_fd("map is not suround by one", 2);
-				if (cube->map_x < i)
-					cube->map_x = i;
 			}
 			j++;
 		}

@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 06:38:22 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/16 09:18:45 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/18 08:46:04 by imittous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	ft_wrong_character_err(char s)
+void	ft_wrong_character_err(void)
 {
-	ft_putendl_fd("character '%c' is not valid\n", s);
-	exit(0);
+	ft_putendl_fd("Make sure your map is valid\n \
+and you have just the (6) informations needed\n", 2);
 }
+
