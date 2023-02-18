@@ -1,17 +1,17 @@
 
 
 
-NO    ./texturs/wolfenstein1.xpm
+NO    ./texturs/w1.xpm
 
 
 
-EA    ./texturs/wolfenstein2.xpm
+EA    ./texturs/w2.xpm
 
 
 
 
-    WE   ./texturs/wolfenstein3.xpm  
-     SO    ./texturs/wolfenstein4.xpm
+    WE   ./texturs/w3.xpm  
+     SO    ./texturs/w4.xpm
 
 F 255,218,185    
 
