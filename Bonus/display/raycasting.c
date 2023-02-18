@@ -6,7 +6,7 @@
 /*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:12:37 by mel-hous          #+#    #+#             */
-/*   Updated: 2023/02/16 09:16:57 by mel-hous         ###   ########.fr       */
+/*   Updated: 2023/02/18 11:05:57 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_drawing_wall(int ray, double wall_real_height,
 					t_data *data, int text)
 {
 	double	wal_hieght;
-	int		start;
-	int		end;
-	int		dis_from_top;
+	double	start;
+	double	end;
+	double	dis_from_top;
 
 	if (wall_real_height > WIN_HEIGHT)
 		wal_hieght = WIN_HEIGHT;
@@ -30,7 +30,7 @@ void	ft_drawing_wall(int ray, double wall_real_height,
 	{
 		dis_from_top = start + (wall_real_height / 2) - (WIN_HEIGHT / 2);
 		data->draw->offset_y = dis_from_top / wall_real_height
-			* data->textur->height;
+			* data->textur[text].height;
 		my_mlx_pixel_put(data->draw, start, ray,
 			data->textur[text].addr
 		[(data->textur[text].width * data->draw->offset_y)
@@ -52,23 +52,9 @@ void	draw_wall_texturs(t_data *sd, int i)
 	sd->draw->wal_start = WIN_HEIGHT / 2 - (sd->draw->wal_hieght / 2);
 	sd->draw->wal_end = sd->draw->wal_start + sd->draw->wal_hieght;
 	if (sd->line->v_hit == 1)
-	{
-		sd->draw->offset_x = fmod(sd->line->v_y, TILE_SIZE)
-			/ TILE_SIZE * sd->textur->width;
-		if (sd->line->ray_right == 1)
-			ft_drawing_wall(i, sd->draw->wal_hieght, sd, 1);
-		else if (sd->line->ray_left == 1)
-			ft_drawing_wall(i, sd->draw->wal_hieght, sd, 2);
-	}
+		vertical_hit_facing(sd, i);
 	else if (sd->line->h_hit == 1)
-	{
-		sd->draw->offset_x = fmod(sd->line->h_x, TILE_SIZE)
-			/ TILE_SIZE * sd->textur->width;
-		if (sd->line->ray_up == 1)
-			ft_drawing_wall(i, sd->draw->wal_hieght, sd, 3);
-		else if (sd->line->ray_down == 1)
-			ft_drawing_wall(i, sd->draw->wal_hieght, sd, 0);
-	}
+		horizontal_hit_facing(sd, i);
 }
 
 void	distance_comper(t_data *sd, double ang)

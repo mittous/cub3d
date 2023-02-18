@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imittous <imittous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-hous <mel-hous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 22:23:34 by imittous          #+#    #+#             */
-/*   Updated: 2023/02/18 08:10:42 by imittous         ###   ########.fr       */
+/*   Updated: 2023/02/18 11:17:06 by mel-hous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*read_buff_size_cub(int fd, char *lines, t_cube *cube)
 	char	old_read;
 	int		i;
 
-	bufer = malloc(BUFFER_SIZE + 1);
+	bufer = malloc(2);
 	if (!bufer)
 		return (NULL);
 	lines = NULL;
@@ -46,7 +46,7 @@ char	*read_buff_size_cub(int fd, char *lines, t_cube *cube)
 	i = 1;
 	while (i)
 	{
-		i = read(fd, bufer, BUFFER_SIZE);
+		i = read(fd, bufer, 1);
 		if (i == -1)
 		{
 			free(bufer);
@@ -83,7 +83,7 @@ void	get_next_line_cub(int fd, t_cube *cube)
 {
 	static char	*file_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return ;
 	file_line = read_buff_size_cub(fd, file_line, cube);
 	one_line_cub(file_line, cube);
